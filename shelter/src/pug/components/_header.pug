@@ -1,0 +1,30 @@
+|
+|
+// Header 
+
+header.header.container
+    .header__content
+        a.header__logo(href="index.html" title="Main Page")
+            .header__logo-title Cozy House
+            .header__logo-subtitle Shelter for pets in Boston
+        nav.header__menu-container 
+            ul.header__menu
+                li.header__menu-el
+                    a.header__menu-link.header__menu-link--active(href="index.html") About the shelter
+                li.header__menu-el
+                    a.header__menu-link(href="our-pets.html") Our pets
+                li.header__menu-el
+                    a.header__menu-link(href="#help") Help the shelter
+                li.header__menu-el
+                    a.header__menu-link(href="#footer") Contacts
+
+//- <header> содержит только логотип и панель навигации
+//- Интерактивная панель навигации:
+    //- по умолчанию должен быть подсвечен элемент About the shelter;
+    //- подсвеченный элемент About the shelter может не иметь hover-эффектов.
+//- Нажатие на Our pets перебрасывает нас на страницу our pets.
+//- Нажатие на Help the shelter перебрасывает нас на блок Help, расположенный на этой же странице (якорная ссылка).
+//- Нажатие на Contacts перебрасывает нас на блок Footer, расположенный на этой же странице (якорная ссылка).
+//- Логотип находится слева. Логотип состоит из текстовых элементов (т.е. не картинка). Нажатие на логотип оставляет нас на текущей странице.
+//- На странице обязательно должен присутствовать один элемент <h1>. Можно сделать его с текстом Cozy House.
+//- Хедер "липким" делать не нужно. Т.е. при скролле он остается на своей позиции.
