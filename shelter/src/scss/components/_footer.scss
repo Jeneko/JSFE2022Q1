@@ -1,0 +1,67 @@
+.footer {
+    background-color: $color-dark-bg;
+    background: url(../assets/common/noise_lines.png), $rad-grad-dark-2;
+
+    &__wrapper {
+        display: grid;
+        grid-template-columns: 1fr 302px 1fr;
+        column-gap: 159.8px; // not 160px for more pixel-perfect result
+        padding-top: 40px;
+    }
+
+    &__col {
+        display: grid;
+        align-content: space-between;
+    }
+
+    &__col-first {
+        margin-top: 16px;
+        height: 234px;
+    }
+
+    &__col-second {
+        width: 302px;
+        margin-top: 16px;
+        height: 234px;
+    }
+
+    &__title {
+        color: $color-light-xl;
+        margin: 0;
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+        font-family: $font-family-1;
+        font-size: 20px;
+        text-decoration: none;
+        line-height: 115%;
+        letter-spacing: 0.06em;
+        color: $color-primary;
+    }
+
+    &__icon-email {
+        display: inline-block;
+        width: 40px;
+        height: 32px;
+        margin-right: 20px;
+        background: url(../assets/footer/icon-email.svg);
+    }
+
+    &__icon-phone {
+        display: inline-block;
+        width: 40px;
+        height: 32px;
+        margin-right: 20px;
+        background: url(../assets/footer/icon-phone.svg);
+    }
+
+    &__icon-marker {
+        display: inline-block;
+        width: 22px;
+        height: 32px;
+        margin-right: 20px;
+        background: url(../assets/footer/icon-marker.svg);
+    }
+}

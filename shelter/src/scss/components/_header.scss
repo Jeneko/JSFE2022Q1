@@ -1,0 +1,68 @@
+.header {
+    position: relative;
+
+    &__content {
+        position: absolute;
+        top: 60px;
+        left: $container-padding;
+        right: $container-padding;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__logo {
+        display: inline-block;
+        text-decoration: none;
+    }
+
+    &__logo-title {
+        color: $color-primary;
+        font-family: $font-family-1;
+        font-size: 32px;
+        letter-spacing: 0.06em;
+    }
+
+    &__logo-subtitle {
+        color: $color-light-xl;
+        font-family: $font-family-2;
+        font-size: 13px;
+        letter-spacing: 0.1em;
+        padding-top: 9px;
+        padding-left: 4px;
+    }
+
+    &__menu {
+        font-family: $font-family-2;
+        font-size: 15px;
+        list-style: none;
+        display: flex;
+        padding-top: 4px;
+    }
+
+    &__menu-el {
+        &:not(:last-child) {
+            margin-right: 36px;
+        }
+    }
+
+    &__menu-link {
+        color: $color-dark-s;
+        text-decoration: none;
+        position: relative;
+
+        &:hover, &--active {
+            color: $color-light-s;
+        }
+        &--active {
+            &::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: -7px;
+                height: 3px;
+                background-color: $color-primary;
+            }
+        }
+    }
+}

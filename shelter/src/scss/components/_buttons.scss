@@ -1,0 +1,49 @@
+%button {
+    cursor: pointer;
+    font-family: $font-family-1;
+    font-size: 17px;
+    letter-spacing: 0.06em;
+    display: inline-block;
+    padding: 14px 44px;
+    border: 2px solid $color-primary;
+    border-radius: 100px;
+    text-decoration: none;
+    color: $color-dark-3xl;
+    box-sizing: border-box;
+}
+
+.button-primary {
+    @extend %button;
+    background-color: $color-primary;
+
+    &:hover {
+        border-color: $color-primary-light;
+        background-color: $color-primary-light;
+    }
+}
+
+.button-secondary {
+    @extend %button;
+
+    &:hover {
+        border-color: $color-primary-light;
+        background-color: $color-primary-light;
+    }
+}
+
+.button-arrow {
+    @extend %button;
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    background: url(../assets/pets/arrow.svg) no-repeat center center;
+
+    &:hover {
+        border-color: $color-primary-light;
+        background-color: $color-primary-light;
+    }
+
+    &--inactive {
+        border-color: $color-dark-s;
+    }
+}

@@ -1,0 +1,67 @@
+.pets {
+    text-align: center;
+    padding: 80px 0 100px;
+    background-color: $color-light-l;
+
+    &__title {
+        text-align: center;
+        margin: 0;
+    }
+
+    &__slider {
+        position: relative;
+        margin: 60px 105px;
+    }
+
+    &__slides {
+        overflow: hidden;
+        display: flex;
+        gap: 90px;
+    }
+
+    &__slide {
+        cursor: pointer;
+        width: 33.33%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        overflow: hidden;
+        text-align: center;
+        background-color: $color-light-s;
+        width: 270px;
+        border-radius: 9px;
+        padding-bottom: 30px;
+
+        &:hover {
+            background-color: $color-light-xl;
+
+            .button-secondary {
+                border-color: $color-primary-light;
+                background-color: $color-primary-light;
+            }
+        }
+    }
+
+    &__slide-title {
+        color: $color-dark-l;
+        font-size: 20px;
+        font-family: $font-family-1;
+        line-height: 23px;
+        letter-spacing: 0.06em;
+    }
+
+    &__slider-prev {
+        position: absolute;
+        left: -105px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    &__slider-next {
+        position: absolute;
+        right: -105px;
+        top: 50%;
+        transform: translateY(-50%) rotate(180deg);
+    }
+}

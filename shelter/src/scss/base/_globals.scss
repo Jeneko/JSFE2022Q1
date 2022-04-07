@@ -1,0 +1,60 @@
+// COMMON
+:root {
+    font-family: $font-family-2;
+}
+
+html {
+    min-width: 1280px;
+}
+
+// CONTAINERS
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+    min-width: 1200px; // REMOVE IN PROD
+    padding: 0 40px;
+}
+
+// HEADINGS & TYPOGRAPHY
+%heading {
+    font-family: $font-family-1;
+    color: $color-dark-l;
+    font-weight: 400;
+}
+
+h1 {
+    @extend %heading;
+    font-size: $h1-size;
+}
+
+h2 {
+    @extend %heading;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    font-size: $h2-size;
+}
+
+h3 {
+    @extend %heading;
+    font-size: $h3-size;
+}
+
+h4 {
+    @extend %heading;
+    line-height: 115%;
+    letter-spacing: 0.06em;
+    font-size: $h4-size;
+}
+
+h5 {
+    @extend %heading;
+    font-size: $h5-size;
+}
+
+p {
+    color: $color-dark-xl;
+    font-family: $font-family-2;
+    font-size: 15px;
+    line-height: 160%;
+}
