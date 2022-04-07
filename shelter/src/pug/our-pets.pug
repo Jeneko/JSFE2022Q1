@@ -1,14 +1,33 @@
 extends templates/_template-default
+include mixins/_header
 
 block head
     title Cozy House — Our pets
 
 block body
-    //- Page Header
-    - var headerClass = '.header--main'
-    include components/_header-pages
+    |
+    |
+    // Header 
+    +header([
+            {
+                text: "About the shelter",
+                link: "index.html"
+            },
+            {
+                text: "Our pets",
+                link: "our-pets.html",
+                isActive: true
+            },
+            {
+                text: "Help the shelter",
+                link: "#help"
+            },
+            {
+                text: "Contacts",
+                link: "#footer"
+            }
+        ], 'lightTheme')
 
-    //- Page Content
     |
     |
     // Main
