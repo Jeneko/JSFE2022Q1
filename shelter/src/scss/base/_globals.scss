@@ -28,7 +28,8 @@ h1 {
     font-size: $h1-size;
 }
 
-h2 {
+h2,
+.h2 {
     @extend %heading;
     line-height: 130%;
     letter-spacing: 0.06em;
