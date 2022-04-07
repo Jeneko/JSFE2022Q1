@@ -2,26 +2,59 @@
 |
 // Pets 
 
+include ../mixins/_pet-card
+
+-
+    let petList = [
+        {
+            img: 'pets-katrine.png',
+            name: 'Katrine',
+            link: '#'
+        },
+        {
+            img: 'pets-jennifer.png',
+            name: 'Jennifer',
+            link: '#'
+        },
+        {
+            img: 'pets-woody.png',
+            name: 'Woody',
+            link: '#'
+        },
+        {
+            img: 'pets-sophia.png',
+            name: 'Sophia',
+            link: '#'
+        },
+        {
+            img: 'pets-timmy.png',
+            name: 'Timmy',
+            link: '#'
+        },
+        {
+            img: 'pets-charly.png',
+            name: 'Charly',
+            link: '#'
+        },
+        {
+            img: 'pets-scarlett.png',
+            name: 'Scarlett',
+            link: '#'
+        },
+        {
+            img: 'pets-freddie.png',
+            name: 'Freddie',
+            link: '#'
+        },
+    ];
+
 section.pets#pets
     .container
         h2.pets__title Our friends who<br> are looking for a house 
         .pets__slider
             .pets__slides
-                .pets__slide 
-                    img.pets__slide-img(src="assets/pets/pets-katrine.png")
-                    .pets__slide-title Katrine
-                    .pets__slide-link
-                        a.button-secondary(href="#") Learn more
-                .pets__slide 
-                    img.pets__slide-img(src="assets/pets/pets-jennifer.png")
-                    .pets__slide-title Jennifer
-                    .pets__slide-link
-                        a.button-secondary(href="#") Learn more
-                .pets__slide 
-                    img.pets__slide-img(src="assets/pets/pets-woody.png")
-                    .pets__slide-title Woody
-                    .pets__slide-link
-                        a.button-secondary(href="#") Learn more
+                each pet in petList
+                    +pet-card(pet)
             button.button-arrow.pets__slider-prev            
             button.button-arrow.pets__slider-next
         a.button-primary.pets__cta(href="our-pets.html") Get to know the rest
