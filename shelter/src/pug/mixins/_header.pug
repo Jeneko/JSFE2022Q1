@@ -1,8 +1,9 @@
 include _logo
 
 mixin header(menuItems, colorTheme, headerStyle)
+    - let headerClass = headerStyle ? `header__content--${headerStyle}` : ""
+    - let linkClass = colorTheme ? `header__menu-link--${colorTheme}` : ""
     header.header.container
-        - let headerClass = headerStyle ? `header__content--${headerStyle}` : ""
         div(class = "header__content " + headerClass)
             +logo(colorTheme)
             nav.header__menu-container 
@@ -10,6 +11,6 @@ mixin header(menuItems, colorTheme, headerStyle)
                     each menuItem in menuItems
                         li.header__menu-el
                             if menuItem.isActive
-                                a.header__menu-link.header__menu-link--active(href=menuItem.link) #{menuItem.text}
+                                a(href = menuItem.link class = "header__menu-link active " + linkClass) #{menuItem.text}
                             else
-                                a.header__menu-link(href=menuItem.link) #{menuItem.text}
+                                a(href = menuItem.link class = "header__menu-link " + linkClass) #{menuItem.text}
