@@ -1,9 +1,10 @@
 include _logo
 
-mixin header(menuItems, theme)
+mixin header(menuItems, colorTheme, headerStyle)
     header.header.container
-        .header__content
-            +logo(theme)
+        - let headerClass = headerStyle ? `header__content--${headerStyle}` : ""
+        div(class = "header__content " + headerClass)
+            +logo(colorTheme)
             nav.header__menu-container 
                 ul.header__menu
                     each menuItem in menuItems

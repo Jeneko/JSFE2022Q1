@@ -2,12 +2,15 @@
     position: relative;
 
     &__content {
-        position: absolute;
-        top: 60px;
-        left: $container-padding;
-        right: $container-padding;
         display: flex;
         justify-content: space-between;
+        
+        &--main {
+            position: absolute;
+            top: 60px;
+            left: $container-padding;
+            right: $container-padding;
+        }
     }
 
     &__menu {
