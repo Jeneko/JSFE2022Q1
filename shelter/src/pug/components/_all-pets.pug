@@ -1,0 +1,57 @@
+|
+|
+// Pets list 
+
+-
+    let petList = [
+        {
+            img: 'pets-katrine.png',
+            name: 'Katrine',
+            link: '#'
+        },
+        {
+            img: 'pets-jennifer.png',
+            name: 'Jennifer',
+            link: '#'
+        },
+        {
+            img: 'pets-woody.png',
+            name: 'Woody',
+            link: '#'
+        },
+        {
+            img: 'pets-sophia.png',
+            name: 'Sophia',
+            link: '#'
+        },
+        {
+            img: 'pets-timmy.png',
+            name: 'Timmy',
+            link: '#'
+        },
+        {
+            img: 'pets-charly.png',
+            name: 'Charly',
+            link: '#'
+        },
+        {
+            img: 'pets-scarlett.png',
+            name: 'Scarlett',
+            link: '#'
+        },
+        {
+            img: 'pets-freddie.png',
+            name: 'Freddie',
+            link: '#'
+        },
+    ];
+
+section.all-pets 
+    .container
+        h1.all-pets__title Our friends who<br> are looking for a house
+        .all-pets__list 
+            each pet in petList
+                article.all-pets__pet-card 
+                    img.all-pets__pet-img(src=`assets/pets/${pet.img}` alt = pet.name)
+                    .all-pets-pet-name= pet.name
+                    a.button-secondary.all-pets-pet-link(href = pet.link) Learn more
