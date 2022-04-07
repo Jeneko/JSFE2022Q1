@@ -12,15 +12,12 @@
 
     &__text {
         width: 460px;
-        margin-top: -108px;
+        margin-top: -80px;
     }
 
     &__heading {
         color: $color-light-xl;
-        font-size: 44px;
-        font-weight: 400;
         max-width: 310px;
-        line-height: 57px;
     }
 
     &__subheading {
@@ -28,6 +25,6 @@
         font-family: $font-family-2;
         font-size: 15px;
         line-height: 24px;
-        margin: 42px 0 43px;
+        margin: 42px 0;
     }
 }
