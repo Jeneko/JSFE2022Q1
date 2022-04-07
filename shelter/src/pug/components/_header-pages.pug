@@ -2,19 +2,21 @@
 |
 // Header 
 
-include ../mixins/_logo
-
-header.header.container
-    .header__content
-        +logo('darkTheme')
-        nav.header__menu-container 
-            ul.header__menu
-                each menuItem in menuItems
-                    li.header__menu-el
-                        if menuItem.isActive
-                            a.header__menu-link.header__menu-link--active(href=menuItem.link) #{menuItem.text}
-                        else
-                            a.header__menu-link(href=menuItem.link) #{menuItem.text}
+header.header-pages.container
+    .header-pages__content
+        a.header-pages__logo(href="index.html" title="Main Page")
+            .header-pages__logo-title Cozy House
+            .header-pages__logo-subtitle Shelter for pets in Boston
+        nav.header-pages__menu-container 
+            ul.header-pages__menu
+                li.header-pages__menu-el
+                    a.header-pages__menu-link.header-pages__menu-link--active(href="index.html") About the shelter
+                li.header-pages__menu-el
+                    a.header-pages__menu-link(href="our-pets.html") Our pets
+                li.header-pages__menu-el
+                    a.header-pages__menu-link(href="#help") Help the shelter
+                li.header-pages__menu-el
+                    a.header-pages__menu-link(href="#footer") Contacts
 
 //- <header> содержит только логотип и панель навигации
 //- Интерактивная панель навигации:

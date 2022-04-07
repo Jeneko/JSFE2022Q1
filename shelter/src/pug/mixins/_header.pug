@@ -1,0 +1,14 @@
+include _logo
+
+mixin header(menuItems, theme)
+    header.header.container
+        .header__content
+            +logo(theme)
+            nav.header__menu-container 
+                ul.header__menu
+                    each menuItem in menuItems
+                        li.header__menu-el
+                            if menuItem.isActive
+                                a.header__menu-link.header__menu-link--active(href=menuItem.link) #{menuItem.text}
+                            else
+                                a.header__menu-link(href=menuItem.link) #{menuItem.text}

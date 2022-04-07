@@ -1,16 +1,36 @@
 extends templates/_template-default
+include mixins/_header
 
 block head
     title Cozy House — Shelter for pets in Boston
 
 block body
-    //- Page Header
-    include components/_header
+    |
+    |
+    // Header 
+    +header([
+            {
+                text: "About the shelter",
+                link: "index.html",
+                isActive: true
+            },
+            {
+                text: "Our pets",
+                link: "our-pets.html"
+            },
+            {
+                text: "Help the shelter",
+                link: "#help"
+            },
+            {
+                text: "Contacts",
+                link: "#footer"
+            }
+        ], 'darkTheme')
 
-    //- Page Content
     |
     |
-    // Main
+    // Main 
     main.main
         include components/_start-screen
         include components/_about
