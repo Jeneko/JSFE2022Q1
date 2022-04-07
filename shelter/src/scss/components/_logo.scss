@@ -1,0 +1,35 @@
+.logo {
+    display: inline-block;
+    text-decoration: none;
+
+    &__title {
+        font-family: $font-family-1;
+        font-size: 32px;
+        letter-spacing: 0.06em;
+
+        &--darkTheme {
+            color: $color-primary;
+        }
+
+        &--lightTheme {
+            color: $color-dark-l;
+        }
+    }
+
+    &__subtitle {
+        color: $color-light-xl;
+        font-family: $font-family-2;
+        font-size: 13px;
+        letter-spacing: 0.1em;
+        padding-top: 9px;
+        padding-left: 4px;
+
+        &--darkTheme {
+            color: $color-light-xl;
+        }
+
+        &--lightTheme {
+            color: $color-dark-3xl;
+        }
+    }
+}

@@ -2,11 +2,11 @@
 |
 // Header 
 
+include ../mixins/_logo
+
 header.header.container
     .header__content
-        a.header__logo(href="index.html" title="Main Page")
-            .header__logo-title Cozy House
-            .header__logo-subtitle Shelter for pets in Boston
+        +logo('darkTheme')
         nav.header__menu-container 
             ul.header__menu
                 li.header__menu-el

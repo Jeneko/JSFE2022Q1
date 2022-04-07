@@ -1,0 +1,8 @@
+mixin logo(theme)
+    a(href="index.html" title="Main Page" class="logo " + theme)
+        if theme
+            div(class=`logo__title logo__title--${theme}`) Cozy House
+            div(class=`logo__subtitle logo__subtitle--${theme}`) Shelter for pets in Boston    
+        else 
+            .logo__title Cozy House
+            .logo__subtitle Shelter for pets in Boston
