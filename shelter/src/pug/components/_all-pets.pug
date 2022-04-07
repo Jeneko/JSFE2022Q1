@@ -2,6 +2,8 @@
 |
 // Pets list 
 
+include ../mixins/_pagination
+
 -
     let petList = [
         {
@@ -48,10 +50,11 @@
 
 section.all-pets 
     .container
-        h1.all-pets__title Our friends who<br> are looking for a house
+        h1.h2.all-pets__title Our friends who<br> are looking for a house
         .all-pets__list 
             each pet in petList
                 article.all-pets__pet-card 
                     img.all-pets__pet-img(src=`assets/pets/${pet.img}` alt = pet.name)
                     .all-pets-pet-name= pet.name
                     a.button-secondary.all-pets-pet-link(href = pet.link) Learn more
+        +pagination()
