@@ -1,3 +1,7 @@
+// ==================
+//   RECT BUTTONS
+// ==================
+
 %button {
     cursor: pointer;
     font-family: $font-family-1;
@@ -9,7 +13,14 @@
     border-radius: 100px;
     text-decoration: none;
     color: $color-dark-3xl;
+    background-color: unset;
     box-sizing: border-box;
+
+    &[disabled] {
+        pointer-events: none;
+        color: $color-dark-s;
+        border-color: $color-dark-s;
+    }
 }
 
 .button-primary {
@@ -31,58 +42,74 @@
     }
 }
 
-.button-arrow {
+// ==================
+//   ROUND BUTTONS
+// ==================
+
+%button-round {
     @extend %button;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 52px;
     height: 52px;
     padding: 0;
-    background: url(../assets/pets/arrow.svg) no-repeat center center;
+    font-size: 20px;
+    letter-spacing: 0.06em;
 
     &:hover {
         border-color: $color-primary-light;
         background-color: $color-primary-light;
     }
+}
 
-    &--inactive {
-        border-color: $color-dark-s;
+.button-round-arrow {
+    @extend %button-round;
+
+    &::before {
+        content: url(../assets/pets/arrow.svg);
+        line-height: 0;
     }
 }
-.button-pagination {
-    @extend .button-arrow;
-    background: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
 
-    &[disabled] {
-        pointer-events: none;
-        color: $color-dark-s;
-        border-color: $color-dark-s;
-    }
+.button-round-first {
+    @extend %button-round;
 
-    &--first::before {
-        margin-top: -2px; // PIXEL PERFECT SOLUTION
+    &::before {
+        margin-top: -1px; // PIXEL PERFECT SOLUTION
         content: "<<";
     }
+}
 
-    &--prev::before {
-        margin-top: -2px; // PIXEL PERFECT SOLUTION
+.button-round-prev {
+    @extend %button-round;
+
+    &::before {
+        margin-top: -1px; // PIXEL PERFECT SOLUTION
         content: "<";
     }
+}
 
-    &--current {
-        pointer-events: none;
-        background-color: $color-primary;
-    }
+.button-round-current {
+    @extend %button-round;
+    pointer-events: none;
+    background-color: $color-primary;
+}
 
-    &--next::before {
-        margin-top: -2px; // PIXEL PERFECT SOLUTION
+.button-round-next {
+    @extend %button-round;
+
+    &::before {
+        margin-top: -1px; // PIXEL PERFECT SOLUTION
         content: ">";
     }
+}
 
-    &--last::before {
-        margin-top: -2px; // PIXEL PERFECT SOLUTION
+.button-round-last {
+    @extend %button-round;
+
+    &::before {
+        margin-top: -1px; // PIXEL PERFECT SOLUTION
         content: ">>";
     }
 }
