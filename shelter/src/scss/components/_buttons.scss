@@ -16,7 +16,7 @@
     background-color: unset;
     box-sizing: border-box;
 
-    &[disabled] {
+    &[disabled], &.disabled {
         pointer-events: none;
         color: $color-dark-s;
         border-color: $color-dark-s;
