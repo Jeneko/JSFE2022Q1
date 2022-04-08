@@ -1,5 +1,5 @@
 mixin pet-card(pet)
     article.pet-card 
         img.pet-card__pet-img(src=`assets/pets/${pet.img}` alt = pet.name)
-        .pet-card__pet-name= pet.name
+        h3.pet-card__pet-name= pet.name
         a.button-secondary.pet-card__pet-link(href = pet.link) Learn more
