@@ -10,6 +10,7 @@
     background-color: $color-light-s;
     border-radius: 9px;
     transition: box-shadow 0.3s ease;
+    cursor: pointer;
 
     &:hover {
         background-color: $color-light-xl;
