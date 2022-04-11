@@ -2,36 +2,38 @@
 |
 // Help 
 
+include ../mixins/_svg-sprite
+
 section.help#help
     .container
         h2.help__title How you can help<br> our shelter 
         .help__variants 
-            .help__variant 
-                img.help__variant-img(src='assets/help/icon-pet-food.svg' alt="Pet food")
+            .help__variant
+                +svg-sprite("assets/help/sprite.svg", "icon-pet-food", "help__icon")
                 h4.help__variant-title Pet food
             .help__variant 
-                img.help__variant-img(src='assets/help/icon-transportation.svg' alt="Transportation")
+                +svg-sprite("assets/help/sprite.svg", "icon-transportation", "help__icon")
                 h4.help__variant-title Transportation
             .help__variant 
-                img.help__variant-img(src='assets/help/icon-toys.svg' alt="Toys")
+                +svg-sprite("assets/help/sprite.svg", "icon-toys", "help__icon")
                 h4.help__variant-title Toys
             .help__variant 
-                img.help__variant-img(src='assets/help/icon-bowls-and-cups.svg' alt="Bowls and cups")
+                +svg-sprite("assets/help/sprite.svg", "icon-bowls-and-cups", "help__icon")
                 h4.help__variant-title Bowls and cups
             .help__variant 
-                img.help__variant-img(src='assets/help/icon-shampoos.svg' alt="Shampoos")
+                +svg-sprite("assets/help/sprite.svg", "icon-shampoos", "help__icon")
                 h4.help__variant-title Shampoos
             .help__variant 
-                img.help__variant-img(src='assets/help/icon-vitamins.svg' alt="Vitamins")
+                +svg-sprite("assets/help/sprite.svg", "icon-vitamins", "help__icon")
                 h4.help__variant-title Vitamins
             .help__variant 
-                img.help__variant-img(src='assets/help/icon-medicines.svg' alt="Medicines")
+                +svg-sprite("assets/help/sprite.svg", "icon-medicines", "help__icon")
                 h4.help__variant-title Medicines
             .help__variant 
-                img.help__variant-img(src='assets/help/icon-collars-leashes.svg' alt="Collars / leashes")
+                +svg-sprite("assets/help/sprite.svg", "icon-collars-leashes", "help__icon")
                 h4.help__variant-title Collars / leashes
             .help__variant 
-                img.help__variant-img(src='assets/help/icon-sleeping-area.svg' alt="Sleeping areas")
+                +svg-sprite("assets/help/sprite.svg", "icon-sleeping-area", "help__icon")
                 h4.help__variant-title Sleeping areas
 
 //- Для позиционирования элементов блока используется сеточная верстка (flexbox или grid).

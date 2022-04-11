@@ -1,0 +1,4 @@
+mixin svg-sprite(path, id, svgClass)
+
+    svg(class = svgClass)
+        use(xlink:href = `${path}#${id}`)
