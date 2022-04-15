@@ -8,7 +8,7 @@
     font-size: 17px;
     letter-spacing: 0.06em;
     display: inline-block;
-    padding: 14px 44px;
+    padding: 14px 42px;
     border: 2px solid $color-primary;
     border-radius: 100px;
     text-decoration: none;
@@ -69,6 +69,7 @@
     &::before {
         content: url(../assets/pets/arrow.svg);
         line-height: 0;
+        margin-top: -1px; // PIXEL PERFECT SOLUTION
     }
 }
 
