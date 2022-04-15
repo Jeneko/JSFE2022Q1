@@ -34,13 +34,12 @@
     font-weight: 400;
     padding: 0;
     margin: 0;
-    padding-top: 1px; // PIXEL PERFECT SOLUTION
-    margin-bottom: -1px; // PIXEL PERFECT SOLUTION
 }
 
 h1 {
     @extend %heading;
-    line-height: 57px;
+    @include h-media-sm;
+    line-height: 129.99%; // PIXEL PERFECT SOLUTION
     font-size: $h1-size;
     letter-spacing: normal;
 }
@@ -48,25 +47,29 @@ h1 {
 h2,
 .h2 {
     @extend %heading;
-    line-height: 45px;
+    @include h-media-sm;
+    line-height: 129.99%; // PIXEL PERFECT SOLUTION
     font-size: $h2-size;
 }
 
 h3 {
     @extend %heading;
-    line-height: 45px;
+    @include h-media-sm;
+    line-height: 129.99%; // PIXEL PERFECT SOLUTION
     font-size: $h3-size;
 }
 
 h4 {
     @extend %heading;
-    line-height: 23px;
+    @include h-media-sm;
+    line-height: 115%;
     font-size: $h4-size;
 }
 
 h5 {
     @extend %heading;
-    line-height: 17px;
+    @include h-media-sm;
+    line-height: 110%;
     font-size: $h5-size;
 }
 
