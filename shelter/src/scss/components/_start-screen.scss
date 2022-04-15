@@ -4,27 +4,72 @@
     background-color: $color-dark-bg;
     background: url(../assets/common/noise_lines.png), $rad-grad-dark-2;
 
+    @include media-md {
+        padding-top: 150px;
+    }
+
     &__content {
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        @include media-md {
+            flex-direction: column;
+        }
     }
 
     &__text {
         width: 460px;
-        margin-top: -80px;
+        margin-bottom: 80px;
+
+        @include media-md {
+            margin-bottom: 0;
+
+        }
+
+        @include media-sm {
+            text-align: center;
+            width: unset;
+        }
     }
 
     &__heading {
         color: $color-light-xl;
         max-width: 310px;
+
+        @include media-sm {
+            height: 64px; // PIXEL PERFECT SOLUTION
+        }
     }
 
     &__subheading {
         color: $color-dark-s;
         font-family: $font-family-2;
         font-size: 15px;
-        line-height: 24px;
+        line-height: 160%;
         margin: 42px 0;
+    }
+
+    &__cta-button {
+        width: 207px; // PIXEL PERFECT SOLUTION
+        height: 52px;
+
+        @include media-md {
+            margin: auto;
+            display: block;
+        }
+    }
+
+    &__img {
+        @include media-md {
+            width: 569px;
+            height: auto;
+            padding-top: 100px;
+            align-self: flex-end;
+        }
+        @include media-sm {
+            width: 260px;
+            padding-top: 106px;
+        }
     }
 }
