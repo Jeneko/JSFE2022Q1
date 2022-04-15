@@ -1,16 +1,20 @@
 include _logo
+include _burger-button
 
 mixin header(menuItems, colorTheme, headerStyle)
-    - let headerClass = headerStyle ? `header__content--${headerStyle}` : ""
-    - let linkClass = colorTheme ? `header__menu-link--${colorTheme}` : ""
-    header.header.container
-        div(class = "header__content " + headerClass)
-            +logo(colorTheme)
-            nav.header__menu-container 
-                ul.header__menu
-                    each menuItem in menuItems
-                        li.header__menu-el
-                            if menuItem.isActive
-                                a(href = menuItem.link class = "header__menu-link active " + linkClass) #{menuItem.text}
-                            else
-                                a(href = menuItem.link class = "header__menu-link " + linkClass) #{menuItem.text}
+    - let headerMod = headerStyle ? `header--${headerStyle}` : ""
+    - let contentMod = headerStyle ? `header__content--${headerStyle}` : ""
+    - let linkMod = colorTheme ? `header__menu-link--${colorTheme}` : ""
+    header(class="header " + headerMod)
+        .container.header__container
+            div(class = "header__content " + contentMod)
+                +logo(colorTheme)
+                nav.header__menu-container 
+                    ul.header__menu
+                        each menuItem in menuItems
+                            li.header__menu-el
+                                if menuItem.isActive
+                                    a(href = menuItem.link class = "header__menu-link active " + linkMod) #{menuItem.text}
+                                else
+                                    a(href = menuItem.link class = "header__menu-link " + linkMod) #{menuItem.text}
+                +burger-button(colorTheme, 'header')

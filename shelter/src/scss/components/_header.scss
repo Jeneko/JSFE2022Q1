@@ -1,18 +1,32 @@
 .header {
     position: relative;
 
+    &--fixed {
+        position: fixed;
+        width: 100%;
+        background-color: $color-white;
+    }
+
+    &__container {
+        position: relative;
+    }
+
     &__content {
         display: flex;
         justify-content: space-between;
-        
+
         &--main {
             position: absolute;
             top: 60px;
-            left: $container-padding;
-            right: $container-padding;
+            left: 0;
+            right: 0;
+
+            @include media-md {
+                top: 30px;
+            }
         }
 
-        &--page {
+        &--fixed {
             padding: 30px 0;
         }
     }
@@ -23,6 +37,10 @@
         list-style: none;
         display: flex;
         padding-top: 4px;
+
+        @include media-sm {
+            display: none;
+        }
     }
 
     &__menu-el {
@@ -51,7 +69,8 @@
         &--darkTheme {
             color: $color-dark-s;
 
-            &:hover, &.active {
+            &:hover,
+            &.active {
                 color: $color-light-s;
             }
         }
@@ -59,9 +78,20 @@
         &--lightTheme {
             color: $color-dark-l;
 
-            &:hover, &.active {
+            &:hover,
+            &.active {
                 color: $color-dark-3xl;
             }
+        }
+    }
+
+    &__burger-button {
+        display: none;
+        margin-right: 42px;
+        align-self: center;
+
+        @include media-sm {
+            display: flex;
         }
     }
 }
