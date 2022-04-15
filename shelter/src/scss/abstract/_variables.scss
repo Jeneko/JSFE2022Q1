@@ -26,10 +26,20 @@ $rad-grad-dark-1: radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100
 $rad-grad-dark-2: radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%);
 
 // =====================
+//     BREAKPOINTS
+// =====================
+$breakpoint-lg: 1280px;
+$breakpoint-md: 768px;
+$breakpoint-sm: 375px;
+$breakpoint-xs: 320px;
+
+// =====================
 //        SIZES
 // =====================
 
-$container-padding: 40px;
+$container-padding-lg: 40px;
+$container-padding-md: 30px;
+$container-padding-sm: 10px;
 
 // =====================
 //     TYPOGRAPHY
