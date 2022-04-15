@@ -3,19 +3,40 @@
     padding: 80px 0 100px;
     background-color: $color-light-l;
 
+    @include media-sm {
+        padding: 41px 0 42px;
+    }
+
     &__title {
         text-align: center;
+        height: 90px; // PIXEL PERFECT SOLUTION
+
+        @include media-sm {
+            height: 64px;
+        }
     }
 
     &__slider {
         position: relative;
         margin: 60px 105px;
+
+        @include media-md {
+            margin: 60px 64px;
+        }
+
+        @include media-sm {
+            margin: 42px 15px 114px;
+        }
     }
 
     &__slides {
         overflow: hidden;
         display: flex;
         gap: 90px;
+
+        @include media-md {
+            gap: 40px;
+        }
     }
 
     &__slide {
@@ -31,6 +52,10 @@
         width: 270px;
         border-radius: 9px;
         padding-bottom: 30px;
+
+        @include media-md {
+            width: 50%;
+        }
 
         &:hover {
             background-color: $color-light-xl;
@@ -55,6 +80,16 @@
         left: -105px;
         top: 50%;
         transform: translateY(-50%);
+
+        @include media-md {
+            left: -64px;
+        }
+
+        @include media-sm {
+            left: 43px;
+            top: unset;
+            bottom: -98px;
+        }
     }
 
     &__slider-next {
@@ -62,5 +97,19 @@
         right: -105px;
         top: 50%;
         transform: translateY(-50%) rotate(180deg);
+
+        @include media-md {
+            right: -64px;
+        }
+
+        @include media-sm {
+            right: 43px;
+            top: unset;
+            bottom: -98px;
+        }
+    }
+
+    &__cta {
+        height: 52px;
     }
 }
