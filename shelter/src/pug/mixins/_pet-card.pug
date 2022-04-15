@@ -1,5 +1,6 @@
-mixin pet-card(pet)
-    article.pet-card 
+mixin pet-card(pet, cardClass)
+    - cardClass = cardClass ? cardClass : ""
+    article(class="pet-card " + cardClass)
         img.pet-card__pet-img(src=`assets/pets/${pet.img}` alt = pet.name)
         h3.pet-card__pet-name= pet.name
         a.button-secondary.pet-card__pet-link(href = pet.link) Learn more

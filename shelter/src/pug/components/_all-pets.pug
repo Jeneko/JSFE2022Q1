@@ -54,5 +54,5 @@ section.all-pets
         h1.h2.all-pets__title Our friends who<br> are looking for a house
         .all-pets__list 
             each pet in petList
-                +pet-card(pet)
+                +pet-card(pet, 'all-pets__pet-card')
         +pagination()
