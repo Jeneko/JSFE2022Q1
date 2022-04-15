@@ -1,0 +1,7 @@
+mixin burger-button(colorTheme, mixedBlock)
+    - let buttonClass = mixedBlock ? `${mixedBlock}__burger-button` : ""
+    - let lineClass = colorTheme ? `burger-button__line--${colorTheme}` : ""
+    button(class="burger-button " + buttonClass)
+        div(class="burger-button__line " + lineClass)
+        div(class="burger-button__line " + lineClass)
+        div(class="burger-button__line " + lineClass)

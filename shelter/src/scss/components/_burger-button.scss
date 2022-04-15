@@ -1,0 +1,24 @@
+.burger-button {
+    width: 30px;
+    height: 22px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+
+    &__line {
+        height: 2px;
+
+        &--darkTheme {
+            background-color: $color-primary;
+        }
+
+        &--lightTheme {
+            background-color: $color-black;
+        }
+    }
+}
