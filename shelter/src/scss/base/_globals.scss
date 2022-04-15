@@ -3,17 +3,27 @@
     font-family: $font-family-2;
 }
 
-html {
-    min-width: 1280px;
+// CONTAINERS
+.main {
+    &--fixed-menu {
+        padding-top: 120px;
+    }
 }
 
-// CONTAINERS
 .container {
     margin-left: auto;
     margin-right: auto;
-    max-width: 1200px;
-    min-width: 1200px; // REMOVE IN PROD
-    padding: 0 40px;
+    max-width: $breakpoint-lg - 2*$container-padding-lg;
+    min-width: $breakpoint-xs - 2*$container-padding-sm;
+    box-sizing: border-box;
+
+    @include media-md {
+        max-width: $breakpoint-md - 2*$container-padding-md;
+    }
+
+    @include media-sm {
+        max-width: $breakpoint-xs - 2*$container-padding-sm;
+    }
 }
 
 // HEADINGS & TYPOGRAPHY
