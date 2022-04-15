@@ -1,0 +1,20 @@
+@mixin media-md {
+    @media screen and (max-width: ($breakpoint-lg - 1px)) { @content; }
+}
+
+@mixin media-sm {
+    @media screen and (max-width: ($breakpoint-md - 1px)) { @content; }
+}
+
+@mixin media-xs {
+    @media screen and (max-width: ($breakpoint-sm - 1px)) { @content; }
+}
+
+@mixin h-media-sm {
+    @include media-sm {
+        font-size: $h3-size;
+        line-height: 129.9%; // PIXEL PERFECT SOLUTION
+        letter-spacing: 0.06em;
+        text-align: center;
+    }
+}
