@@ -22,7 +22,7 @@
         margin: auto;
     }
 
-    &__variant-img {
+    &__icon {
         display: block;
         margin: auto;
     }
@@ -31,4 +31,50 @@
         font-size: $h3-size-m;
         margin: 30px 0 0;
     }
+}
+
+// ICONS
+.icon-bowls-and-cups {
+    background: url(../assets/help/icon-bowls-and-cups.svg);
+    background-size: contain;
+}
+
+.icon-collars-leashes {
+    background: url(../assets/help/icon-collars-leashes.svg);
+    background-size: contain;
+}
+
+.icon-medicines {
+    background: url(../assets/help/icon-medicines.svg);
+    background-size: contain;
+}
+
+.icon-pet-food {
+    background: url(../assets/help/icon-pet-food.svg);
+    background-size: contain;
+}
+
+.icon-shampoos {
+    background: url(../assets/help/icon-shampoos.svg);
+    background-size: contain;
+}
+
+.icon-sleeping-area {
+    background: url(../assets/help/icon-sleeping-area.svg);
+    background-size: contain;
+}
+
+.icon-toys {
+    background: url(../assets/help/icon-toys.svg);
+    background-size: contain;
+}
+
+.icon-transportation {
+    background: url(../assets/help/icon-transportation.svg);
+    background-size: contain;
+}
+
+.icon-vitamins {
+    background: url(../assets/help/icon-vitamins.svg);
+    background-size: contain;
 }
