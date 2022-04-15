@@ -4,9 +4,21 @@
 
     &__wrapper {
         display: grid;
-        grid-template-columns: 1fr 302px 1fr;
-        column-gap: 159.8px; // not 160px for more pixel-perfect result
+        grid-template-columns: 1fr minmax(302px, min-content) 1fr;
+        column-gap: 159.8px; // PIXEL PERFECT SOLUTION
         padding-top: 40px;
+
+        @include media-md {
+            justify-content: center;
+            grid-template-columns: minmax(280px, min-content) min-content;
+            gap: 65px 60px;
+            padding-top: 30px;
+        }
+
+        @include media-sm {
+            grid-template-columns: auto;
+            row-gap: 40px;
+        }
     }
 
     &__col {
@@ -17,20 +29,63 @@
     &__col-first {
         margin-top: 16px;
         height: 234px;
+
+        @include media-md {
+            margin-top: 0;
+        }
+
+        @include media-sm {
+            align-items: center;
+            height: unset;
+            gap: 40px;
+
+            .footer__link {
+                justify-content: center;
+            }
+        }
     }
 
     &__col-second {
-        width: 302px;
+        width: 302px; // PIXEL PERFECT SOLUTION
         margin-top: 16px;
         height: 234px;
+
+        @include media-md {
+            margin-top: 0;
+        }
+
+        @include media-sm {
+            align-items: center;
+            height: unset;
+            gap: 40px;
+        }
+    }
+
+    &__img-container {
+        @include media-md {
+            grid-column: 1 / -1;
+        }
+    }
+
+    &__img {
+        display: block;
+        margin: auto;
+
+        @include media-sm {
+            width: 260px;
+        }
     }
 
     &__title {
         color: $color-light-xl;
+
+        @include media-sm {
+            padding: 0 15px;
+        }
     }
 
     &__link {
-        display: flex;
+        display: inline-flex;
         align-items: center;
         font-family: $font-family-1;
         font-size: 20px;
