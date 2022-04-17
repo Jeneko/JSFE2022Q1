@@ -18,10 +18,10 @@
 
     &__slider {
         position: relative;
-        margin: 60px 105px;
+        margin: 20px 65px;
 
         @include media-md {
-            margin: 60px 64px;
+            margin: 20px 24px;
         }
 
         @include media-sm {
@@ -30,12 +30,17 @@
     }
 
     &__slides {
-        overflow: hidden;
         display: flex;
         gap: 90px;
+        padding: 40px;
+        overflow: hidden;
 
         @include media-md {
             gap: 40px;
+        }
+
+        @include media-sm {
+            padding: 0;
         }
     }
 
@@ -77,12 +82,12 @@
 
     &__slider-prev {
         position: absolute;
-        left: -105px;
+        left: -65px;
         top: 50%;
         transform: translateY(-50%);
 
         @include media-md {
-            left: -64px;
+            left: -24px;
         }
 
         @include media-sm {
@@ -94,12 +99,12 @@
 
     &__slider-next {
         position: absolute;
-        right: -105px;
+        right: -65px;
         top: 50%;
         transform: translateY(-50%) rotate(180deg);
 
         @include media-md {
-            right: -64px;
+            right: -24px;
         }
 
         @include media-sm {
