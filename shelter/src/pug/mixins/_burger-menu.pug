@@ -1,0 +1,19 @@
+include _logo
+include _burger-button
+include _backdrop
+
+mixin burger-menu(menuItems, colorTheme)
+    .burger-menu
+        div(class="burger-menu__container " + (colorTheme ? `burger-menu__container--${colorTheme}` : ""))
+            .burger-menu__header
+                +logo(colorTheme)
+                +burger-button(colorTheme, 'burger-menu')
+            ul.burger-menu__menu
+                each menuItem in menuItems
+                    li.burger-menu__menu-el
+                        if menuItem.isActive
+                            a(href = menuItem.link class = "burger-menu__menu-link active " + linkMod) #{menuItem.text}
+                        else
+                            a(href = menuItem.link class = "burger-menu__menu-link " + linkMod) #{menuItem.text}
+        
+        +backdrop(colorTheme)

@@ -1,0 +1,117 @@
+.burger-menu {
+    
+    .backdrop {
+        height: 0;
+        opacity: 0;
+    }
+
+    @media screen and (min-width: $breakpoint-md) {
+        display: none;
+    }
+
+    &.visible {
+        .burger-menu__container {
+            transform: translateX(0);
+        }
+
+        .backdrop {
+            height: unset;
+            opacity: 1;
+        }
+
+        .burger-button {
+            transform: rotate(90deg);
+        }
+    }
+
+    &__container {
+        transform: translateX(100%);
+        transition: all 0.3s ease;
+        display: flex;
+        justify-content: center;
+        position: fixed;
+        z-index: 200;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: $breakpoint-xs;
+        padding: 0 10px;
+        box-sizing: border-box;
+
+        @media screen and (max-height: 650px) {
+            padding-top: 120px;
+            display: flex;
+            align-items: center;
+        }
+
+        &--darkTheme {
+            background-color: $color-dark-3xl;
+
+            a {
+                color: $color-dark-s;
+                &.active {
+                    color: $color-light-s;
+                }
+            }
+        }
+
+        &--lightTheme {
+            background-color: $color-white;
+
+            a {
+                color: $color-dark-l;
+                &.active {
+                    color: $color-dark-3xl;
+                }
+            }
+        }
+    }
+
+    &__header {
+        position: absolute;
+        top: 30px;
+        left: 10px;
+        right: 10px;
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    }
+
+    &__menu {
+        margin: 248px 0 0;
+        padding: 0;
+        list-style: none;
+        text-align: center;
+        font-family: $font-family-2;
+        font-size: $mm-size;
+        font-weight: 400;
+        line-height: 160%;
+
+        @media screen and (max-height: 650px) {
+            margin-top: 0;
+        }
+    }
+
+    &__menu-el:not(:last-child) {
+        margin-bottom: 40px;
+        height: 52px;
+    }
+
+    &__menu-link {
+        text-decoration: none;
+        position: relative;
+
+        &.active {
+            &::after {
+                content: "";
+                pointer-events: none;
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: -11px;
+                height: 3px;
+                background-color: $color-primary;
+            }
+        }
+    }
+}

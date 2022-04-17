@@ -1,5 +1,6 @@
 include _logo
 include _burger-button
+include _burger-menu
 
 mixin header(menuItems, colorTheme, headerStyle)
     - let headerMod = headerStyle ? `header--${headerStyle}` : ""
@@ -18,3 +19,5 @@ mixin header(menuItems, colorTheme, headerStyle)
                                 else
                                     a(href = menuItem.link class = "header__menu-link " + linkMod) #{menuItem.text}
                 +burger-button(colorTheme, 'header')
+        
+    +burger-menu(menuItems, colorTheme)
