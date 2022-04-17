@@ -18,6 +18,11 @@ function buildSass() {
         .pipe(dest('./dist/css', { sourcemaps: '.' }));
 }
 
+function copyJs() {
+    return src('./src/js/**/*.js')
+        .pipe(dest('./dist/js'))
+}
+
 function copyAssets() {
     return src('./src/assets/**/*.*')
         .pipe(dest('./dist/assets'));
@@ -33,11 +38,12 @@ function clean() {
 }
 
 exports.clean = clean;
-exports.build = series(clean, parallel(buildPug, buildSass, copyAssets, copyFonts));
+exports.build = series(clean, parallel(buildPug, buildSass, copyAssets, copyFonts, copyJs));
 exports.watch = function () {
     exports.build();
     watch('./src/scss/**/*.scss', buildSass);
     watch('./src/**/*.pug', buildPug);
     watch('./src/assets/**/*.*', copyAssets);
     watch('./src/fonts/**/*.*', copyFonts);
+    watch('./src/js/**/*.js', copyJs);
 }
