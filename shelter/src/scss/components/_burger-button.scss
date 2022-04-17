@@ -10,6 +10,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: stretch;
+    transition: all 0.8s;
 
     &__line {
         height: 2px;
