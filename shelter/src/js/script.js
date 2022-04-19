@@ -25,5 +25,7 @@ function burgerMenuHandler() {
         headerConent.classList.toggle('hidden');
         // Toggle scroll on body
         body.classList.toggle('overflow-hidden');
+        // Rotate all burger-buttons
+        document.querySelectorAll('.burger-button').forEach(el => el.classList.toggle('rotate-90'));
     }
 }
