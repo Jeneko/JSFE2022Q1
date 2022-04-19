@@ -3,6 +3,7 @@ window.onload = () => {
 }
 
 function burgerMenuHandler() {
+    const body = document.body;
     const burgerMenu = document.querySelector('.burger-menu');
     const headerConent = document.querySelector('.header');
 
@@ -22,5 +23,7 @@ function burgerMenuHandler() {
         burgerMenu.classList.toggle('visible');
         // Toggle header content visibility
         headerConent.classList.toggle('hidden');
+        // Toggle scroll on body
+        body.classList.toggle('overflow-hidden');
     }
 }

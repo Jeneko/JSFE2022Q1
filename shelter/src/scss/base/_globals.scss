@@ -4,6 +4,11 @@
     min-width: $breakpoint-xs;
 }
 
+// HELPERS
+.overflow-hidden {
+    overflow: hidden;
+}
+
 // CONTAINERS
 .main {
     &--fixed-menu {
