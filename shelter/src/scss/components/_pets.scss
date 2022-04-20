@@ -1,3 +1,28 @@
+$slider-transition: left .6s ease;
+
+%slides {
+    width: 990px;
+    display: flex;
+    gap: 90px;
+
+    @include media-md {
+        width: 890px;
+        gap: 40px;
+
+        .pet-card:nth-child(3) {
+            display: none;
+        }
+    }
+
+    @include media-sm {
+        padding: 0;
+
+        .pet-card:nth-child(2) {
+            display: none;
+        }
+    }
+}
+
 .pets {
     text-align: center;
     padding: 80px 0 100px;
@@ -30,18 +55,73 @@
     }
 
     &__slides {
-        display: flex;
-        gap: 90px;
         padding: 40px;
         overflow: hidden;
-
-        @include media-md {
-            gap: 40px;
-        }
+        min-height: 435px;
+        transition: opacity 0.3s ease;
 
         @include media-sm {
             padding: 0;
         }
+    }
+
+    &__slides-active {
+        @include media-md {
+            padding: 40px 0;
+            margin: 0 40px;
+        }
+
+        @include media-sm {
+            padding: 0;
+            margin: 0;
+        }
+    }
+
+    &__slides-wrapper {
+        display: flex;
+        gap: 90px;
+        position: relative;
+        left: -1080px;
+
+        @include media-md {
+            gap: 40px;
+            left: -620px;
+        }
+
+        @include media-sm {
+            left: -310px;
+        }
+
+        &.sliding-left {
+            left: 0;
+            transition: $slider-transition;
+        }
+
+        &.sliding-right {
+            left: -2160px;
+            transition: $slider-transition;
+
+            @include media-md {
+                left: -1240px;
+            }
+
+            @include media-sm {
+                left: -620px;
+            }
+        }
+
+    }
+
+    &__slides-prev {
+        @extend %slides;
+    }
+
+    &__slides-current {
+        @extend %slides;
+    }
+
+    &__slides-next {
+        @extend %slides;
     }
 
     &__slide {

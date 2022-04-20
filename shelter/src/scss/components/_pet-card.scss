@@ -5,6 +5,7 @@
     justify-content: space-between;
     padding: 0 0 30px;
     box-sizing: border-box;
+    width: 270px;
     height: 435px;
     text-align: center;
     background-color: $color-light-s;
@@ -20,6 +21,10 @@
             border-color: $color-primary-light;
             background-color: $color-primary-light;
         }
+    }
+
+    &__pet-img {
+        height: 270px;
     }
 
     &__pet-name {
