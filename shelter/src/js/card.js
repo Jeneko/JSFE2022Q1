@@ -10,6 +10,7 @@ export function createCard(cardData) {
     cardBtn.className = 'button-secondary pet-card__pet-link';
 
     card.dataset.id = cardData.id;
+    card.dataset.showPopup = '';
     cardImg.src = cardData.img;
     cardHeading.textContent = cardData.name;
     cardBtn.href = '##';

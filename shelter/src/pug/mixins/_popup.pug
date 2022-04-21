@@ -1,0 +1,21 @@
+include _backdrop
+
+mixin popup(content, colorTheme)
+    article.popup
+        .popup__container 
+            .popup__wrapper
+                .popup__img 
+                    img(src=content.img alt=content.name)
+                .popup__text
+                    .popup__title-wrapper
+                        h2.popup__title= content.name
+                        .popup__subtitle= content.type + ' - ' + content.breed
+                    .popup__description= content.description
+                    ul.popup__metics
+                        li.popup__metric.popup__age #[b Age:] #{content.age}
+                        li.popup__metric.popup__inoculations #[b Inoculations:] #{content.inoculations.join(', ')}
+                        li.popup__metric.popup__diseases #[b Diseases:] #{content.diseases.join(', ')}
+                        li.popup__metric.parasites #[b Parasites:] #{content.parasites.join(', ')}
+                button.button-round-close.popup__button-round-close(title="Close")
+
+        +backdrop(colorTheme)
