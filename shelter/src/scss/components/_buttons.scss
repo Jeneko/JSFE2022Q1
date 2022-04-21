@@ -114,3 +114,12 @@
         content: ">>";
     }
 }
+
+.button-round-close {
+    @extend %button-round;
+
+    &::before {
+        margin-top: -1px; // PIXEL PERFECT SOLUTION
+        content: url(../assets/buttons/close.svg);
+    }
+}
