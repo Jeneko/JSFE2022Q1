@@ -10,6 +10,7 @@
     text-align: center;
     background-color: $color-light-s;
     border-radius: 9px;
+    overflow: hidden;
     transition: box-shadow 0.3s ease;
     cursor: pointer;
 
@@ -33,7 +34,5 @@
         font-size: 20px;
         line-height: 23px;
         letter-spacing: 0.06em;
-        margin: 0; // OVERRIDE h3 PIXEL PERFECT SOLUTION
-        padding: 0; // OVERRIDE h3 PIXEL PERFECT SOLUTION
     }
 }
