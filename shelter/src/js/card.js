@@ -9,7 +9,7 @@ export function createCard(cardData) {
     cardHeading.classList.add('pet-card__pet-name');
     cardBtn.className = 'button-secondary pet-card__pet-link';
 
-    card.dataset.name = cardData.name;
+    card.dataset.id = cardData.id;
     cardImg.src = cardData.img;
     cardHeading.textContent = cardData.name;
     cardBtn.href = '##';

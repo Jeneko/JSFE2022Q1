@@ -59,13 +59,13 @@ function replaceContent(from, to) {
 }
 
 function filterCurrentData(data) {
-    const currentDataNames = [];
+    const currentDataIds = [];
 
     for (let el of slidesCurrent.children) {
-        currentDataNames.push(el.dataset.name);
+        currentDataIds.push(Number(el.dataset.id));
     }
 
-    return data.filter(el => !currentDataNames.includes(el.name));
+    return data.filter(el => !currentDataIds.includes(el.id));
 }
 
 function carouselHandler() {
