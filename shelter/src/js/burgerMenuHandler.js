@@ -19,9 +19,21 @@ export function burgerMenuHandler() {
         burgerMenu.classList.toggle('visible');
         // Toggle header content visibility
         headerConent.classList.toggle('hidden');
-        // Toggle scroll on body
-        body.classList.toggle('overflow-hidden');
         // Rotate all burger-buttons
         document.querySelectorAll('.burger-button').forEach(el => el.classList.toggle('rotate-90'));
+        // Toggle scroll on body
+        // and fix horizontal shifting caused by hidden scroll
+        if (burgerMenu.classList.contains('visible')) {
+            let prevWidth = document.body.getBoundingClientRect().width;
+            document.body.classList.add('overflow-hidden');
+            let curWidth = document.body.getBoundingClientRect().width;
+            let diffWidth = curWidth - prevWidth;
+            document.body.style.marginRight = diffWidth + 'px';
+            document.querySelector('.header--fixed').style.marginRight = diffWidth + 'px';
+        } else {
+            document.body.classList.remove('overflow-hidden');
+            document.body.style.marginRight = '';
+            document.querySelector('.header--fixed').style.marginRight = '';
+        }
     }
 }

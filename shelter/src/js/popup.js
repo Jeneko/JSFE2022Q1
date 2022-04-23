@@ -38,6 +38,8 @@ function createAndShowPopup(source, id) {
 function closePopup() {
     document.querySelector('.popup').remove();
     document.body.classList.remove('overflow-hidden');
+    document.body.style.marginRight = '';
+    document.querySelector('.header').style.right = '';
 }
 
 function popupHandler() {
@@ -50,7 +52,12 @@ function popupHandler() {
     document.addEventListener('click', (e) => {
         const popupInitializer = e.target.closest('[data-show-popup]');
         if (popupInitializer) {
+            let prevWidth = document.body.getBoundingClientRect().width;
             document.body.classList.add('overflow-hidden');
+            let curWidth = document.body.getBoundingClientRect().width;
+            let diffWidth = curWidth - prevWidth;
+            document.body.style.marginRight = curWidth - prevWidth + 'px';
+            document.querySelector('.header').style.right = diffWidth + 'px';
             createAndShowPopup('./assets/json/pets.json', popupInitializer.dataset.id);
         }
     });
