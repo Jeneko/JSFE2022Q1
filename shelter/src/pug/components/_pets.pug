@@ -2,6 +2,8 @@
 |
 // Pets 
 
+include ../mixins/_pet-card
+
 section.pets#pets
     .container
         h2.pets__title Our friends who<br> are looking for a house 
@@ -9,8 +11,14 @@ section.pets#pets
             .pets__slides
                 .pets__slides-wrapper
                     .pets__slides-prev
+                        each pet in [1,2,3]
+                            +pet-card(pet, '', true)
                     .pets__slides-current
+                        each pet in [1,2,3]
+                            +pet-card(pet, '', true)
                     .pets__slides-next
+                        each pet in [1,2,3]
+                            +pet-card(pet, '', true)
             button.button-round-arrow.pets__slider-prev            
             button.button-round-arrow.pets__slider-next
         a.button-primary.pets__cta(href="our-pets.html") Get to know the rest
