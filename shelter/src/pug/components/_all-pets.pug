@@ -5,54 +5,10 @@
 include ../mixins/_pagination
 include ../mixins/_pet-card
 
--
-    let petList = [
-        {
-            img: 'pets-katrine.png',
-            name: 'Katrine',
-            link: '#'
-        },
-        {
-            img: 'pets-jennifer.png',
-            name: 'Jennifer',
-            link: '#'
-        },
-        {
-            img: 'pets-woody.png',
-            name: 'Woody',
-            link: '#'
-        },
-        {
-            img: 'pets-sophia.png',
-            name: 'Sophia',
-            link: '#'
-        },
-        {
-            img: 'pets-timmy.png',
-            name: 'Timmy',
-            link: '#'
-        },
-        {
-            img: 'pets-charly.png',
-            name: 'Charly',
-            link: '#'
-        },
-        {
-            img: 'pets-scarlett.png',
-            name: 'Scarlett',
-            link: '#'
-        },
-        {
-            img: 'pets-freddie.png',
-            name: 'Freddie',
-            link: '#'
-        },
-    ];
-
 section.all-pets 
     .container
         h1.h2.all-pets__title Our friends who<br> are looking for a house
         .all-pets__list 
-            each pet in petList
-                +pet-card(pet, 'all-pets__pet-card')
+            each pet in [1,2,3,4,5,6,7,8]
+                +pet-card(pet, 'all-pets__pet-card', true)
         +pagination()
