@@ -19,10 +19,25 @@ function initCarousel(src) {
         .then(res => res.json())
         .then(json => {
             sliderData = json;
-            fillContainerWithCards(slidesCurrent, sliderData, 3);
+            animate('fadeout', fillContainerWithCards, slidesCurrent, sliderData, 3);
             fillContainerWithCards(slidesPrev, filterCurrentData(sliderData), 3);
             fillContainerWithCards(slidesNext, filterCurrentData(sliderData), 3);
         });
+}
+
+function animate(animationName, cb, ...rest) {
+    slidesCurrent.classList.remove('showing');
+    slidesCurrent.classList.add('hiding');
+    slidesCurrent.addEventListener('animationend', animationHandler);
+    
+    function animationHandler(e) {
+        if (e.animationName == animationName) {
+            cb(...rest);
+            slidesCurrent.classList.remove('hiding');
+            slidesCurrent.classList.add('showing');
+            slidesCurrent.removeEventListener('animationend', animationHandler);
+        }
+    }
 }
 
 function fillContainerWithCards(container, petsData, qty) {
