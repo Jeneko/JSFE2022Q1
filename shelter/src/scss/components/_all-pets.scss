@@ -23,6 +23,14 @@
         padding: 15px 0;
         margin: 45px 0;
 
+        &.hiding {
+            animation: fadeout 0.5s ease forwards;
+        }
+
+        &.showing {
+            animation: fadein 1s ease forwards;
+        }
+
         @include media-md {
             grid-template-columns: repeat(2, 1fr);
             grid-template-rows: repeat(3, auto);
@@ -43,7 +51,9 @@
             &:nth-child(n+7) {
                 display: none;
             }
-        }@include media-sm {
+        }
+
+        @include media-sm {
             &:nth-child(n+4) {
                 display: none;
             }
