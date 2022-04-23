@@ -65,25 +65,50 @@ function getLastPageNumber() {
 }
 
 function nonRepeatedRandomIndexes() {
-    const result = [];
-    let lastTwo = [];
-
-    for (let i = 0; i < 6; i++) {
-        const set = new Set();
-
-        while (set.size < 8) {
-            let randomIndex = Math.floor(Math.random() * 8);
-
-            if (set.size >= 4 || !lastTwo.includes(randomIndex)) {
-                set.add(randomIndex);
-            }
-        }
-
-        result.push(...set);
-        lastTwo = result.slice(result.length - 2);
+    // Создаем первый набор, перемешивая массив чисел от 0 до 7. Это будет первый набор [1, 5, 3, 2, 6, 7, 0, 4]
+    let lastSet = shuffle([0, 1, 2, 3, 4, 5, 6, 7]);
+    // Добавляем его в итоговый массив
+    let result = [...lastSet];
+    
+    // Остальные наборы генерируем по следующему правилу:
+    for (let i = 0; i < 5; i++) {
+        let curSet = [];
+        // Сохраняем последние 4 элемента предыдущего набора в отдельный массив lastFour = [6, 7, 0, 4]
+        let lastFour = lastSet.slice(-4);
+        // Копируем первые 4 элемента предыдущего набора [1, 5, 3, 2]
+        let workArr = lastSet.slice(0, 4);
+        // Перемешиваем его (получаем [5, 1, 3, 2])
+        workArr = shuffle(workArr);
+        // Берем 2 последних элемента (удаляя их из массива). Это будут первые 2 элемента набора [3, 2]. В массиве остается 2 элемента [5, 1]
+        curSet.push(...workArr.splice(-2, 2));
+        // Добавляем в массив первые два элемента массива lastFour (6 и 7) (получаем массив из 4 эл-тов) [5, 1, 6, 7]
+        workArr.push(...lastFour.slice(0, 2));
+        // Перемешиваем его (получаем [6, 1, 5, 7])
+        workArr = shuffle(workArr);
+        // Берем 2 последних элемента (удаляя их из массива). Это будет 3 и 4 элемент набора [3, 2, 5, 7]. В массиве остается 2 элемента [6, 1]
+        curSet.push(...workArr.splice(-2, 2));
+        // Добавляем в массив последние два элемента массива lastFour (0 и 4) (получаем массив из 4 эл-тов) [6, 1, 0, 4]
+        workArr.push(...lastFour.slice(-2));
+        // Перемешиваем его (получаем [1, 6, 4, 0]).
+        workArr = shuffle(workArr);
+        // Это оставшаяся часть набора, которую добавляем к тому, что уже имеем
+        curSet.push(...workArr);
+        // В итоге имеем набор [3, 2, 5, 7, 1, 6, 4, 0], который добавляем в итоговый массив
+        result.push(...curSet);
+        // Сохраняем созданный набор в качестве последнего для использования в следующей итерации
+        lastSet = curSet;
     }
-
+    // Повторяем 5 раз, чтобы в итоге получить все 48 эл-тов (6 наборов по 8 эл-тов), удовлетворяющих условию.
     return result;
+
+    function shuffle(arr) {
+        let result = [...arr];
+        for (let i = result.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            [result[i], result[j]] = [result[j], result[i]];
+        }
+        return result;
+    }
 }
 
 function updateButtonsState() {
