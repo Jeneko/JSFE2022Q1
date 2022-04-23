@@ -11,6 +11,7 @@
     
     &--fixed {
         position: fixed;
+        z-index: 100;
         width: 100%;
         background-color: $color-white;
     }
