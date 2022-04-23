@@ -4,6 +4,8 @@ const pug = require('gulp-pug');
 const htmlBeautify = require('gulp-html-beautify');
 const sass = require('gulp-sass')(require('sass'));
 const del = require('del');
+const named = require('vinyl-named');
+const webpack = require('webpack-stream');
 
 function buildPug() {
     return src('./src/pug/**/!(_)*.pug')
@@ -16,11 +18,6 @@ function buildSass() {
     return src('./src/scss/**/*.scss', { sourcemaps: true })
         .pipe(sass().on('error', sass.logError))
         .pipe(dest('./dist/css', { sourcemaps: '.' }));
-}
-
-function copyJs() {
-    return src('./src/js/**/*.js')
-        .pipe(dest('./dist/js'))
 }
 
 function copyAssets() {
@@ -37,13 +34,25 @@ function clean() {
     return del(['./dist']);
 }
 
+function webpackTask() {
+    return src([
+        './src/js/main-page.js',
+        './src/js/our-pets-page.js',
+    ])
+        .pipe(named())
+        .pipe(webpack({
+            watch: true,
+            mode: 'production'
+        }))
+        .pipe(dest('./dist/js'))
+}
+
 exports.clean = clean;
-exports.build = series(clean, parallel(buildPug, buildSass, copyAssets, copyFonts, copyJs));
+exports.build = series(clean, parallel(buildPug, buildSass, copyAssets, copyFonts, webpackTask));
 exports.watch = function () {
     exports.build();
     watch('./src/scss/**/*.scss', buildSass);
     watch('./src/**/*.pug', buildPug);
     watch('./src/assets/**/*.*', copyAssets);
     watch('./src/fonts/**/*.*', copyFonts);
-    watch('./src/js/**/*.js', copyJs);
 }
