@@ -6,6 +6,7 @@ const QTY_ON_PAGE_TABLET = 6;
 const QTY_ON_PAGE_MOBILE = 3;
 
 const pseudoRandomIndexes = nonRepeatedRandomIndexes();
+testIndexes(pseudoRandomIndexes);
 
 const allPetsList = document.querySelector('.all-pets__list');
 const firstButton = document.querySelector('.all-pets .button-round-first');
@@ -23,6 +24,31 @@ let needToUpdate = false;
 
 initAllPetsList('./assets/json/pets.json');
 
+function testIndexes(arr) {
+    console.log("Testing: ", arr);
+    // test 8
+    for (let i = 0; i < 6; i++) {
+        let curArr = arr.slice(i * 8, i * 8 + 8);
+        let set = new Set(curArr);
+
+        if (set.size < 8) {
+            console.log(`Error in ${i} set of [8]: ` + curArr);
+            return;
+        }
+    }
+    // test 6
+    for (let i = 0; i < 8; i++) {
+        let curArr = arr.slice(i * 6, i * 6 + 6);
+        let set = new Set(curArr);
+
+        if (set.size < 6) {
+            console.log(`Error in ${i} set of [6]: ` + curArr);
+            return;
+        }
+    }
+    console.log('ARRAY IS GOOD');
+}
+
 function initAllPetsList(src) {
     fetch(src)
         .then(res => res.json())
@@ -38,7 +64,7 @@ function animate(animationName, cb) {
     allPetsList.classList.remove('showing');
     allPetsList.classList.add('hiding');
     allPetsList.addEventListener('animationend', animationHandler);
-    
+
     function animationHandler(e) {
         if (e.animationName == animationName) {
             cb();
