@@ -57,7 +57,6 @@ $slider-transition: left .6s ease;
     &__slides {
         padding: 40px;
         overflow: hidden;
-        min-height: 435px;
         transition: opacity 0.3s ease;
 
         @include media-sm {
@@ -118,6 +117,14 @@ $slider-transition: left .6s ease;
 
     &__slides-current {
         @extend %slides;
+
+        &.hiding {
+            animation: fadeout 0.5s ease forwards;
+        }
+
+        &.showing {
+            animation: fadein 1s ease forwards;
+        }
     }
 
     &__slides-next {
