@@ -1,3 +1,8 @@
+// Draw Data
+export interface IDrawData<T> {
+  draw(data: T): void;
+}
+
 // Article Data
 export interface INewsArticle {
   readonly source: INewsSource;
