@@ -3,6 +3,16 @@ export interface IDrawData<T> {
   draw(data: T): void;
 }
 
+// Response Data
+export type NewsResponse = {
+  readonly status: 'ok' | 'error';
+  readonly code?: string;
+  readonly message?: string;
+  readonly totalResults?: number;
+  readonly articles?: INewsArticle[];
+  readonly sources?: INewsSource[];
+};
+
 // Article Data
 export interface INewsArticle {
   readonly source: INewsSource;
