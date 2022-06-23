@@ -1,6 +1,33 @@
 import News from '../components/view/news/news';
 import Sources from '../components/view/sources/sources';
 
+export enum StatusCodes {
+    unauthorized = 401,
+    notFound = 404,
+}
+
+// Resource Loader
+export interface ILoader {
+    readonly baseLink: string;
+    readonly options: UrlOptions;
+
+    getResp(query: Query, cb: () => void): void;
+    errorHandler(res: Response): Response;
+    makeUrl(options: UrlOptions, endpoint: string): string;
+    load(method: string, endpoint: string, cb: (data?: object) => void, options: UrlOptions): void; // TODO: refine cb data type
+}
+
+// URL Options
+export type UrlOptions = {
+    readonly [idx: string]: string;
+};
+
+// Query object
+export type Query = {
+    endpoint: string;
+    options: UrlOptions;
+};
+
 // App View
 export interface IAppView {
     readonly news: News;
