@@ -1,3 +1,15 @@
+import News from '../components/view/news/news';
+import Sources from '../components/view/sources/sources';
+
+// App View
+export interface IAppView {
+  readonly news: News;
+  readonly sources: Sources;
+
+  drawNews(data: NewsResponse): void;
+  drawSources(data: NewsResponse): void;
+}
+
 // Draw Data
 export interface IDrawData<T> {
   draw(data: T): void;
