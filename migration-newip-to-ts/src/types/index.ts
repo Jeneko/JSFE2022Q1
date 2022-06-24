@@ -20,7 +20,7 @@ export interface ILoader {
     getResp(query: Query, cb: () => void): void;
     errorHandler(res: Response): Response;
     makeUrl(options: UrlOptions, endpoint: string): string;
-    load(method: string, endpoint: string, cb: (data?: object) => void, options: UrlOptions): void; // TODO: refine cb data type
+    load(method: string, endpoint: string, cb: (data?: object) => void, options: UrlOptions): void;
 }
 
 // URL Options
