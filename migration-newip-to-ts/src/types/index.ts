@@ -6,6 +6,12 @@ export enum StatusCodes {
     notFound = 404,
 }
 
+// App Controller
+export interface IAppController {
+    getSources(cb: (data?: object) => void): void;
+    getNews(e: Event, cb: (data?: object) => void): void;
+}
+
 // Resource Loader
 export interface ILoader {
     readonly baseLink: string;
