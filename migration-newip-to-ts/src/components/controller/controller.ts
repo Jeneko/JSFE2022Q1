@@ -1,12 +1,12 @@
-import { IAppController, Query } from '../../types/index';
+import { NewsResponse, IAppController, Query } from '../../types/index';
 import AppLoader from './appLoader';
 
 class AppController extends AppLoader implements IAppController {
-    getSources(callback: (data?: object) => void) {
+    getSources(callback: (data: NewsResponse) => void) {
         super.getResp({ endpoint: 'sources' } as Query, callback);
     }
 
-    getNews(e: Event, callback: (data?: object) => void) {
+    getNews(e: Event, callback: (data: NewsResponse) => void) {
         let target = e.target as HTMLElement;
         const newsContainer = e.currentTarget as HTMLElement;
 
