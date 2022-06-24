@@ -11,7 +11,7 @@ class Loader implements ILoader {
 
     getResp(
         { endpoint, options = {} }: Query,
-        callback = () => {
+        callback: (data?: object) => void = () => {
             console.error('No callback for GET response');
         }
     ) {
