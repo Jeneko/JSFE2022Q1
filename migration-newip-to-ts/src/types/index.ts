@@ -40,7 +40,7 @@ export interface IAppView {
     readonly sources: Sources;
 
     drawNews(data: NewsResponse): void;
-    drawSources(data: NewsResponse): void;
+    drawSources(data: Pick<NewsResponse, 'status' | 'code' | 'message' | 'totalResults' | 'sources'>): void;
 }
 
 // Draw Data
