@@ -20,6 +20,14 @@ export class AppView implements IAppView {
         const values = data?.sources ? data?.sources : [];
         this.sources.draw(values);
     }
+
+    drawFilter() {
+        this.sources.drawFilter();
+    }
+
+    filterSource(letter: string) {
+        this.sources.filter(letter);
+    }
 }
 
 export default AppView;

@@ -28,7 +28,42 @@
     transform: translateY(-0.25em);
 }
 
+.source__item.hidden {
+    display: none;
+}
+
 .source__item-name {
     font-weight: 400;
     white-space: nowrap;
+}
+
+.filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.filter__letter {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.filter__letter:hover {
+    color: rgb(196, 132, 132);
+}
+
+.filter__letter--active {
+    position: relative;
+    color: #ff0055 !important;
+}
+.filter__letter--active::after {
+    content: "";
+    position: absolute;
+    left: -4px;
+    right: -4px;
+    bottom: -2px;
+    height: 2px;
+    background-color: #ff0055;
 }
