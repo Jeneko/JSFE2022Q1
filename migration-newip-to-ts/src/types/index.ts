@@ -15,7 +15,7 @@ export interface IAppController {
 // Resource Loader
 export interface ILoader {
     readonly baseLink: string;
-    readonly options: UrlOptions;
+    readonly options: Partial<UrlOptions>;
 
     getResp(query: Query, cb: () => void): void;
     errorHandler(res: Response): Response;
