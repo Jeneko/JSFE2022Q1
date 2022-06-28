@@ -11,6 +11,7 @@ header {
 header h1 {
     font-size: 40px;
     font-weight: 800;
+    text-align: center;
 }
 
 footer {
@@ -43,4 +44,15 @@ footer .copyright:before {
 .footer-links__github-logo {
     width: 100px;
     padding: 1rem;
+}
+
+@keyframes fade-in {
+    0% {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 100%;
+    }
 }

@@ -24,6 +24,10 @@ class AppController extends AppLoader implements IAppController {
                         },
                         callback
                     );
+                    document
+                        .querySelectorAll('.source__item')
+                        .forEach((el) => el.classList.remove('source__item--active'));
+                    target.classList.add('source__item--active');
                 }
                 return;
             }
