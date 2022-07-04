@@ -1,6 +1,10 @@
 import News from '../components/view/news/news';
 import Sources from '../components/view/sources/sources';
 
+// Endpoints
+export type Endpoints = 'sources' | 'everything' | 'top-headlines' | 'top-headlines/sources';
+
+// Status Codes
 export enum StatusCodes {
     unauthorized = 401,
     notFound = 404,
@@ -19,8 +23,8 @@ export interface ILoader {
 
     getResp(query: Query, cb: () => void): void;
     errorHandler(res: Response): Response;
-    makeUrl(options: UrlOptions, endpoint: string): string;
-    load(method: string, endpoint: string, cb: (data?: object) => void, options: UrlOptions): void;
+    makeUrl(options: UrlOptions, endpoint: Endpoints): string;
+    load(method: string, endpoint: Endpoints, cb: (data?: object) => void, options: UrlOptions): void;
 }
 
 // URL Options
@@ -30,7 +34,7 @@ export type UrlOptions = {
 
 // Query object
 export type Query = {
-    endpoint: string;
+    endpoint: Endpoints;
     options: UrlOptions;
 };
 
