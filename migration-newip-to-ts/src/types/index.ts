@@ -12,8 +12,8 @@ export enum StatusCodes {
 
 // App Controller
 export interface IAppController {
-    getSources(cb: (data?: object) => void): void;
-    getNews(e: Event, cb: (data?: object) => void): void;
+    getSources(cb: (data?: NewsResponse) => void): void;
+    getNews(e: Event, cb: (data?: NewsResponse) => void): void;
 }
 
 // Resource Loader
@@ -24,7 +24,7 @@ export interface ILoader {
     getResp(query: Query, cb: () => void): void;
     errorHandler(res: Response): Response;
     makeUrl(options: UrlOptions, endpoint: Endpoints): string;
-    load(method: string, endpoint: Endpoints, cb: (data?: object) => void, options: UrlOptions): void;
+    load(method: string, endpoint: Endpoints, cb: (data?: NewsResponse) => void, options: UrlOptions): void;
 }
 
 // URL Options
