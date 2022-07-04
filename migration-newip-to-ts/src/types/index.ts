@@ -45,6 +45,8 @@ export interface IAppView {
 
     drawNews(data: NewsResponse): void;
     drawSources(data: Pick<NewsResponse, 'status' | 'code' | 'message' | 'totalResults' | 'sources'>): void;
+    drawFilter(): void;
+    filterSource(letter: string): void;
 }
 
 // Draw Data
