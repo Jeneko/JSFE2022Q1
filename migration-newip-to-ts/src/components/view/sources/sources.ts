@@ -1,7 +1,7 @@
 import './sources.css';
-import { IDrawData, INewsSource } from '../../../types/index';
+import { IDrawData, INewsSource, IFilter } from '../../../types/index';
 
-class Sources implements IDrawData<INewsSource[]> {
+class Sources implements IDrawData<INewsSource[]>, IFilter {
     draw(data: INewsSource[]) {
         const fragment = document.createDocumentFragment();
         const sourceItemTemp = document.querySelector('#sourceItemTemp') as HTMLTemplateElement;

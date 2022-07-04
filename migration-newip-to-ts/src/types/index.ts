@@ -52,6 +52,12 @@ export interface IDrawData<T> {
     draw(data: T): void;
 }
 
+// Filter
+export interface IFilter {
+    filter(letter: string): void;
+    drawFilter(): void;
+}
+
 // Response Data
 export type NewsResponse = {
     readonly status: 'ok' | 'error';
