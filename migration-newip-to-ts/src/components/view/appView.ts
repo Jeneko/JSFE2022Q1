@@ -1,4 +1,4 @@
-import { IAppView, NewsResponse } from '../../types/index';
+import { IAppView, NewsResponse } from 'types/index';
 import News from './news/news';
 import Sources from './sources/sources';
 

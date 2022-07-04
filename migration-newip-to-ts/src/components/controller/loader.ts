@@ -1,4 +1,4 @@
-import { NewsResponse, StatusCodes, ILoader, Query, UrlOptions, Endpoints } from '../../types/index';
+import { NewsResponse, StatusCodes, ILoader, Query, UrlOptions, Endpoints } from 'types/index';
 
 class Loader implements ILoader {
     baseLink: string;

@@ -1,4 +1,4 @@
-import { NewsResponse, IAppController, Query } from '../../types/index';
+import { NewsResponse, IAppController, Query } from 'types/index';
 import AppLoader from './appLoader';
 
 class AppController extends AppLoader implements IAppController {

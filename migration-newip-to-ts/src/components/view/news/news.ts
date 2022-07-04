@@ -1,4 +1,4 @@
-import { IDrawData, INewsArticle } from '../../../types/index';
+import { IDrawData, INewsArticle } from 'types/index';
 import './news.css';
 
 class News implements IDrawData<INewsArticle[]> {
