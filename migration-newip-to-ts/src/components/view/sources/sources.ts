@@ -1,5 +1,5 @@
-import './sources.css';
 import { IDrawData, INewsSource, IFilter } from '../../../types/index';
+import './sources.css';
 
 class Sources implements IDrawData<INewsSource[]>, IFilter {
     draw(data: INewsSource[]) {
