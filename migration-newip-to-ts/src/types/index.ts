@@ -19,7 +19,7 @@ export interface IAppController {
 // Resource Loader
 export interface ILoader {
     readonly baseLink: string;
-    readonly options: Partial<UrlOptions>;
+    readonly options: UrlOptions;
 
     getResp(query: Query, cb: () => void): void;
     errorHandler(res: Response): Response;
@@ -29,7 +29,8 @@ export interface ILoader {
 
 // URL Options
 export type UrlOptions = {
-    readonly [idx: string]: string;
+    apiKey?: string;
+    sources?: string;
 };
 
 // Query object
