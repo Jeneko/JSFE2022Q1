@@ -1,0 +1,28 @@
+.filter__range-wrapper {
+  display: flex;
+  gap: 2rem;
+}
+.filter__range {
+  flex-grow: 1;
+}
+
+/* FOOTER */
+.footer {
+  background-color: #000;
+  text-align: center;
+  color: #fff;
+}
+
+.footer-links {
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-links__rss-logo,
+.footer-links__github-logo {
+  width: 100px;
+  padding: 1rem;
+}

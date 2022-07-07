@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="js/nouislider/nouislider.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="js/nouislider/nouislider.min.js" defer></script>
+  <script src="js/script.js" defer></script>
+
+  <title>Online Store</title>
+</head>
+
+<body>
+
+  <header class="header">
+    <!-- Logo -->
+    <a class="logo" href="#" title="На главную">Online Store</a>
+    <!-- Cart -->
+    <div class="cart">
+      Товаров в корзине: <span class="cart__qty">1</span>
+    </div>
+  </header>
+
+  <main>
+    <h1>Мобильные телефоны Online Store</h1>
+
+    <!-- Filters Section BEGIN -->
+    <section class="filter">
+      <h2>Фильтрация и сортировка</h2>
+
+      <!-- Filter Form BEGIN -->
+      <form class="filter__form" name="product-filter-form">
+
+        <!-- Filters by Value BEGIN -->
+        <section>
+          <h3>Фильтры по значению</h3>
+          <fieldset>
+            <legend>Производитель</legend>
+            <label>
+              <input name="manufacturer[]" type="checkbox" value="Samsung">
+              Samsung
+            </label>
+            <label>
+              <input name="manufacturer[]" type="checkbox" value="Apple">
+              Apple
+            </label>
+            <label>
+              <input name="manufacturer[]" type="checkbox" value="Xiaomi">
+              Xiaomi
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Количество камер</legend>
+            <label>
+              <input name="camera[]" type="checkbox" value="3">
+              3
+            </label>
+            <label>
+              <input name="camera[]" type="checkbox" value="2">
+              2
+            </label>
+            <label>
+              <input name="camera[]" type="checkbox" value="1">
+              1
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Цвет</legend>
+            <label>
+              <input name="color[]" type="checkbox" value="white">
+              Белый
+            </label>
+            <label>
+              <input name="color[]" type="checkbox" value="yellow">
+              Желтый
+            </label>
+            <label>
+              <input name="color[]" type="checkbox" value="red">
+              Красный
+            </label>
+          </fieldset>
+
+          <p>
+            <label>
+              <input name="popular" type="checkbox" value="white">
+              Только популярные
+            </label>
+          </p>
+        </section>
+        <!-- Filters by Value END -->
+
+        <!-- Filters by Range BEGIN -->
+        <section>
+          <h3>Фильтры по диапазону</h3>
+          <fieldset>
+            <legend>Количество на складе</legend>
+            <div class="filter__range-wrapper">
+              <label>
+                От
+                <input type="number" name="qty-min" min="0" value="20">
+              </label>
+              <div class="filter__range filter__qty no-ui-slider"></div>
+              <label>
+                <input type="number" name="qty-min" min="0" value="80">
+                До
+              </label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Год выхода на рынок</legend>
+            <div class="filter__range-wrapper">
+              <label>
+                От
+                <input type="number" name="qty-min" min="0" value="20">
+              </label>
+              <div class="filter__range filter__year no-ui-slider"></div>
+              <label>
+                <input type="number" name="qty-min" min="0" value="80">
+                До
+              </label>
+            </div>
+          </fieldset>
+        </section>
+        <!-- Filters by Range END -->
+
+        <section>
+          <h3>Фильтр по названию</h3>
+          <p>
+            <label>Название содержит</label>
+            <input name="name" type="text" placeholder="Введите текст">
+          </p>
+        </section>
+
+        <section>
+          <h3>Сортировка</h3>
+          <select name="sort">
+            <optgroup label="По названию">
+              <option value="name-asc">От А до Я</option>
+              <option value="name-desc">От Я до А</option>
+            </optgroup>
+            <optgroup label="По году">
+              <option value="year-desc">Сначала новые</option>
+              <option value="year-asc">Сначала старые</option>
+            </optgroup>
+            <optgroup label="По количеству на складе">
+              <option value="qty-desc">Сначала те, которых много</option>
+              <option value="qty-asc">Сначала те, которых мало</option>
+            </optgroup>
+          </select>
+        </section>
+
+        <p>
+          <button type="reset">Сброс фильтров</button>
+          <button type="button">Сброс настроек</button>
+        </p>
+      </form>
+      <!-- Filter Form BEGIN -->
+
+    </section>
+    <!-- Filters Section END -->
+
+    <!-- Products List BEGIN -->
+    <section class="products">
+      <h2>Список товаров</h2>
+
+      <article class="product">
+        <h3 class="product__name">Apple Iphone 13</h3>
+        <img src="images/products/apple-iphone-13.jpg" alt="Apple Iphone 13">
+        <ul class="product__properties">
+          <li class="product__property">Количество: <span class="product__qty">10</span></li>
+          <li class="product__property">Год выхода: <span class="product__year">2009</span></li>
+          <li class="product__property">Производитель: <span class="product__manufacturer">Apple</span></li>
+          <li class="product__property">Цвет: <span class="product__color">красный</span></li>
+          <li class="product__property">Количество камер: <span class="product__camera">3</span></li>
+          <li class="product__property">Популярный: <span class="product__qty">нет</span></li>
+        </ul>
+      </article>
+
+      <article class="product">
+        <h3 class="product__name">Apple Iphone SE</h3>
+        <img src="images/products/apple-iphone-SE.jpg" alt="Apple Iphone SE">
+        <ul class="product__properties">
+          <li class="product__property">Количество: <span class="product__qty">7</span></li>
+          <li class="product__property">Год выхода: <span class="product__year">2004</span></li>
+          <li class="product__property">Производитель: <span class="product__manufacturer">Apple</span></li>
+          <li class="product__property">Цвет: <span class="product__color">белый</span></li>
+          <li class="product__property">Количество камер: <span class="product__camera">1</span></li>
+          <li class="product__property">Популярный: <span class="product__qty">нет</span></li>
+        </ul>
+      </article>
+
+    </section>
+    <!-- Products List END -->
+
+  </main>
+
+  <footer class="footer">
+    <ul class="footer-links">
+      <li class="footer-links__item">
+        <a class="footer-links__link" href="https://rs.school/js/" target="_blank" title="Link to The Course">
+          <img class="footer-links__rss-logo" src="images/assets/rsschool-logo.svg" alt="RSSchool Logo">
+        </a>
+      </li>
+      <li class="footer-links__item">
+        <a class="footer-links__link" href="https://github.com/jeneko/" target="_blank" title="My Github">
+          <img class="footer-links__github-logo" src="images/assets/github-logo.svg" alt="Github Logo">
+        </a>
+      </li>
+    </ul>
+    <p>2022</p>
+  </footer>
+
+</body>
+
+</html>
