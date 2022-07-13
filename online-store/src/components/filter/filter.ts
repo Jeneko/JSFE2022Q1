@@ -88,6 +88,15 @@ export class Filter implements IFilter {
     (filterForm.querySelector('.filter__clear') as HTMLElement).addEventListener('click', () => {
       this.clearSavedData();
     });
+
+    // On clear input name
+    (filterForm.querySelector('.filter__clear-name') as HTMLElement).addEventListener('click', (e) => {
+      e.preventDefault();
+      (this.element.querySelector('input[name="name"]') as HTMLInputElement).value = '';
+      this.updateFilterState(this.element.querySelector('input[name="name"]') as EventTarget);
+      this.saveFilterState();
+      this.element.dispatchEvent(new Event('filterUpdate', { bubbles: true }));
+    });
   }
 
   render(root: HTMLElement): void {
