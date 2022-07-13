@@ -10,6 +10,7 @@ module.exports = {
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, 'dist'),
+    assetModuleFilename: 'images/assets/[name]-[hash][ext]',
     clean: true,
   },
   devtool: 'eval',
@@ -26,6 +27,10 @@ module.exports = {
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+      {
+        test: /\.svg$/,
+        type: 'asset/resource',
       }
     ]
   },
