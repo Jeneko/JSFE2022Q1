@@ -1,25 +1,17 @@
-import { FilterFields, IFilter, ProductData, Camera, Manufacturer, Color, Sort } from 'types';
+import { IFilter, ProductData } from 'types';
 import { RangeSlider } from 'components/range-slider/range-slider';
+import { FilterState } from './filter-utils';
 import { filterByData } from './filter-by-data';
 import { filterByRange } from './filter-by-range';
 import { filterByName } from './filter-by-name';
 import { filterSorting } from './filter-sorting';
 
-export class Filter implements IFilter {
+export class Filter extends FilterState implements IFilter {
   element: HTMLElement;
   slider: RangeSlider[] = [];
-  state: FilterFields = {
-    name: '',
-    qty: [1, 12],
-    year: [2000, 2022],
-    manufacturer: new Set(),
-    color: new Set(),
-    camera: new Set(),
-    popularOnly: false,
-    sort: 'name-asc',
-  };
 
   constructor() {
+    super();
     this.element = document.createElement('section');
     this.element.className = 'filter';
     this.element.innerHTML = `
@@ -43,7 +35,7 @@ export class Filter implements IFilter {
     (this.element.querySelector('.filter-sorting') as HTMLElement).innerHTML = filterSorting;
 
     this.loadFilterState();
-    this.applyFilterState();
+    this.applyFilterState(this.element.querySelector('.filter__form') as HTMLElement);
 
     // Init QTY Slider
     const qtySlider = new RangeSlider(
@@ -79,8 +71,8 @@ export class Filter implements IFilter {
     filterForm.addEventListener('reset', (e) => {
       e.preventDefault();
       this.resetFilterState();
-      this.applyFilterState();
       this.resetFilterSliders();
+      this.applyFilterState(this.element.querySelector('.filter__form') as HTMLElement);
       this.element.dispatchEvent(new Event('filterUpdate', { bubbles: true }));
     });
 
@@ -103,76 +95,6 @@ export class Filter implements IFilter {
     root.append(this.element);
   }
 
-  loadFilterState(): void {
-    const state = localStorage.getItem('filterState');
-    if (state) {
-      this.state = JSON.parse(state, (key, value) =>
-        (['manufacturer', 'color', 'camera'].includes(key)) ? new Set(value) : value
-      );
-    }
-  }
-
-  saveFilterState(): void {
-    const json = JSON.stringify(this.state, (key, value) =>
-      value = (value instanceof Set) ? [...value] : value);
-    localStorage.setItem('filterState', json);
-  }
-
-  applyFilterState(): void {
-    // Manufacturers
-    this.element.querySelectorAll('[name="manufacturer[]"]').forEach(checkbox => {
-      (checkbox as HTMLInputElement).checked = false;
-    });
-    for (const manufacturer of this.state.manufacturer) {
-      (this.element.querySelector(`[value="${manufacturer}"]`) as HTMLInputElement).checked = true;
-    }
-
-    // Cameras
-    this.element.querySelectorAll('[name="camera[]"]').forEach(checkbox => {
-      (checkbox as HTMLInputElement).checked = false;
-    });
-    for (const camera of this.state.camera) {
-      (this.element.querySelector(`[value="${camera}"]`) as HTMLInputElement).checked = true;
-    }
-
-    // Colors
-    this.element.querySelectorAll('[name="color[]"]').forEach(checkbox => {
-      (checkbox as HTMLInputElement).checked = false;
-    });
-    for (const color of this.state.color) {
-      (this.element.querySelector(`[value="${color}"]`) as HTMLInputElement).checked = true;
-    }
-
-    // Name
-    (this.element.querySelector(`[name="name"]`) as HTMLInputElement).value = this.state.name;
-
-    // Popular
-    (this.element.querySelector(`[name="popular-only"]`) as HTMLInputElement).checked = this.state.popularOnly;
-
-    // Qty
-    (this.element.querySelector(`[name="qty-min"]`) as HTMLInputElement).value = String(this.state.qty[0]);
-    (this.element.querySelector(`[name="qty-max"]`) as HTMLInputElement).value = String(this.state.qty[1]);
-
-    // Year
-    (this.element.querySelector(`[name="year-min"]`) as HTMLInputElement).value = String(this.state.year[0]);
-    (this.element.querySelector(`[name="year-max"]`) as HTMLInputElement).value = String(this.state.year[1]);
-
-    // Sort
-    (this.element.querySelector(`[name="sort"]`) as HTMLInputElement).value = this.state.sort;
-  }
-
-  resetFilterState(): void {
-    Object.assign(this.state, {
-      name: '',
-      qty: [1, 12],
-      year: [2000, 2022],
-      manufacturer: new Set(),
-      color: new Set(),
-      camera: new Set(),
-      popularOnly: false,
-    });
-  }
-
   resetFilterSliders(): void {
     this.slider.forEach(slider => {
       slider.api.reset();
@@ -182,74 +104,6 @@ export class Filter implements IFilter {
   clearSavedData(): void {
     localStorage.clear();
     location.reload();
-  }
-
-  updateFilterState(input: EventTarget): void {
-    const inputName = (input as HTMLInputElement).name;
-    const inputValue = (input as HTMLInputElement).value;
-    const inputChecked = (input as HTMLInputElement).checked;
-
-    // Manufacturer
-    if (inputName === 'manufacturer[]') {
-      if (inputChecked) {
-        this.state.manufacturer.add(inputValue as Manufacturer);
-      } else {
-        this.state.manufacturer.delete(inputValue as Manufacturer);
-      }
-    }
-
-    // Camera
-    if (inputName === 'camera[]') {
-      if (inputChecked) {
-        this.state.camera.add(Number(inputValue) as Camera);
-      } else {
-        this.state.camera.delete(Number(inputValue) as Camera);
-      }
-    }
-
-    // Color
-    if (inputName === 'color[]') {
-      if (inputChecked) {
-        this.state.color.add(inputValue as Color);
-      } else {
-        this.state.color.delete(inputValue as Color);
-      }
-    }
-
-    // Popular
-    if (inputName === 'popular-only') {
-      if (inputChecked) {
-        this.state.popularOnly = true;
-      } else {
-        this.state.popularOnly = false;
-      }
-    }
-
-    // QTY
-    if (inputName === 'qty-min') {
-      this.state.qty[0] = Number(inputValue);
-    }
-    if (inputName === 'qty-max') {
-      this.state.qty[1] = Number(inputValue);
-    }
-
-    // Year
-    if (inputName === 'year-min') {
-      this.state.year[0] = Number(inputValue);
-    }
-    if (inputName === 'year-max') {
-      this.state.year[1] = Number(inputValue);
-    }
-
-    // Name
-    if (inputName == 'name') {
-      this.state.name = inputValue;
-    }
-
-    // Sort
-    if (inputName == 'sort') {
-      this.state.sort = inputValue as Sort;
-    }
   }
 
   sort(productDataArr: ProductData[]): ProductData[] {

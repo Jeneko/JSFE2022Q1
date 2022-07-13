@@ -54,7 +54,7 @@ export interface IFilter extends IComponent {
   state: FilterFields;
   loadFilterState(): void;
   saveFilterState(): void;
-  applyFilterState(): void;
+  applyFilterState(form: HTMLElement): void;
   resetFilterState(): void;
   resetFilterSliders(): void;
   clearSavedData(): void;
