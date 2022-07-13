@@ -1,4 +1,5 @@
 import { IComponent } from 'types';
+import { ProductList } from 'components/product-list/product-list';
 
 export class Catalog implements IComponent {
   element: HTMLElement;
@@ -11,6 +12,10 @@ export class Catalog implements IComponent {
       <section class="filter"></section>
       <section class="products"></section>
     `;
+
+    // Product List
+    const productList = new ProductList();
+    productList.render(this.element.querySelector('.products') as HTMLElement);
   }
 
   render(root: HTMLElement): void {
