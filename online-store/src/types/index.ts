@@ -45,6 +45,8 @@ export interface ProductData {
 export interface IFilter extends IComponent {
   slider: IRangeSlider[];
   state: FilterFields;
+  loadFilterState(): void;
+  saveFilterState(): void;
   applyFilterState(): void;
   updateFilterState(input: EventTarget): void;
   filter(productDataArr: ProductData[]): ProductData[];

@@ -42,6 +42,7 @@ export class Filter implements IFilter {
     (this.element.querySelector('.filter-by-name') as HTMLElement).innerHTML = filterByName;
     (this.element.querySelector('.filter-sorting') as HTMLElement).innerHTML = filterSorting;
 
+    this.loadFilterState();
     this.applyFilterState();
 
     // Init QTY Slider
@@ -70,12 +71,28 @@ export class Filter implements IFilter {
     const filterForm = this.element.querySelector('.filter__form') as HTMLFormElement;
     filterForm.addEventListener('input', (e) => {
       this.updateFilterState(e.target as EventTarget);
+      this.saveFilterState();
       this.element.dispatchEvent(new Event('filterUpdate', { bubbles: true }));
     });
   }
 
   render(root: HTMLElement): void {
     root.append(this.element);
+  }
+
+  loadFilterState(): void {
+    const state = localStorage.getItem('filterState');
+    if (state) {
+      this.state = JSON.parse(state, (key, value) =>
+        (['manufacturer', 'color', 'camera'].includes(key)) ? new Set(value) : value
+      );
+    }
+  }
+
+  saveFilterState(): void {
+    const json = JSON.stringify(this.state, (key, value) =>
+      value = (value instanceof Set) ? [...value] : value);
+    localStorage.setItem('filterState', json);
   }
 
   applyFilterState(): void {
