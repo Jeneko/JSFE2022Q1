@@ -1,4 +1,5 @@
 import { IComponent, ProductData } from 'types';
+import { Filter } from 'components/filter/filter';
 import { ProductList } from 'components/product-list/product-list';
 
 export class Catalog implements IComponent {
@@ -12,6 +13,10 @@ export class Catalog implements IComponent {
       <section class="filter"></section>
       <section class="products"></section>
     `;
+
+    // Filter
+    const filter = new Filter();
+    filter.render(this.element.querySelector('.filter') as HTMLElement);
 
     // Product List
     const productList = new ProductList();
