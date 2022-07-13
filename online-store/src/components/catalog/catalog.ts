@@ -1,10 +1,10 @@
-import { IComponent } from 'types';
+import { IComponent, ProductData } from 'types';
 import { ProductList } from 'components/product-list/product-list';
 
 export class Catalog implements IComponent {
   element: HTMLElement;
 
-  constructor() {
+  constructor(store: ProductData[]) {
     this.element = document.createElement('main');
     this.element.className = 'catalog';
     this.element.innerHTML = `
@@ -15,7 +15,7 @@ export class Catalog implements IComponent {
 
     // Product List
     const productList = new ProductList();
-    productList.render(this.element.querySelector('.products') as HTMLElement);
+    productList.render(this.element.querySelector('.products') as HTMLElement, store);
   }
 
   render(root: HTMLElement): void {

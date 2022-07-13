@@ -1,7 +1,8 @@
-import { IApp } from 'types';
+import { IApp, ProductData } from 'types';
 import { Header } from 'components/header/header';
 import { Catalog } from 'components/catalog/catalog';
 import { Footer } from 'components/footer/footer';
+import { getResource } from 'components/app/get-resource';
 
 export default class App implements IApp {
   element: HTMLElement;
@@ -21,11 +22,17 @@ export default class App implements IApp {
     header.render(this.element.querySelector('.header') as HTMLElement);
 
     // Catalog
-    const catalog = new Catalog();
-    catalog.render(this.element.querySelector('.catalog--loading') as HTMLElement);
+    this.getStore().then(store => {
+      const catalog = new Catalog(store);
+      catalog.render(this.element.querySelector('.catalog--loading') as HTMLElement);
+    });
 
     // Footer
     const footer = new Footer();
     footer.render(this.element.querySelector('.footer') as HTMLElement);
+  }
+
+  async getStore(): Promise<ProductData[]> {
+    return await getResource();
   }
 }

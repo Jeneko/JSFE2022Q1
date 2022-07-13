@@ -1,7 +1,7 @@
-import { IComponent } from 'types';
+import { IProductList, ProductData } from 'types';
 import { Product } from 'components/product/product';
 
-export class ProductList implements IComponent {
+export class ProductList implements IProductList {
   element: HTMLElement;
 
   constructor() {
@@ -13,14 +13,14 @@ export class ProductList implements IComponent {
     `;
   }
 
-  render(root: HTMLElement): void {
+  render(root: HTMLElement, store: ProductData[]): void {
     const container = this.element.querySelector('.product-list') as HTMLElement;
     const allProducts = new DocumentFragment();
 
-    for(let i = 0; i < 3; i++) {
-      const curProduct = new Product();
+    store.forEach((productData: ProductData) => {
+      const curProduct = new Product(productData);
       allProducts.append(curProduct.element);
-    }
+    });
 
     container.append(allProducts);
     root.replaceWith(this.element);

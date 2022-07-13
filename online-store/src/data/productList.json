@@ -1,0 +1,114 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Apple Iphone 11",
+      "manufacturer": "Apple",
+      "imageUrl": "images/products/apple-iphone-11.jpg",
+      "qty": 12,
+      "year": 2018,
+      "color": "белый",
+      "camera": 3,
+      "popular": true
+    },
+    {
+      "id": 2,
+      "name": "Apple Iphone 12",
+      "manufacturer": "Apple",
+      "imageUrl": "images/products/apple-iphone-12.jpg",
+      "qty": 2,
+      "year": 2010,
+      "color": "желтый",
+      "camera": 2,
+      "popular": false
+    },
+    {
+      "id": 3,
+      "name": "Apple Iphone 13",
+      "manufacturer": "Apple",
+      "imageUrl": "images/products/apple-iphone-13.jpg",
+      "qty": 10,
+      "year": 2009,
+      "color": "красный",
+      "camera": 3,
+      "popular": false
+    },
+    {
+      "id": 4,
+      "name": "Apple Iphone SE",
+      "manufacturer": "Apple",
+      "imageUrl": "images/products/apple-iphone-se.jpg",
+      "qty": 7,
+      "year": 2004,
+      "color": "белый",
+      "camera": 1,
+      "popular": false
+    },
+    {
+      "id": 5,
+      "name": "Samsung Galaxy A03",
+      "manufacturer": "Samsung",
+      "imageUrl": "images/products/samsung-galaxy-a03.jpg",
+      "qty": 5,
+      "year": 2000,
+      "color": "красный",
+      "camera": 2,
+      "popular": false
+    },
+    {
+      "id": 6,
+      "name": "Samsung Galaxy S20",
+      "manufacturer": "Samsung",
+      "imageUrl": "images/products/samsung-galaxy-s20.jpg",
+      "qty": 3,
+      "year": 2019,
+      "color": "желтый",
+      "camera": 1,
+      "popular": false
+    },
+    {
+      "id": 7,
+      "name": "Samsung Galaxy S21",
+      "manufacturer": "Samsung",
+      "imageUrl": "images/products/samsung-galaxy-s21.jpg",
+      "qty": 2,
+      "year": 2022,
+      "color": "белый",
+      "camera": 3,
+      "popular": false
+    },
+    {
+      "id": 8,
+      "name": "Xiaomi Poco X4 pro",
+      "manufacturer": "Xiaomi",
+      "imageUrl": "images/products/xiaomi-poco-x4-pro.jpg",
+      "qty": 1,
+      "year": 2014,
+      "color": "желтый",
+      "camera": 2,
+      "popular": false
+    },
+    {
+      "id": 9,
+      "name": "Xiaomi Redmi 9C 3/64Gb",
+      "manufacturer": "Xiaomi",
+      "imageUrl": "images/products/xiaomi-redmi-9c.jpg",
+      "qty": 6,
+      "year": 2010,
+      "color": "красный",
+      "camera": 2,
+      "popular": false
+    },
+    {
+      "id": 10,
+      "name": "Xiaomi Redmi Note 11",
+      "manufacturer": "Xiaomi",
+      "imageUrl": "images/products/xiaomi-redmi-note-11.jpg",
+      "qty": 4,
+      "year": 2012,
+      "color": "белый",
+      "camera": 1,
+      "popular": true
+    }
+  ]
+}
