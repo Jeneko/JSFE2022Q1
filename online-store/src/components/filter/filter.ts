@@ -74,6 +74,15 @@ export class Filter implements IFilter {
       this.saveFilterState();
       this.element.dispatchEvent(new Event('filterUpdate', { bubbles: true }));
     });
+
+    // On filter reset
+    filterForm.addEventListener('reset', (e) => {
+      e.preventDefault();
+      this.resetFilterState();
+      this.applyFilterState();
+      this.resetFilterSliders();
+      this.element.dispatchEvent(new Event('filterUpdate', { bubbles: true }));
+    });
   }
 
   render(root: HTMLElement): void {
@@ -136,6 +145,24 @@ export class Filter implements IFilter {
 
     // Sort
     (this.element.querySelector(`[name="sort"]`) as HTMLInputElement).value = this.state.sort;
+  }
+
+  resetFilterState(): void {
+    Object.assign(this.state, {
+      name: '',
+      qty: [1, 12],
+      year: [2000, 2022],
+      manufacturer: new Set(),
+      color: new Set(),
+      camera: new Set(),
+      popularOnly: false,
+    });
+  }
+
+  resetFilterSliders(): void {
+    this.slider.forEach(slider => {
+      slider.api.reset();
+    });
   }
 
   updateFilterState(input: EventTarget): void {
