@@ -83,6 +83,11 @@ export class Filter implements IFilter {
       this.resetFilterSliders();
       this.element.dispatchEvent(new Event('filterUpdate', { bubbles: true }));
     });
+
+    // On filter clear
+    (filterForm.querySelector('.filter__clear') as HTMLElement).addEventListener('click', () => {
+      this.clearSavedData();
+    });
   }
 
   render(root: HTMLElement): void {
@@ -163,6 +168,11 @@ export class Filter implements IFilter {
     this.slider.forEach(slider => {
       slider.api.reset();
     });
+  }
+
+  clearSavedData(): void {
+    localStorage.clear();
+    location.reload();
   }
 
   updateFilterState(input: EventTarget): void {
