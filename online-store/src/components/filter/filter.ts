@@ -1,4 +1,5 @@
 import { FilterFields, IFilter, ProductData, Camera, Manufacturer, Color, Sort } from 'types';
+import { RangeSlider } from 'components/range-slider/range-slider';
 import { filterByData } from './filter-by-data';
 import { filterByRange } from './filter-by-range';
 import { filterByName } from './filter-by-name';
@@ -6,6 +7,7 @@ import { filterSorting } from './filter-sorting';
 
 export class Filter implements IFilter {
   element: HTMLElement;
+  slider: RangeSlider[] = [];
   state: FilterFields = {
     name: '',
     qty: [1, 12],
@@ -41,6 +43,28 @@ export class Filter implements IFilter {
     (this.element.querySelector('.filter-sorting') as HTMLElement).innerHTML = filterSorting;
 
     this.applyFilterState();
+
+    // Init QTY Slider
+    const qtySlider = new RangeSlider(
+      (this.element.querySelector('.filter__qty') as HTMLElement),
+      (this.element.querySelector('input[name="qty-min"]') as HTMLInputElement),
+      (this.element.querySelector('input[name="qty-max"]') as HTMLInputElement),
+      this.state.qty,
+      [1, 12],
+      { min: 1, max: 12 }
+    );
+
+    // Init Year Slider
+    const yearSlider = new RangeSlider(
+      (this.element.querySelector('.filter__year') as HTMLElement),
+      (this.element.querySelector('input[name="year-min"]') as HTMLInputElement),
+      (this.element.querySelector('input[name="year-max"]') as HTMLInputElement),
+      this.state.year,
+      [2000, 2022],
+      { min: 2000, max: 2022 }
+    );
+
+    this.slider.push(qtySlider, yearSlider);
 
     // On filter fields update
     const filterForm = this.element.querySelector('.filter__form') as HTMLFormElement;

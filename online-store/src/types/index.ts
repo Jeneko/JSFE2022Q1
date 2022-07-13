@@ -1,3 +1,5 @@
+import type { API as INoUiApi } from 'nouislider/dist/nouislider';
+
 export type Sort = 'name-asc' | 'name-desc' | 'year-asc' | 'year-desc' | 'year-asc' | 'qty-asc' | 'qty-desc';
 export type Manufacturer = 'Apple' | 'Samsung' | 'Xiaomi';
 export type Color = 'красный' | 'белый' | 'черный';
@@ -7,6 +9,10 @@ export interface IApp {
   element: HTMLElement;
   start(): void;
   getStore(): Promise<ProductData[]>;
+}
+
+export interface IRangeSlider {
+  api: INoUiApi;
 }
 
 export interface IComponent {
@@ -37,6 +43,7 @@ export interface ProductData {
 }
 
 export interface IFilter extends IComponent {
+  slider: IRangeSlider[];
   state: FilterFields;
   applyFilterState(): void;
   updateFilterState(input: EventTarget): void;
