@@ -20,6 +20,7 @@ export default class App implements IApp {
     // Header
     const header = new Header();
     header.render(this.element.querySelector('.header') as HTMLElement);
+    this.element.addEventListener('favouritesUpdate', () => header.updateCartQty());
 
     // Catalog
     this.getStore().then(store => {

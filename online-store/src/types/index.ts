@@ -20,6 +20,10 @@ export interface IComponent {
   render(root: HTMLElement): void;
 }
 
+export interface IHeader extends IComponent {
+  updateCartQty(): void;
+}
+
 export interface IProductList {
   element: HTMLElement;
   render(root: HTMLElement, store: ProductData[], filter?: IFilter): void;
@@ -28,6 +32,9 @@ export interface IProductList {
 export interface IProduct extends IComponent {
   element: HTMLElement;
   render(root: HTMLElement): void;
+  getFavouritesIds(): number[];
+  canAddToFavourites(): boolean;
+  toggleFavourites(id: number): void;
 }
 
 export interface ProductData {

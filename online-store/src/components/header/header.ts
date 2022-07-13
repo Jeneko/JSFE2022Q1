@@ -1,6 +1,6 @@
-import { IComponent } from 'types';
+import { IHeader } from 'types';
 
-export class Header implements IComponent {
+export class Header implements IHeader {
   element: HTMLElement;
 
   constructor() {
@@ -12,9 +12,16 @@ export class Header implements IComponent {
         Товаров в корзине: <span class="cart__qty">0</span>
       </div>
     `;
+    this.updateCartQty();
   }
 
   render(root: HTMLElement): void {
     root.replaceWith(this.element);
+  }
+
+  updateCartQty(): void {
+    const favourites = localStorage.getItem('favourites');
+    const favIdArr = favourites ? JSON.parse(favourites) : [];
+    (this.element.querySelector('.cart__qty') as HTMLElement).textContent = String(favIdArr.length);
   }
 }
