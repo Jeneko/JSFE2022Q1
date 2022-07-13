@@ -1,4 +1,5 @@
 import { IApp } from 'types';
+import { Header } from 'components/header/header';
 
 export default class App implements IApp {
   element: HTMLElement;
@@ -12,5 +13,9 @@ export default class App implements IApp {
     `;
   }
 
-  start() { console.log('app started'); }
+  start() {
+    // Header
+    const header = new Header();
+    header.render(this.element.querySelector('.header') as HTMLElement);
+  }
 }
