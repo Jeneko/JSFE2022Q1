@@ -1,4 +1,5 @@
 import { IComponent } from 'types';
+import { Product } from 'components/product/product';
 
 export class ProductList implements IComponent {
   element: HTMLElement;
@@ -14,8 +15,14 @@ export class ProductList implements IComponent {
 
   render(root: HTMLElement): void {
     const container = this.element.querySelector('.product-list') as HTMLElement;
-    container.innerHTML = '<Карточка товара 1> <Карточка товара 2> <Карточка товара 3>';
+    const allProducts = new DocumentFragment();
 
+    for(let i = 0; i < 3; i++) {
+      const curProduct = new Product();
+      allProducts.append(curProduct.element);
+    }
+
+    container.append(allProducts);
     root.replaceWith(this.element);
   }
 }
