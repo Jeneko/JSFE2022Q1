@@ -20,7 +20,10 @@ export class Catalog implements IComponent {
 
     // Product List
     const productList = new ProductList();
-    productList.render(this.element.querySelector('.products') as HTMLElement, store);
+    productList.render(this.element.querySelector('.products') as HTMLElement, store, filter);
+    this.element.addEventListener('filterUpdate', () => {
+      productList.render(this.element.querySelector('.products') as HTMLElement, store, filter);
+    });
   }
 
   render(root: HTMLElement): void {

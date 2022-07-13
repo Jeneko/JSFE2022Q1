@@ -1,4 +1,4 @@
-import { IProductList, ProductData } from 'types';
+import { IProductList, IFilter, ProductData } from 'types';
 import { Product } from 'components/product/product';
 
 export class ProductList implements IProductList {
@@ -13,16 +13,29 @@ export class ProductList implements IProductList {
     `;
   }
 
-  render(root: HTMLElement, store: ProductData[]): void {
+  render(root: HTMLElement, store: ProductData[], filter?: IFilter): void {
     const container = this.element.querySelector('.product-list') as HTMLElement;
+    container.innerHTML = '';
+
+    let curProductData = [...store];
+
+    if (filter) {
+      curProductData = filter.filter(curProductData);
+    }
+
     const allProducts = new DocumentFragment();
 
-    store.forEach((productData: ProductData) => {
+    curProductData.forEach((productData: ProductData) => {
       const curProduct = new Product(productData);
       allProducts.append(curProduct.element);
     });
 
-    container.append(allProducts);
+    if (allProducts.children.length) {
+      container.append(allProducts);
+    } else {
+      container.insertAdjacentHTML('beforeend', '<h3>Извините, совпадений не обнаружено</h3>');
+    }
+
     root.replaceWith(this.element);
   }
 }

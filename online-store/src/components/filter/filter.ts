@@ -1,11 +1,21 @@
-import { IComponent } from 'types';
+import { FilterFields, IFilter, ProductData, Camera, Manufacturer, Color, Sort } from 'types';
 import { filterByData } from './filter-by-data';
 import { filterByRange } from './filter-by-range';
 import { filterByName } from './filter-by-name';
 import { filterSorting } from './filter-sorting';
 
-export class Filter implements IComponent {
+export class Filter implements IFilter {
   element: HTMLElement;
+  state: FilterFields = {
+    name: '',
+    qty: [1, 12],
+    year: [2000, 2022],
+    manufacturer: new Set(),
+    color: new Set(),
+    camera: new Set(),
+    popularOnly: false,
+    sort: 'name-asc',
+  };
 
   constructor() {
     this.element = document.createElement('section');
@@ -29,9 +39,163 @@ export class Filter implements IComponent {
     (this.element.querySelector('.filter-by-range') as HTMLElement).innerHTML = filterByRange;
     (this.element.querySelector('.filter-by-name') as HTMLElement).innerHTML = filterByName;
     (this.element.querySelector('.filter-sorting') as HTMLElement).innerHTML = filterSorting;
+
+    this.applyFilterState();
+
+    // On filter fields update
+    const filterForm = this.element.querySelector('.filter__form') as HTMLFormElement;
+    filterForm.addEventListener('input', (e) => {
+      this.updateFilterState(e.target as EventTarget);
+      this.element.dispatchEvent(new Event('filterUpdate', { bubbles: true }));
+    });
   }
 
   render(root: HTMLElement): void {
     root.append(this.element);
+  }
+
+  applyFilterState(): void {
+    // Manufacturers
+    this.element.querySelectorAll('[name="manufacturer[]"]').forEach(checkbox => {
+      (checkbox as HTMLInputElement).checked = false;
+    });
+    for (const manufacturer of this.state.manufacturer) {
+      (this.element.querySelector(`[value="${manufacturer}"]`) as HTMLInputElement).checked = true;
+    }
+
+    // Cameras
+    this.element.querySelectorAll('[name="camera[]"]').forEach(checkbox => {
+      (checkbox as HTMLInputElement).checked = false;
+    });
+    for (const camera of this.state.camera) {
+      (this.element.querySelector(`[value="${camera}"]`) as HTMLInputElement).checked = true;
+    }
+
+    // Colors
+    this.element.querySelectorAll('[name="color[]"]').forEach(checkbox => {
+      (checkbox as HTMLInputElement).checked = false;
+    });
+    for (const color of this.state.color) {
+      (this.element.querySelector(`[value="${color}"]`) as HTMLInputElement).checked = true;
+    }
+
+    // Name
+    (this.element.querySelector(`[name="name"]`) as HTMLInputElement).value = this.state.name;
+
+    // Popular
+    (this.element.querySelector(`[name="popular-only"]`) as HTMLInputElement).checked = this.state.popularOnly;
+
+    // Qty
+    (this.element.querySelector(`[name="qty-min"]`) as HTMLInputElement).value = String(this.state.qty[0]);
+    (this.element.querySelector(`[name="qty-max"]`) as HTMLInputElement).value = String(this.state.qty[1]);
+
+    // Year
+    (this.element.querySelector(`[name="year-min"]`) as HTMLInputElement).value = String(this.state.year[0]);
+    (this.element.querySelector(`[name="year-max"]`) as HTMLInputElement).value = String(this.state.year[1]);
+
+    // Sort
+    (this.element.querySelector(`[name="sort"]`) as HTMLInputElement).value = this.state.sort;
+  }
+
+  updateFilterState(input: EventTarget): void {
+    const inputName = (input as HTMLInputElement).name;
+    const inputValue = (input as HTMLInputElement).value;
+    const inputChecked = (input as HTMLInputElement).checked;
+
+    // Manufacturer
+    if (inputName === 'manufacturer[]') {
+      if (inputChecked) {
+        this.state.manufacturer.add(inputValue as Manufacturer);
+      } else {
+        this.state.manufacturer.delete(inputValue as Manufacturer);
+      }
+    }
+
+    // Camera
+    if (inputName === 'camera[]') {
+      if (inputChecked) {
+        this.state.camera.add(Number(inputValue) as Camera);
+      } else {
+        this.state.camera.delete(Number(inputValue) as Camera);
+      }
+    }
+
+    // Color
+    if (inputName === 'color[]') {
+      if (inputChecked) {
+        this.state.color.add(inputValue as Color);
+      } else {
+        this.state.color.delete(inputValue as Color);
+      }
+    }
+
+    // Popular
+    if (inputName === 'popular-only') {
+      if (inputChecked) {
+        this.state.popularOnly = true;
+      } else {
+        this.state.popularOnly = false;
+      }
+    }
+
+    // QTY
+    if (inputName === 'qty-min') {
+      this.state.qty[0] = Number(inputValue);
+    }
+    if (inputName === 'qty-max') {
+      this.state.qty[1] = Number(inputValue);
+    }
+
+    // Year
+    if (inputName === 'year-min') {
+      this.state.year[0] = Number(inputValue);
+    }
+    if (inputName === 'year-max') {
+      this.state.year[1] = Number(inputValue);
+    }
+
+    // Name
+    if (inputName == 'name') {
+      this.state.name = inputValue;
+    }
+
+    // Sort
+    if (inputName == 'sort') {
+      this.state.sort = inputValue as Sort;
+    }
+  }
+
+  filter(productDataArr: ProductData[]): ProductData[] {
+    return productDataArr.filter(productData => {
+      // Manufacturer
+      if (this.state.manufacturer.size && !this.state.manufacturer.has(productData.manufacturer)) {
+        return false;
+      }
+      // Camera
+      if (this.state.camera.size && !this.state.camera.has(productData.camera)) {
+        return false;
+      }
+      // Color
+      if (this.state.color.size && !this.state.color.has(productData.color)) {
+        return false;
+      }
+      // Popular Only
+      if (this.state.popularOnly && !productData.popular) {
+        return false;
+      }
+      // QTY
+      if (this.state.qty[0] > productData.qty || productData.qty > this.state.qty[1]) {
+        return false;
+      }
+      // Year
+      if (this.state.year[0] > productData.year || productData.year > this.state.year[1]) {
+        return false;
+      }
+      // Name
+      if (!productData.name.toLowerCase().includes(this.state.name.toLowerCase())) {
+        return false;
+      }
+      return true;
+    });
   }
 }
