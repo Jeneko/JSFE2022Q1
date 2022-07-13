@@ -21,6 +21,7 @@ export class ProductList implements IProductList {
 
     if (filter) {
       curProductData = filter.filter(curProductData);
+      curProductData = filter.sort(curProductData);
     }
 
     const allProducts = new DocumentFragment();

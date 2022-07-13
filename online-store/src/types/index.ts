@@ -52,6 +52,7 @@ export interface IFilter extends IComponent {
   resetFilterSliders(): void;
   clearSavedData(): void;
   updateFilterState(input: EventTarget): void;
+  sort(productDataArr: ProductData[]): ProductData[];
   filter(productDataArr: ProductData[]): ProductData[];
 }
 

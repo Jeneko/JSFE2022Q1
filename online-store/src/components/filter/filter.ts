@@ -252,6 +252,27 @@ export class Filter implements IFilter {
     }
   }
 
+  sort(productDataArr: ProductData[]): ProductData[] {
+    return productDataArr.sort((a, b) => {
+      switch (this.state.sort) {
+        case 'name-asc':
+          return a.name < b.name ? -1 : 1;
+        case 'name-desc':
+          return a.name > b.name ? -1 : 1;
+        case 'year-asc':
+          return a.year - b.year;
+        case 'year-desc':
+          return b.year - a.year;
+        case 'qty-asc':
+          return a.qty - b.qty;
+        case 'qty-desc':
+          return b.qty - a.qty;
+        default:
+          return -1;
+      }
+    });
+  }
+
   filter(productDataArr: ProductData[]): ProductData[] {
     return productDataArr.filter(productData => {
       // Manufacturer
