@@ -1,0 +1,12 @@
+.filter {
+  grid-area: left;
+}
+
+.filter__range-wrapper {
+  display: flex;
+  gap: 2rem;
+}
+
+.filter__range {
+  flex-grow: 1;
+}
