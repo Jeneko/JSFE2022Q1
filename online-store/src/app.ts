@@ -1,5 +1,5 @@
 import App from './components/app/app';
-import './style.css';
+import './scss/main.scss';
 
 const app = new App('app');
 app.start();
