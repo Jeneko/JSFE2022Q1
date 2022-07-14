@@ -92,7 +92,7 @@ export class Filter extends FilterState implements IFilter {
   }
 
   render(root: HTMLElement): void {
-    root.append(this.element);
+    root.replaceWith(this.element);
   }
 
   resetFilterSliders(): void {
