@@ -9,20 +9,22 @@ export class Catalog implements IComponent {
     this.element = document.createElement('main');
     this.element.className = 'catalog';
     this.element.innerHTML = `
-      <h1>Мобильные телефоны Online Store</h1>
-      <section class="filter"></section>
-      <section class="products"></section>
+      <h1 class="catalog__header">Каталог: <b>мобильные телефоны</b></h1>
+      <div class="catalog__content">
+        <section class="catalog__filter"></section>
+        <section class="catalog__products"></section>
+      </div>
     `;
 
     // Filter
     const filter = new Filter();
-    filter.render(this.element.querySelector('.filter') as HTMLElement);
+    filter.render(this.element.querySelector('.catalog__filter') as HTMLElement);
 
     // Product List
     const productList = new ProductList();
-    productList.render(this.element.querySelector('.products') as HTMLElement, store, filter);
+    productList.render(this.element.querySelector('.catalog__products') as HTMLElement, store, filter);
     this.element.addEventListener('filterUpdate', () => {
-      productList.render(this.element.querySelector('.products') as HTMLElement, store, filter);
+      productList.render(this.element.querySelector('.catalog__products') as HTMLElement, store, filter);
     });
   }
 

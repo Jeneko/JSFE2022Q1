@@ -11,7 +11,7 @@ export default class App implements IApp {
     this.element = (document.getElementById(mountPointId) as HTMLElement);
     this.element.innerHTML = `
       <header class="header"></header>
-      <main class="catalog--loading">Загрузка...</main>
+      <main class="catalog"></main>
       <footer class="footer"></footer>
     `;
   }
@@ -25,7 +25,7 @@ export default class App implements IApp {
     // Catalog
     this.getStore().then(store => {
       const catalog = new Catalog(store);
-      catalog.render(this.element.querySelector('.catalog--loading') as HTMLElement);
+      catalog.render(this.element.querySelector('.catalog') as HTMLElement);
     });
 
     // Footer
