@@ -11,7 +11,7 @@ export class Footer implements IComponent {
     this.element.innerHTML = `
       <ul class="footer-links">
         <li class="footer-links__item">
-          <a class="footer-links__link" href="https://rs.school/js/" target="_blank" title="Link to The Course">
+          <a class="footer-links__link" href="https://rs.school/js/" target="_blank" title="Link to the Course">
             <img class="footer-links__rss-logo" src="${rsschoolLogoUrl}" alt="RSSchool Logo">
           </a>
         </li>
@@ -21,7 +21,7 @@ export class Footer implements IComponent {
           </a>
         </li>
       </ul>
-      <p>2022</p>
+      <div class="footer__year">2022</div>
     `;
   }
 

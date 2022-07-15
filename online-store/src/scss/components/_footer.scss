@@ -1,7 +1,11 @@
 .footer {
-  background-color: #000;
-  text-align: center;
-  color: #fff;
+  padding: 2rem;
+  color: $color-white;
+  background-color: $color-gray-1;
+
+  &__year {
+    text-align: center;
+  }
 }
 
 .footer-links {
@@ -11,10 +15,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
 
-.footer-links__rss-logo,
-.footer-links__github-logo {
-  width: 100px;
-  padding: 1rem;
+  &__rss-logo,
+  &__github-logo {
+    width: 100px;
+    padding: 1rem;
+  }
 }
