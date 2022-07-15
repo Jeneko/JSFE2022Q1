@@ -1,7 +1,9 @@
 @import 'base/normalize';
 
+@import 'abstract/variables';
 @import 'base/globals';
 
+@import 'components/header';
 @import 'components/catalog';
 @import 'components/filter';
 @import 'components/product-list';

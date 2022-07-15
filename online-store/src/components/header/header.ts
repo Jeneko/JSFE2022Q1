@@ -7,9 +7,9 @@ export class Header implements IHeader {
     this.element = document.createElement('header');
     this.element.className = 'header';
     this.element.innerHTML = `
-      <a class="logo" href="#" title="На главную">Online Store</a>
-      <div class="cart">
-        Товаров в корзине: <span class="cart__qty">0</span>
+      <a class="header__logo" href="#" title="На главную">Online<span>Store</span></a>
+      <div class="header__cart" title="Избранное">
+        <span class="header__cart-qty">0</span>
       </div>
     `;
     this.updateCartQty();
@@ -22,6 +22,6 @@ export class Header implements IHeader {
   updateCartQty(): void {
     const favourites = localStorage.getItem('favourites');
     const favIdArr = favourites ? JSON.parse(favourites) : [];
-    (this.element.querySelector('.cart__qty') as HTMLElement).textContent = String(favIdArr.length);
+    (this.element.querySelector('.header__cart-qty') as HTMLElement).textContent = String(favIdArr.length);
   }
 }
