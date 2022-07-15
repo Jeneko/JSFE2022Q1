@@ -1,3 +1,7 @@
+h1 {
+  grid-area: header;
+}
+
 .catalog {
   display: grid;
   column-gap: 2rem;

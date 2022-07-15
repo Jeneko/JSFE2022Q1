@@ -1,3 +1,11 @@
+input[name="qty-min"],
+input[name="qty-max"],
+input[name="year-min"],
+input[name="year-max"] {
+  max-width: 40px;
+  text-align: center;
+}
+
 .filter {
   grid-area: left;
 }
