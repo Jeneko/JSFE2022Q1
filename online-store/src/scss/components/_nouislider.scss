@@ -1,0 +1,79 @@
+.noUi-target {
+  border-radius: 100px;
+  border-color: white;
+}
+
+.noUi-connect {
+  background-color: $color-primary;
+}
+
+.noUi-horizontal .noUi-handle {
+  cursor: pointer;
+  width: 34px;
+  height: 34px;
+  right: -17px;
+  top: -9px;
+  border-radius: 100px;
+  border: none;
+  box-shadow: 0px 4px 10px -3px rgba(0, 0, 0, 0.25);
+}
+
+.noUi-tooltip {
+  display: none;
+  color: white;
+  font-weight: bold;
+  background-color: $color-gray-1;
+  border: none;
+  min-width: 34px;
+}
+
+.noUi-handle {
+  &::before {
+    left: calc(50% - 9px);
+    top: calc(50% - 4px);
+    width: 18px;
+    height: 3px;
+    border-radius: 3px;
+    transition: all 0.5s ease;
+    background: linear-gradient(180deg, #FFFFFF 0%, #E6E6E6 100%);
+  }
+
+  &::after {
+    left: calc(50% - 9px);
+    top: calc(50% + 1px);
+    width: 18px;
+    height: 3px;
+    border-radius: 3px;
+    transition: all 0.5s ease;
+    background: linear-gradient(180deg, #FFFFFF 0%, #E6E6E6 100%);
+  }
+
+  &:focus-visible {
+    outline: 4px solid rgb(63 184 175 / 20%);
+  }
+}
+
+.noUi-handle:hover,
+.noUi-active {
+
+  &::before,
+  &::after {
+    background: $color-primary;
+  }
+
+  .noUi-tooltip {
+    color: white;
+    font-weight: bold;
+    background-color: $color-gray-1;
+    display: unset;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: calc(50% - 10px);
+      top: 100%;
+      border: 10px solid transparent;
+      border-top: 10px solid $color-gray-1;
+    }
+  }
+}
