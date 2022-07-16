@@ -1,4 +1,53 @@
-// COMMON
+// =====================
+//       COMMON
+// =====================
+
 :root {
   font-family: $font-family;
+}
+
+// =====================
+//      HEADINGS
+// =====================
+
+h2 {
+  color: $color-gray-4;
+  font-size: $h2-size;
+  font-weight: 700;
+}
+
+// =====================
+//   FORM COMPONENTS
+// =====================
+
+%input {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid $color-gray-5;
+  border-radius: $radius-default;
+
+  &:focus-visible {
+    outline: 4px solid rgb(63 184 175 / 20%);
+  }
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: $color-gray-3;
+}
+
+input {
+  @extend %input;
+}
+
+select {
+  @extend %input;
+  appearance: none;
+  cursor: pointer;
+  background-image: url(components/filter/input-icons/chevron.svg);
+  background-repeat: no-repeat;
+  background-position: right .7em top 50%;
 }

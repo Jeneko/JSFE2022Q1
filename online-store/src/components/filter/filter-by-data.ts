@@ -1,59 +1,69 @@
 export const filterByData = `
   <section>
-    <h3>Фильтры по значению</h3>
-    <fieldset>
+    <h3 class="filter__section-heading">Фильтры по значению</h3>
+    <fieldset class="filter__fieldset">
       <legend>Производитель</legend>
-      <label>
-        <input name="manufacturer[]" type="checkbox" value="Samsung">
+      <label class="filter__label">
+        <input class="filter__custom-checkbox" name="manufacturer[]" type="checkbox" value="Samsung">
+        <div class="checkbox-icon checkbox-icon--samsung"></div>
         Samsung
       </label>
-      <label>
-        <input name="manufacturer[]" type="checkbox" value="Apple">
+      <label class="filter__label">
+        <input class="filter__custom-checkbox" name="manufacturer[]" type="checkbox" value="Apple">
+        <div class="checkbox-icon checkbox-icon--apple"></div>
         Apple
       </label>
-      <label>
-        <input name="manufacturer[]" type="checkbox" value="Xiaomi">
+      <label class="filter__label">
+        <input class="filter__custom-checkbox" name="manufacturer[]" type="checkbox" value="Xiaomi">
+        <div class="checkbox-icon checkbox-icon--xiaomi"></div>
         Xiaomi
       </label>
     </fieldset>
 
-    <fieldset>
-      <legend>Количество камер</legend>
-      <label>
-        <input name="camera[]" type="checkbox" value="3">
-        3
-      </label>
-      <label>
-        <input name="camera[]" type="checkbox" value="2">
-        2
-      </label>
-      <label>
-        <input name="camera[]" type="checkbox" value="1">
-        1
-      </label>
-    </fieldset>
-
-    <fieldset>
-      <legend>Цвет</legend>
-      <label>
-        <input name="color[]" type="checkbox" value="белый">
+    <fieldset class="filter__fieldset">
+      <legend>Цвет корпуса</legend>
+      <label class="filter__label">
+        <input class="filter__custom-checkbox" name="color[]" type="checkbox" value="белый">
+        <div class="checkbox-color checkbox-color--white"></div>
         Белый
       </label>
-      <label>
-        <input name="color[]" type="checkbox" value="желтый">
+      <label class="filter__label">
+        <input class="filter__custom-checkbox" name="color[]" type="checkbox" value="желтый">
+        <div class="checkbox-color checkbox-color--yellow"></div>
         Желтый
       </label>
-      <label>
-        <input name="color[]" type="checkbox" value="красный">
+      <label class="filter__label">
+        <input class="filter__custom-checkbox" name="color[]" type="checkbox" value="красный">
+        <div class="checkbox-color checkbox-color--red"></div>
         Красный
       </label>
     </fieldset>
 
-    <p>
-      <label>
-        <input name="popular-only" type="checkbox">
+    <fieldset class="filter__fieldset">
+      <legend>Количество камер</legend>
+      <label class="filter__label">
+        <input class="filter__custom-checkbox" name="camera[]" type="checkbox" value="3">
+        <div class="checkbox-icon checkbox-icon--camera3"></div>
+        3
+      </label>
+      <label class="filter__label">
+        <input class="filter__custom-checkbox" name="camera[]" type="checkbox" value="2">
+        <div class="checkbox-icon checkbox-icon--camera2"></div>
+        2
+      </label>
+      <label class="filter__label">
+        <input class="filter__custom-checkbox" name="camera[]" type="checkbox" value="1">
+        <div class="checkbox-icon checkbox-icon--camera1"></div>
+        1
+      </label>
+    </fieldset>
+
+    <div class="filter__select">
+      <label class="filter__label">
+        <input class="filter__custom-checkbox" name="popular-only" type="checkbox">
+        <div class="checkbox-box"></div>
         Только популярные
       </label>
-    </p>
+    </div>
   </section>
 `;

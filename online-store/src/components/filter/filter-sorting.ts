@@ -1,6 +1,7 @@
 export const filterSorting = `
   <section>
-    <h3>Сортировка</h3>
+    <h3 class="filter__section-heading">Сортировка товара</h3>
+    <label>Сортировать</label>
     <select name="sort">
       <optgroup label="По названию">
         <option value="name-asc">От А до Я</option>

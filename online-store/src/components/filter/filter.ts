@@ -21,10 +21,10 @@ export class Filter extends FilterState implements IFilter {
         <section class="filter-by-range"></section>
         <section class="filter-by-name"></section>
         <section class="filter-sorting"></section>
-        <p>
-          <button type="reset" class="filter__reset">Сброс фильтров</button>
-          <button type="button" class="filter__clear">Сброс настроек</button>
-        </p>
+        <div class="filter__buttons">
+          <button type="reset" class="btn-default filter__reset">Сброс фильтров</button>
+          <button type="button" class="btn-primary filter__clear">Сброс настроек</button>
+        </div>
       </form>
     `;
 

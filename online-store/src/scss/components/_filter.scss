@@ -1,20 +1,264 @@
-input[name="qty-min"],
-input[name="qty-max"],
-input[name="year-min"],
-input[name="year-max"] {
-  max-width: 40px;
-  text-align: center;
-}
-
 .filter {
   grid-area: left;
+
+  &__input-wrapper {
+    position: relative;
+  }
+
+  &__buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin: 2rem 0;
+  }
+
+  &__section-heading {
+    margin: 2rem 0 1.5rem;
+    color: $color-gray-4;
+    font-weight: 300;
+    font-size: 14px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+  }
+
+  &__range-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-top: -10px;
+  }
+
+  &__range {
+    flex-grow: 1;
+  }
+
+  &__range-input {
+    color: $color-primary;
+    padding: 0;
+    font-weight: 700;
+    width: 40px;
+    text-align: center;
+    border: none;
+    background-color: unset;
+  }
+
+  &__range-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    margin: 0;
+    font-weight: bold;
+  }
+
+  &__fieldset {
+    color: $color-gray-3;
+    margin: 0 0 1rem;
+    padding: 1rem;
+    border: 1px $color-gray-6 dashed;
+    border-radius: $radius-default;
+    box-shadow: 0px 10px 20px -20px rgba(0, 0, 0, 0.25);
+    transition: box-shadow 0.3s ease;
+
+    &:hover {
+      box-shadow: 0px 15px 32px -25px rgba(0, 0, 0, 0.25);
+    }
+  }
+
+  &__select {
+    margin: 0.5rem 1rem;
+  }
+
+  &__label {
+    user-select: none;
+    margin: 0;
+    color: $color-black;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &:not(:last-child) {
+      margin-right: 0.75rem;
+    }
+
+    &:hover {
+      .checkbox-icon {
+        transform: scale(1.05);
+      }
+
+      .checkbox-color {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  &__custom-checkbox {
+    position: absolute;
+    z-index: -100;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+
+    &:checked {
+      &+.checkbox-icon::after {
+        opacity: 1;
+      }
+
+      &+.checkbox-color::after {
+        opacity: 1;
+        top: -3px;
+      }
+
+      &+.checkbox-box::after {
+        opacity: 1;
+        top: -3px;
+      }
+
+      &+.checkbox-box {
+        background-color: $color-primary;
+        border-color: $color-primary;
+      }
+    }
+  }
 }
 
-.filter__range-wrapper {
-  display: flex;
-  gap: 2rem;
+// Checkbox Icons
+
+%checkbox-icon {
+  width: 46px;
+  height: 46px;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.filter__range {
-  flex-grow: 1;
+.checkbox-icon {
+  @extend %checkbox-icon;
+  transition: transform 0.3s ease;
+
+  &::after {
+    opacity: 0;
+    display: block;
+    content: "";
+    @extend %checkbox-icon;
+    transition: all 0.4s ease-in-out;
+  }
+
+  &--apple {
+    background-image: url(components/filter/input-icons/apple.svg);
+
+    &::after {
+      background-image: url(components/filter/input-icons/appleA.svg);
+    }
+  }
+
+  &--samsung {
+    background-image: url(components/filter/input-icons/samsung.svg);
+
+    &::after {
+      background-image: url(components/filter/input-icons/samsungA.svg);
+    }
+  }
+
+  &--xiaomi {
+    background-image: url(components/filter/input-icons/xiaomi.svg);
+
+    &::after {
+      background-image: url(components/filter/input-icons/xiaomiA.svg);
+    }
+  }
+
+  &--camera1 {
+    background-image: url(components/filter/input-icons/camera1.svg);
+
+    &::after {
+      background-image: url(components/filter/input-icons/camera1A.svg);
+    }
+  }
+
+  &--camera2 {
+    background-image: url(components/filter/input-icons/camera2.svg);
+
+    &::after {
+      background-image: url(components/filter/input-icons/camera2A.svg);
+    }
+  }
+
+  &--camera3 {
+    background-image: url(components/filter/input-icons/camera3.svg);
+
+    &::after {
+      background-image: url(components/filter/input-icons/camera3A.svg);
+    }
+  }
+}
+
+// Checkbox Colors
+
+.checkbox-color {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: -6px;
+    width: 23px;
+    height: 26px;
+    background-image: url(components/filter/input-icons/check.svg);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.56, 0.24, 0.61, 3.4);
+  }
+
+  &--white {
+    background-color: white;
+  }
+
+  &--yellow {
+    background-color: #FFDE68;
+  }
+
+  &--red {
+    background-color: #EB5757;
+  }
+}
+
+// Checkbox box
+
+label:hover {
+  .checkbox-box {
+    border-color: $color-primary;
+  }
+}
+
+.checkbox-box {
+  display: inline-block;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: $radius-default;
+  border: 2px solid $color-gray-6;
+  transition: all 0.3s ease;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: -6px;
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-image: url(components/filter/input-icons/check.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.56, 0.24, 0.61, 3.4);
+  }
 }
