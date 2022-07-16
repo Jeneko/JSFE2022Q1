@@ -7,7 +7,7 @@
 
   &__buttons {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 0.5rem;
     margin: 2rem 0;
   }
@@ -26,10 +26,23 @@
     align-items: center;
     gap: 2rem;
     margin-top: -10px;
+
+    @include media-md {
+      padding-top: 0.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
   }
 
   &__range {
     flex-grow: 1;
+
+    @include media-md {
+      order: -1;
+      width: calc(100% - 26px);
+      flex-grow: 0;
+    }
   }
 
   &__range-input {
@@ -130,8 +143,14 @@
 %checkbox-icon {
   width: 46px;
   height: 46px;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+
+  @include media-md {
+    width: 26px;
+    height: 26px;
+  }
 }
 
 .checkbox-icon {

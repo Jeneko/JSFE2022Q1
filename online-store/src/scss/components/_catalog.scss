@@ -13,5 +13,9 @@
     column-gap: 2rem;
     grid-template-areas: "left right";
     grid-template-columns: auto 1fr;
+
+    @include media-md {
+      grid-template-columns: 200px 1fr;
+    }
   }
 }
