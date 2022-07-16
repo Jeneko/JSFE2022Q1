@@ -154,7 +154,7 @@ export class Filter extends FilterState implements IFilter {
         return false;
       }
       // Name
-      if (!productData.name.toLowerCase().includes(this.state.name.toLowerCase())) {
+      if (!productData.name.toLowerCase().includes(this.state.name.toLowerCase().trim())) {
         return false;
       }
       return true;
