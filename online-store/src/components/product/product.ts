@@ -1,4 +1,5 @@
 import { IProduct, ProductData } from 'types';
+import "./in-cart.svg";
 
 const MAX_FAV_QTY = 5;
 
@@ -19,14 +20,32 @@ export class Product implements IProduct {
     this.element.innerHTML = `
       <h3 class="product__name">${data.name}</h3>
       <img class="product__image" src="${data.imageUrl}" alt="${data.name}">
-      <ul class="product__properties">
-        <li class="product__property">Количество: <span class="product__qty">${data.qty}</span></li>
-        <li class="product__property">Год выхода: <span class="product__year">${data.year}</span></li>
-        <li class="product__property">Производитель: <span class="product__manufacturer">${data.manufacturer}</span></li>
-        <li class="product__property">Цвет: <span class="product__color">${data.color}</span></li>
-        <li class="product__property">Количество камер: <span class="product__camera">${data.camera}</span></li>
-        <li class="product__property">Популярный: <span class="product__qty">${data.popular ? 'Да' : 'Нет'}</span></li>
-      </ul>
+      <table class="product__properties">
+        <tr class="product__property">
+          <td class="product__property-key">Количество</td>
+          <td class="product__property-value product__qty">${data.qty}</td>
+        </tr>
+        <tr class="product__property">
+          <td class="product__property-key">Год выхода</td>
+          <td class="product__property-value product__year">${data.year}</td>
+        </tr>
+        <tr class="product__property">
+          <td class="product__property-key">Производитель</td>
+          <td class="product__property-value product__manufacturer">${data.manufacturer}</td>
+        </tr>
+        <tr class="product__property">
+          <td class="product__property-key">Цвет</td>
+          <td class="product__property-value product__color">${data.color}</td>
+        </tr>
+        <tr class="product__property">
+          <td class="product__property-key">Камер (шт.)</td>
+          <td class="product__property-value product__camera">${data.camera}</td>
+        </tr>
+        <tr class="product__property">
+          <td class="product__property-key">Популярный</td>
+          <td class="product__property-value product__qty">${data.popular ? 'Да' : 'Нет'}</td>
+        </tr>
+      </table>
     `;
 
     // Manage favourites
