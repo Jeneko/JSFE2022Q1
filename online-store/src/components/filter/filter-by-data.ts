@@ -37,6 +37,11 @@ export const filterByData = `
         <div class="checkbox-color checkbox-color--red"></div>
         Красный
       </label>
+      <label class="filter__label">
+        <input class="filter__custom-checkbox" name="color[]" type="checkbox" value="черный">
+        <div class="checkbox-color checkbox-color--black"></div>
+        Черный
+      </label>
     </fieldset>
 
     <fieldset class="filter__fieldset">
