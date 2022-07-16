@@ -5,4 +5,9 @@
   row-gap: 3rem;
   justify-content: center;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+
+  &__no-product {
+    grid-column-end: -1;
+    grid-column-start: 1;
+  }
 }

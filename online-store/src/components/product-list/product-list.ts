@@ -34,7 +34,7 @@ export class ProductList implements IProductList {
     if (allProducts.children.length) {
       container.append(allProducts);
     } else {
-      container.insertAdjacentHTML('beforeend', '<h3>Извините, совпадений не обнаружено</h3>');
+      container.insertAdjacentHTML('beforeend', '<h3 class="product-list__no-product">Извините, совпадений не обнаружено</h3>');
     }
 
     root.replaceWith(this.element);
