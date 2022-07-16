@@ -1,7 +1,7 @@
 import { IProduct, ProductData } from 'types';
 import "./in-cart.svg";
 
-const MAX_FAV_QTY = 5;
+const MAX_FAV_QTY = 20;
 
 export class Product implements IProduct {
   element: HTMLElement;
