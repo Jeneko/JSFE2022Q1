@@ -21,8 +21,18 @@ $breakpoint-lg: 1280px;
 $breakpoint-md: 768px;
 
 // =====================
+//       SIZES
+// =====================
+
+$radius-default: 3px;
+
+// =====================
 //     TYPOGRAPHY
 // =====================
 
 // FONTS
 $font-family: 'Arial', 'Tahoma', sans-serif;
+
+// HEADING SIZES
+$h1-size: 2rem;
+$h2-size: 1.5rem;
