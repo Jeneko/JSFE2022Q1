@@ -13,7 +13,7 @@ module.exports = {
     assetModuleFilename: 'images/assets/[name]-[hash][ext]',
     clean: true,
   },
-  devtool: 'eval',
+  devtool: 'source-map',
   resolve: {
     extensions: ['.js', '.ts'],
     plugins: [new TsconfigPathsPlugin()],
