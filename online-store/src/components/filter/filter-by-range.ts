@@ -1,6 +1,6 @@
 export const filterByRange = `
   <section>
-    <h3 class="filter__section-heading">Фильтры по диапазону</h3>
+    <h3 class="filter__section-heading">Фильтры по&nbsp;диапазону</h3>
     <fieldset class="filter__fieldset">
       <legend>Количество на складе</legend>
       <div class="filter__range-wrapper">

@@ -15,7 +15,7 @@ export class Filter extends FilterState implements IFilter {
     this.element = document.createElement('section');
     this.element.className = 'filter';
     this.element.innerHTML = `
-      <h2>Фильтрация и сортировка</h2>
+      <h2>Фильтрация и&nbsp;сортировка</h2>
       <form class="filter__form" name="product-filter-form">
         <section class="filter-by-data"></section>
         <section class="filter-by-range"></section>

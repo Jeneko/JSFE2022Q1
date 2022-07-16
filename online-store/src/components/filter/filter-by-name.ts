@@ -1,6 +1,6 @@
 export const filterByName = `
   <section>
-    <h3 class="filter__section-heading">Фильтр по названию</h3>
+    <h3 class="filter__section-heading">Фильтр по&nbsp;названию</h3>
     <div class="filter__name">
       <label class="filter__label-name">Название содержит</label>
       <div class="filter__input-wrapper">

@@ -1,6 +1,6 @@
 export const filterByData = `
   <section>
-    <h3 class="filter__section-heading">Фильтры по значению</h3>
+    <h3 class="filter__section-heading">Фильтры по&nbsp;значению</h3>
     <fieldset class="filter__fieldset">
       <legend>Производитель</legend>
       <label class="filter__label">
