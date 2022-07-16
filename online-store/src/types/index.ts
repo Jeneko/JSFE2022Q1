@@ -2,7 +2,7 @@ import type { API as INoUiApi } from 'nouislider/dist/nouislider';
 
 export type Sort = 'name-asc' | 'name-desc' | 'year-asc' | 'year-desc' | 'year-asc' | 'qty-asc' | 'qty-desc';
 export type Manufacturer = 'Apple' | 'Samsung' | 'Xiaomi';
-export type Color = 'красный' | 'белый' | 'черный';
+export type Color = 'красный' | 'белый' | 'черный' | 'желтый';
 export type Camera = 1 | 2 | 3;
 
 export interface IApp {
