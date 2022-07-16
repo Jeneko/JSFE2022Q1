@@ -6,7 +6,7 @@ export class ProductList implements IProductList {
 
   constructor() {
     this.element = document.createElement('section');
-    this.element.className = 'products';
+    this.element.className = 'catalog__products';
     this.element.innerHTML = `
       <h2>Список товаров</h2>
       <div class="product-list"></div>
