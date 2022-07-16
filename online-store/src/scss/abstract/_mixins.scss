@@ -1,0 +1,3 @@
+@mixin media-md {
+  @media screen and (max-width: ($breakpoint-lg - 1px)) { @content; }
+}

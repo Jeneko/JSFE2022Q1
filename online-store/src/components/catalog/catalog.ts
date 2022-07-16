@@ -9,10 +9,12 @@ export class Catalog implements IComponent {
     this.element = document.createElement('main');
     this.element.className = 'catalog';
     this.element.innerHTML = `
-      <h1 class="catalog__header">Каталог: <b>мобильные телефоны</b></h1>
-      <div class="catalog__content">
-        <section class="catalog__filter"></section>
-        <section class="catalog__products"></section>
+      <div class="container">
+        <h1 class="catalog__header">Каталог: <b>мобильные телефоны</b></h1>
+        <div class="catalog__content">
+          <section class="catalog__filter"></section>
+          <section class="catalog__products"></section>
+        </div>
       </div>
     `;
 
