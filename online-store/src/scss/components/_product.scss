@@ -1,9 +1,10 @@
 .product {
-  max-width: 360px;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: relative;
+  box-sizing: border-box;
+  max-width: 360px;
   cursor: pointer;
   text-align: center;
   padding: 32px 24px 38px;
