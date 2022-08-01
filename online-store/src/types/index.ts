@@ -57,7 +57,6 @@ export interface IProductList {
 export interface IProduct extends IComponent {
   element: HTMLElement;
   render(root: HTMLElement): void;
-  getFavouritesIds(): number[];
   canAddToFavourites(): boolean;
   toggleFavourites(id: number): void;
 }

@@ -1,4 +1,5 @@
 import { IProduct, IProductData } from 'types';
+import { getFavouritesIds } from 'components/utils/local-storage';
 import { getProductHTML } from './product-html';
 import "./in-cart.svg";
 
@@ -8,7 +9,7 @@ export class Product implements IProduct {
   element: HTMLElement;
 
   constructor(data: IProductData) {
-    const favouritesIds = this.getFavouritesIds();
+    const favouritesIds = getFavouritesIds();
 
     this.element = document.createElement('article');
     this.element.className = 'product';
@@ -33,19 +34,13 @@ export class Product implements IProduct {
     root.append(this.element);
   }
 
-  getFavouritesIds(): number[] {
-    const favourites = localStorage.getItem('favourites');
-    const favouritesIds = favourites ? JSON.parse(favourites) : [];
-    return favouritesIds;
-  }
-
   canAddToFavourites(): boolean {
-    const favouritesIds = this.getFavouritesIds();
+    const favouritesIds = getFavouritesIds();
     return favouritesIds.length < MAX_FAV_QTY;
   }
 
   toggleFavourites(id: number): void {
-    let favouritesIds = this.getFavouritesIds();
+    let favouritesIds = getFavouritesIds();
 
     if (favouritesIds.includes(id)) {
       favouritesIds = favouritesIds.filter((el: number) => el !== id);
