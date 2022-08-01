@@ -9,7 +9,7 @@
     "lint": "eslint ./src --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Evgeniy Kozlov <jenekomail@gmail.com> (https://github.com/Jeneko)",
   "license": "ISC",
   "devDependencies": {
     "@types/jest": "^28.1.6",
