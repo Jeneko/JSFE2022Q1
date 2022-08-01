@@ -1,6 +1,6 @@
 .noUi-target {
   border-radius: 100px;
-  border-color: white;
+  border-color: $color-white;
 }
 
 .noUi-connect {
@@ -20,7 +20,7 @@
 
 .noUi-tooltip {
   display: none;
-  color: white;
+  color: $color-white;
   font-weight: bold;
   background-color: $color-gray-1;
   border: none;
@@ -62,7 +62,7 @@
   }
 
   .noUi-tooltip {
-    color: white;
+    color: $color-white;
     font-weight: bold;
     background-color: $color-gray-1;
     display: unset;
