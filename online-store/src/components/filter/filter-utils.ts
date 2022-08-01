@@ -154,10 +154,10 @@ export class FilterState {
 export const sortMapper: SortMapper = {
   [Sort.nameAsc]: (a, b) => a.name < b.name ? -1 : 1,
   [Sort.nameDesc]: (a, b) => a.name > b.name ? -1 : 1,
-  [Sort.yearAsc]: (a, b) => a.name < b.name ? -1 : 1,
-  [Sort.yearDesc]: (a, b) => a.name < b.name ? -1 : 1,
-  [Sort.qtyAsc]: (a, b) => a.name < b.name ? -1 : 1,
-  [Sort.qtyDesc]: (a, b) => a.name < b.name ? -1 : 1,
+  [Sort.yearAsc]: (a, b) => a.year - b.year,
+  [Sort.yearDesc]: (a, b) => b.year - a.year,
+  [Sort.qtyAsc]: (a, b) => a.qty - b.qty,
+  [Sort.qtyDesc]: (a, b) => b.qty - a.qty,
 };
 
 export function fireFilterUpdateEvent(element: HTMLElement): void {
