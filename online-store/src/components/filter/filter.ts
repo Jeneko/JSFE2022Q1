@@ -1,6 +1,6 @@
 import { IFilter, IProductData } from 'types';
 import { RangeSlider } from 'components/range-slider/range-slider';
-import { FilterState } from './filter-utils';
+import { FilterState, sortMapper } from './filter-utils';
 import { filterByData } from './filter-by-data';
 import { filterByRange } from './filter-by-range';
 import { filterByName } from './filter-by-name';
@@ -108,24 +108,7 @@ export class Filter extends FilterState implements IFilter {
   }
 
   sort(productDataArr: IProductData[]): IProductData[] {
-    return productDataArr.sort((a, b) => {
-      switch (this.state.sort) {
-        case 'name-asc':
-          return a.name < b.name ? -1 : 1;
-        case 'name-desc':
-          return a.name > b.name ? -1 : 1;
-        case 'year-asc':
-          return a.year - b.year;
-        case 'year-desc':
-          return b.year - a.year;
-        case 'qty-asc':
-          return a.qty - b.qty;
-        case 'qty-desc':
-          return b.qty - a.qty;
-        default:
-          return -1;
-      }
-    });
+    return productDataArr.sort(sortMapper[this.state.sort]);
   }
 
   filter(productDataArr: IProductData[]): IProductData[] {

@@ -1,4 +1,4 @@
-import { FilterFields, Camera, Manufacturer, Color, Sort } from 'types';
+import { FilterFields, Camera, Manufacturer, Color, Sort, SortMapper } from 'types';
 
 export class FilterState {
   state: FilterFields = {
@@ -150,3 +150,12 @@ export class FilterState {
     (form.querySelector(`[name="sort"]`) as HTMLInputElement).value = this.state.sort;
   }
 }
+
+export const sortMapper: SortMapper = {
+  [Sort.nameAsc]: (a, b) => a.name < b.name ? -1 : 1,
+  [Sort.nameDesc]: (a, b) => a.name > b.name ? -1 : 1,
+  [Sort.yearAsc]: (a, b) => a.name < b.name ? -1 : 1,
+  [Sort.yearDesc]: (a, b) => a.name < b.name ? -1 : 1,
+  [Sort.qtyAsc]: (a, b) => a.name < b.name ? -1 : 1,
+  [Sort.qtyDesc]: (a, b) => a.name < b.name ? -1 : 1,
+};

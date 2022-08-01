@@ -1,5 +1,6 @@
 import type { API as INoUiApi } from 'nouislider/dist/nouislider';
 
+export type SortMapper = Record<Sort, (a: IProductData, b: IProductData) => number>;
 export type Manufacturer = 'Apple' | 'Samsung' | 'Xiaomi';
 export type Color = 'красный' | 'белый' | 'черный' | 'желтый';
 export type Camera = 1 | 2 | 3;
