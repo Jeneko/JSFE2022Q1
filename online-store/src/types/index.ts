@@ -8,7 +8,7 @@ export type Camera = 1 | 2 | 3;
 export interface IApp {
   element: HTMLElement;
   start(): void;
-  getStore(): Promise<ProductData[]>;
+  getStore(): Promise<IProductData[]>;
 }
 
 export interface IRangeSlider {
@@ -26,7 +26,7 @@ export interface IHeader extends IComponent {
 
 export interface IProductList {
   element: HTMLElement;
-  render(root: HTMLElement, store: ProductData[], filter?: IFilter): void;
+  render(root: HTMLElement, store: IProductData[], filter?: IFilter): void;
 }
 
 export interface IProduct extends IComponent {
@@ -37,7 +37,7 @@ export interface IProduct extends IComponent {
   toggleFavourites(id: number): void;
 }
 
-export interface ProductData {
+export interface IProductData {
   id: number;
   name: string;
   imageUrl: string;
@@ -59,8 +59,8 @@ export interface IFilter extends IComponent {
   resetFilterSliders(): void;
   clearSavedData(): void;
   updateFilterState(input: EventTarget): void;
-  sort(productDataArr: ProductData[]): ProductData[];
-  filter(productDataArr: ProductData[]): ProductData[];
+  sort(productDataArr: IProductData[]): IProductData[];
+  filter(productDataArr: IProductData[]): IProductData[];
 }
 
 export interface FilterFields {

@@ -1,4 +1,4 @@
-import { IProduct, ProductData } from 'types';
+import { IProduct, IProductData } from 'types';
 import "./in-cart.svg";
 
 const MAX_FAV_QTY = 20;
@@ -6,7 +6,7 @@ const MAX_FAV_QTY = 20;
 export class Product implements IProduct {
   element: HTMLElement;
 
-  constructor(data: ProductData) {
+  constructor(data: IProductData) {
     const favouritesIds = this.getFavouritesIds();
 
     this.element = document.createElement('article');

@@ -1,8 +1,8 @@
-import { ProductData } from "types";
+import { IProductData } from "types";
 
-export async function getResource(): Promise<ProductData[]> {
+export async function getResource(): Promise<IProductData[]> {
   const url = 'data/productList.json';
   const response = await fetch(url);
   const json = await response.json();
-  return json.products as ProductData[];
+  return json.products as IProductData[];
 }

@@ -1,4 +1,4 @@
-import { IFilter, ProductData } from 'types';
+import { IFilter, IProductData } from 'types';
 import { RangeSlider } from 'components/range-slider/range-slider';
 import { FilterState } from './filter-utils';
 import { filterByData } from './filter-by-data';
@@ -106,7 +106,7 @@ export class Filter extends FilterState implements IFilter {
     location.reload();
   }
 
-  sort(productDataArr: ProductData[]): ProductData[] {
+  sort(productDataArr: IProductData[]): IProductData[] {
     return productDataArr.sort((a, b) => {
       switch (this.state.sort) {
         case 'name-asc':
@@ -127,7 +127,7 @@ export class Filter extends FilterState implements IFilter {
     });
   }
 
-  filter(productDataArr: ProductData[]): ProductData[] {
+  filter(productDataArr: IProductData[]): IProductData[] {
     return productDataArr.filter(productData => {
       // Manufacturer
       if (this.state.manufacturer.size && !this.state.manufacturer.has(productData.manufacturer)) {

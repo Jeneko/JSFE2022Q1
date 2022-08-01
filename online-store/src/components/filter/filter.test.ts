@@ -1,5 +1,5 @@
 import { Filter } from './filter';
-import { ProductData } from 'types';
+import { IProductData } from 'types';
 
 // =====================
 //     TEST SORTING
@@ -7,7 +7,7 @@ import { ProductData } from 'types';
 
 describe('Test Filter Sorting', () => {
 
-  const mockData: ProductData[] = [
+  const mockData: IProductData[] = [
     { id: 2, name: 'Babel', manufacturer: "Apple", imageUrl: "", qty: 2, year: 2012, color: "черный", camera: 1, popular: false },
     { id: 1, name: 'Apple', manufacturer: "Apple", imageUrl: "", qty: 1, year: 2011, color: "черный", camera: 1, popular: false },
     { id: 4, name: 'Delta', manufacturer: "Apple", imageUrl: "", qty: 4, year: 2014, color: "черный", camera: 1, popular: false },
@@ -19,7 +19,7 @@ describe('Test Filter Sorting', () => {
     const filter = new Filter();
     filter.state.sort = 'name-desc';
 
-    const expectedResult: ProductData[] = [
+    const expectedResult: IProductData[] = [
       { id: 4, name: 'Delta', manufacturer: "Apple", imageUrl: "", qty: 4, year: 2014, color: "черный", camera: 1, popular: false },
       { id: 3, name: 'Cappa', manufacturer: "Apple", imageUrl: "", qty: 3, year: 2013, color: "черный", camera: 1, popular: false },
       { id: 2, name: 'Babel', manufacturer: "Apple", imageUrl: "", qty: 2, year: 2012, color: "черный", camera: 1, popular: false },
@@ -34,7 +34,7 @@ describe('Test Filter Sorting', () => {
     const filter = new Filter();
     filter.state.sort = 'name-asc';
 
-    const expectedResult: ProductData[] = [
+    const expectedResult: IProductData[] = [
       { id: 1, name: 'Apple', manufacturer: "Apple", imageUrl: "", qty: 1, year: 2011, color: "черный", camera: 1, popular: false },
       { id: 2, name: 'Babel', manufacturer: "Apple", imageUrl: "", qty: 2, year: 2012, color: "черный", camera: 1, popular: false },
       { id: 3, name: 'Cappa', manufacturer: "Apple", imageUrl: "", qty: 3, year: 2013, color: "черный", camera: 1, popular: false },
@@ -49,7 +49,7 @@ describe('Test Filter Sorting', () => {
     const filter = new Filter();
     filter.state.sort = 'year-asc';
 
-    const expectedResult: ProductData[] = [
+    const expectedResult: IProductData[] = [
       { id: 1, name: 'Apple', manufacturer: "Apple", imageUrl: "", qty: 1, year: 2011, color: "черный", camera: 1, popular: false },
       { id: 2, name: 'Babel', manufacturer: "Apple", imageUrl: "", qty: 2, year: 2012, color: "черный", camera: 1, popular: false },
       { id: 3, name: 'Cappa', manufacturer: "Apple", imageUrl: "", qty: 3, year: 2013, color: "черный", camera: 1, popular: false },
@@ -64,7 +64,7 @@ describe('Test Filter Sorting', () => {
     const filter = new Filter();
     filter.state.sort = 'year-desc';
 
-    const expectedResult: ProductData[] = [
+    const expectedResult: IProductData[] = [
       { id: 4, name: 'Delta', manufacturer: "Apple", imageUrl: "", qty: 4, year: 2014, color: "черный", camera: 1, popular: false },
       { id: 3, name: 'Cappa', manufacturer: "Apple", imageUrl: "", qty: 3, year: 2013, color: "черный", camera: 1, popular: false },
       { id: 2, name: 'Babel', manufacturer: "Apple", imageUrl: "", qty: 2, year: 2012, color: "черный", camera: 1, popular: false },
@@ -79,7 +79,7 @@ describe('Test Filter Sorting', () => {
     const filter = new Filter();
     filter.state.sort = 'qty-asc';
 
-    const expectedResult: ProductData[] = [
+    const expectedResult: IProductData[] = [
       { id: 1, name: 'Apple', manufacturer: "Apple", imageUrl: "", qty: 1, year: 2011, color: "черный", camera: 1, popular: false },
       { id: 2, name: 'Babel', manufacturer: "Apple", imageUrl: "", qty: 2, year: 2012, color: "черный", camera: 1, popular: false },
       { id: 3, name: 'Cappa', manufacturer: "Apple", imageUrl: "", qty: 3, year: 2013, color: "черный", camera: 1, popular: false },
@@ -94,7 +94,7 @@ describe('Test Filter Sorting', () => {
     const filter = new Filter();
     filter.state.sort = 'qty-desc';
 
-    const expectedResult: ProductData[] = [
+    const expectedResult: IProductData[] = [
       { id: 4, name: 'Delta', manufacturer: "Apple", imageUrl: "", qty: 4, year: 2014, color: "черный", camera: 1, popular: false },
       { id: 3, name: 'Cappa', manufacturer: "Apple", imageUrl: "", qty: 3, year: 2013, color: "черный", camera: 1, popular: false },
       { id: 2, name: 'Babel', manufacturer: "Apple", imageUrl: "", qty: 2, year: 2012, color: "черный", camera: 1, popular: false },
@@ -111,7 +111,7 @@ describe('Test Filter Sorting', () => {
 
 describe('Test Filter Filtering', () => {
 
-  const mockData: ProductData[] = [
+  const mockData: IProductData[] = [
     { id: 2, name: 'Babel', manufacturer: "Apple", imageUrl: "", qty: 2, year: 2012, color: "белый", camera: 1, popular: false },
     { id: 1, name: 'Apple', manufacturer: "Apple", imageUrl: "", qty: 1, year: 2011, color: "черный", camera: 3, popular: true },
     { id: 4, name: 'Delta', manufacturer: "Samsung", imageUrl: "", qty: 4, year: 2014, color: "черный", camera: 2, popular: false },
@@ -125,7 +125,7 @@ describe('Test Filter Filtering', () => {
     const filter = new Filter();
     filter.state.manufacturer = new Set(['Apple', 'Samsung']);
 
-    const expectedResult: ProductData[] = [
+    const expectedResult: IProductData[] = [
       { id: 2, name: 'Babel', manufacturer: "Apple", imageUrl: "", qty: 2, year: 2012, color: "белый", camera: 1, popular: false },
       { id: 1, name: 'Apple', manufacturer: "Apple", imageUrl: "", qty: 1, year: 2011, color: "черный", camera: 3, popular: true },
       { id: 4, name: 'Delta', manufacturer: "Samsung", imageUrl: "", qty: 4, year: 2014, color: "черный", camera: 2, popular: false },
@@ -140,7 +140,7 @@ describe('Test Filter Filtering', () => {
     const filter = new Filter();
     filter.state.camera = new Set([1, 3]);
 
-    const expectedResult: ProductData[] = [
+    const expectedResult: IProductData[] = [
       { id: 2, name: 'Babel', manufacturer: "Apple", imageUrl: "", qty: 2, year: 2012, color: "белый", camera: 1, popular: false },
       { id: 1, name: 'Apple', manufacturer: "Apple", imageUrl: "", qty: 1, year: 2011, color: "черный", camera: 3, popular: true },
       { id: 3, name: 'Cappa', manufacturer: "Xiaomi", imageUrl: "", qty: 3, year: 2013, color: "белый", camera: 3, popular: false },
@@ -155,7 +155,7 @@ describe('Test Filter Filtering', () => {
     const filter = new Filter();
     filter.state.color = new Set(['красный', 'белый']);
 
-    const expectedResult: ProductData[] = [
+    const expectedResult: IProductData[] = [
       { id: 2, name: 'Babel', manufacturer: "Apple", imageUrl: "", qty: 2, year: 2012, color: "белый", camera: 1, popular: false },
       { id: 3, name: 'Cappa', manufacturer: "Xiaomi", imageUrl: "", qty: 3, year: 2013, color: "белый", camera: 3, popular: false },
       { id: 5, name: 'Eifel', manufacturer: "Xiaomi", imageUrl: "", qty: 4, year: 2015, color: "красный", camera: 1, popular: false },
@@ -170,7 +170,7 @@ describe('Test Filter Filtering', () => {
     const filter = new Filter();
     filter.state.popularOnly = true;
 
-    const expectedResult: ProductData[] = [
+    const expectedResult: IProductData[] = [
       { id: 1, name: 'Apple', manufacturer: "Apple", imageUrl: "", qty: 1, year: 2011, color: "черный", camera: 3, popular: true },
       { id: 6, name: 'Fidel', manufacturer: "Samsung", imageUrl: "", qty: 3, year: 2016, color: "красный", camera: 2, popular: true },
     ];
@@ -183,7 +183,7 @@ describe('Test Filter Filtering', () => {
     const filter = new Filter();
     filter.state.qty = [2, 3];
 
-    const expectedResult: ProductData[] = [
+    const expectedResult: IProductData[] = [
       { id: 2, name: 'Babel', manufacturer: "Apple", imageUrl: "", qty: 2, year: 2012, color: "белый", camera: 1, popular: false },
       { id: 3, name: 'Cappa', manufacturer: "Xiaomi", imageUrl: "", qty: 3, year: 2013, color: "белый", camera: 3, popular: false },
       { id: 6, name: 'Fidel', manufacturer: "Samsung", imageUrl: "", qty: 3, year: 2016, color: "красный", camera: 2, popular: true },
@@ -197,7 +197,7 @@ describe('Test Filter Filtering', () => {
     const filter = new Filter();
     filter.state.year = [2013, 2015];
 
-    const expectedResult: ProductData[] = [
+    const expectedResult: IProductData[] = [
       { id: 4, name: 'Delta', manufacturer: "Samsung", imageUrl: "", qty: 4, year: 2014, color: "черный", camera: 2, popular: false },
       { id: 3, name: 'Cappa', manufacturer: "Xiaomi", imageUrl: "", qty: 3, year: 2013, color: "белый", camera: 3, popular: false },
       { id: 5, name: 'Eifel', manufacturer: "Xiaomi", imageUrl: "", qty: 4, year: 2015, color: "красный", camera: 1, popular: false },
@@ -211,7 +211,7 @@ describe('Test Filter Filtering', () => {
     const filter = new Filter();
     filter.state.name = '   eL ';
 
-    const expectedResult: ProductData[] = [
+    const expectedResult: IProductData[] = [
       { id: 2, name: 'Babel', manufacturer: "Apple", imageUrl: "", qty: 2, year: 2012, color: "белый", camera: 1, popular: false },
       { id: 4, name: 'Delta', manufacturer: "Samsung", imageUrl: "", qty: 4, year: 2014, color: "черный", camera: 2, popular: false },
       { id: 5, name: 'Eifel', manufacturer: "Xiaomi", imageUrl: "", qty: 4, year: 2015, color: "красный", camera: 1, popular: false },

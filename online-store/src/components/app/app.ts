@@ -1,4 +1,4 @@
-import { IApp, ProductData } from 'types';
+import { IApp, IProductData } from 'types';
 import { Header } from 'components/header/header';
 import { Catalog } from 'components/catalog/catalog';
 import { Footer } from 'components/footer/footer';
@@ -33,7 +33,7 @@ export default class App implements IApp {
     footer.render(this.element.querySelector('.footer') as HTMLElement);
   }
 
-  async getStore(): Promise<ProductData[]> {
+  async getStore(): Promise<IProductData[]> {
     return await getResource();
   }
 }

@@ -1,11 +1,11 @@
-import { IComponent, ProductData } from 'types';
+import { IComponent, IProductData } from 'types';
 import { Filter } from 'components/filter/filter';
 import { ProductList } from 'components/product-list/product-list';
 
 export class Catalog implements IComponent {
   element: HTMLElement;
 
-  constructor(store: ProductData[]) {
+  constructor(store: IProductData[]) {
     this.element = document.createElement('main');
     this.element.className = 'catalog';
     this.element.innerHTML = `

@@ -1,4 +1,4 @@
-import { IProductList, IFilter, ProductData } from 'types';
+import { IProductList, IFilter, IProductData } from 'types';
 import { Product } from 'components/product/product';
 
 export class ProductList implements IProductList {
@@ -13,7 +13,7 @@ export class ProductList implements IProductList {
     `;
   }
 
-  render(root: HTMLElement, store: ProductData[], filter?: IFilter): void {
+  render(root: HTMLElement, store: IProductData[], filter?: IFilter): void {
     const container = this.element.querySelector('.product-list') as HTMLElement;
     container.innerHTML = '';
 
@@ -26,7 +26,7 @@ export class ProductList implements IProductList {
 
     const allProducts = new DocumentFragment();
 
-    curProductData.forEach((productData: ProductData) => {
+    curProductData.forEach((productData: IProductData) => {
       const curProduct = new Product(productData);
       allProducts.append(curProduct.element);
     });
