@@ -159,3 +159,7 @@ export const sortMapper: SortMapper = {
   [Sort.qtyAsc]: (a, b) => a.name < b.name ? -1 : 1,
   [Sort.qtyDesc]: (a, b) => a.name < b.name ? -1 : 1,
 };
+
+export function fireFilterUpdateEvent(element: HTMLElement): void {
+  element.dispatchEvent(new Event('filterUpdate', { bubbles: true }));
+}

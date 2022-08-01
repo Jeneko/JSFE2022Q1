@@ -1,6 +1,6 @@
 import { IFilter, IProductData } from 'types';
 import { RangeSlider } from 'components/range-slider/range-slider';
-import { FilterState, sortMapper } from './filter-utils';
+import { FilterState, sortMapper, fireFilterUpdateEvent } from './filter-utils';
 import { filterByData } from './filter-by-data';
 import { filterByRange } from './filter-by-range';
 import { filterByName } from './filter-by-name';
@@ -64,7 +64,7 @@ export class Filter extends FilterState implements IFilter {
     filterForm.addEventListener('input', (e) => {
       this.updateFilterState(e.target as HTMLInputElement);
       this.saveFilterState();
-      this.element.dispatchEvent(new Event('filterUpdate', { bubbles: true }));
+      fireFilterUpdateEvent(this.element);
     });
 
     // On filter reset
@@ -73,7 +73,7 @@ export class Filter extends FilterState implements IFilter {
       this.resetFilterState();
       this.resetFilterSliders();
       this.applyFilterState(this.element.querySelector('.filter__form') as HTMLElement);
-      this.element.dispatchEvent(new Event('filterUpdate', { bubbles: true }));
+      fireFilterUpdateEvent(this.element);
     });
 
     // On filter clear
@@ -88,7 +88,7 @@ export class Filter extends FilterState implements IFilter {
       inputName.value = '';
       this.updateFilterState(inputName);
       this.saveFilterState();
-      this.element.dispatchEvent(new Event('filterUpdate', { bubbles: true }));
+      fireFilterUpdateEvent(this.element);
     });
   }
 
