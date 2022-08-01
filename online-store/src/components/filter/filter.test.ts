@@ -1,5 +1,5 @@
 import { Filter } from './filter';
-import { IProductData } from 'types';
+import { IProductData, Sort } from 'types';
 
 // =====================
 //     TEST SORTING
@@ -17,7 +17,7 @@ describe('Test Filter Sorting', () => {
   it('Sort direction: from Z to A', () => {
 
     const filter = new Filter();
-    filter.state.sort = 'name-desc';
+    filter.state.sort = Sort.nameDesc;
 
     const expectedResult: IProductData[] = [
       { id: 4, name: 'Delta', manufacturer: "Apple", imageUrl: "", qty: 4, year: 2014, color: "черный", camera: 1, popular: false },
@@ -32,7 +32,7 @@ describe('Test Filter Sorting', () => {
   it('Sort direction: from A to Z', () => {
 
     const filter = new Filter();
-    filter.state.sort = 'name-asc';
+    filter.state.sort = Sort.nameAsc;
 
     const expectedResult: IProductData[] = [
       { id: 1, name: 'Apple', manufacturer: "Apple", imageUrl: "", qty: 1, year: 2011, color: "черный", camera: 1, popular: false },
@@ -47,7 +47,7 @@ describe('Test Filter Sorting', () => {
   it('Sort direction: from OLDER to NEWER', () => {
 
     const filter = new Filter();
-    filter.state.sort = 'year-asc';
+    filter.state.sort = Sort.yearAsc;
 
     const expectedResult: IProductData[] = [
       { id: 1, name: 'Apple', manufacturer: "Apple", imageUrl: "", qty: 1, year: 2011, color: "черный", camera: 1, popular: false },
@@ -62,7 +62,7 @@ describe('Test Filter Sorting', () => {
   it('Sort direction: from NEWER to OLDER', () => {
 
     const filter = new Filter();
-    filter.state.sort = 'year-desc';
+    filter.state.sort = Sort.yearDesc;
 
     const expectedResult: IProductData[] = [
       { id: 4, name: 'Delta', manufacturer: "Apple", imageUrl: "", qty: 4, year: 2014, color: "черный", camera: 1, popular: false },
@@ -77,7 +77,7 @@ describe('Test Filter Sorting', () => {
   it('Sort direction: from LESS to MORE', () => {
 
     const filter = new Filter();
-    filter.state.sort = 'qty-asc';
+    filter.state.sort = Sort.qtyAsc;
 
     const expectedResult: IProductData[] = [
       { id: 1, name: 'Apple', manufacturer: "Apple", imageUrl: "", qty: 1, year: 2011, color: "черный", camera: 1, popular: false },
@@ -92,7 +92,7 @@ describe('Test Filter Sorting', () => {
   it('Sort direction: from MORE to LESS', () => {
 
     const filter = new Filter();
-    filter.state.sort = 'qty-desc';
+    filter.state.sort = Sort.qtyDesc;
 
     const expectedResult: IProductData[] = [
       { id: 4, name: 'Delta', manufacturer: "Apple", imageUrl: "", qty: 4, year: 2014, color: "черный", camera: 1, popular: false },

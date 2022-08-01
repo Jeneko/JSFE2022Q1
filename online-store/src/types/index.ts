@@ -1,9 +1,17 @@
 import type { API as INoUiApi } from 'nouislider/dist/nouislider';
 
-export type Sort = 'name-asc' | 'name-desc' | 'year-asc' | 'year-desc' | 'year-asc' | 'qty-asc' | 'qty-desc';
 export type Manufacturer = 'Apple' | 'Samsung' | 'Xiaomi';
 export type Color = 'красный' | 'белый' | 'черный' | 'желтый';
 export type Camera = 1 | 2 | 3;
+
+export enum Sort {
+  nameAsc  = 'name-asc',
+  nameDesc = 'name-desc',
+  yearAsc  = 'year-asc',
+  yearDesc = 'year-desc',
+  qtyAsc   = 'qty-asc',
+  qtyDesc  = 'qty-desc',
+}
 
 export interface IApp {
   element: HTMLElement;

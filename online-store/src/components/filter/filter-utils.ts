@@ -9,7 +9,7 @@ export class FilterState {
     color: new Set(),
     camera: new Set(),
     popularOnly: false,
-    sort: 'name-asc',
+    sort: Sort.nameAsc,
   };
 
   loadFilterState(): void {
