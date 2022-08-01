@@ -3,17 +3,14 @@ import { Header } from 'components/header/header';
 import { Catalog } from 'components/catalog/catalog';
 import { Footer } from 'components/footer/footer';
 import { getResource } from 'components/app/get-resource';
+import { appHTML } from './app-html';
 
 export default class App implements IApp {
   element: HTMLElement;
 
   constructor(mountPointId: string) {
     this.element = (document.getElementById(mountPointId) as HTMLElement);
-    this.element.innerHTML = `
-      <header class="header"></header>
-      <main class="catalog"></main>
-      <footer class="footer"></footer>
-    `;
+    this.element.innerHTML = appHTML;
   }
 
   start() {

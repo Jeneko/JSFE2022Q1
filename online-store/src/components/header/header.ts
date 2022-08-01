@@ -1,4 +1,5 @@
 import { IHeader } from 'types';
+import { headerHTML } from './header-html';
 
 export class Header implements IHeader {
   element: HTMLElement;
@@ -6,12 +7,7 @@ export class Header implements IHeader {
   constructor() {
     this.element = document.createElement('header');
     this.element.className = 'header';
-    this.element.innerHTML = `
-      <a class="header__logo" href="#" title="На главную">Online<span>Store</span></a>
-      <div class="header__cart" title="Избранное">
-        <span class="header__cart-qty">0</span>
-      </div>
-    `;
+    this.element.innerHTML = headerHTML;
     this.updateCartQty();
   }
 

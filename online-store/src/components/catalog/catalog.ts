@@ -1,6 +1,7 @@
 import { IComponent, IProductData } from 'types';
 import { Filter } from 'components/filter/filter';
 import { ProductList } from 'components/product-list/product-list';
+import { catalogHTML } from './catalog-html';
 
 export class Catalog implements IComponent {
   element: HTMLElement;
@@ -8,15 +9,7 @@ export class Catalog implements IComponent {
   constructor(store: IProductData[]) {
     this.element = document.createElement('main');
     this.element.className = 'catalog';
-    this.element.innerHTML = `
-      <div class="container">
-        <h1 class="catalog__header">Каталог: <b>мобильные телефоны</b></h1>
-        <div class="catalog__content">
-          <section class="catalog__filter"></section>
-          <section class="catalog__products"></section>
-        </div>
-      </div>
-    `;
+    this.element.innerHTML = catalogHTML;
 
     // Filter
     const filter = new Filter();

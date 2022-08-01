@@ -1,4 +1,5 @@
 import { IProduct, IProductData } from 'types';
+import { getProductHTML } from './product-html';
 import "./in-cart.svg";
 
 const MAX_FAV_QTY = 20;
@@ -17,36 +18,7 @@ export class Product implements IProduct {
     }
 
     this.element.dataset.id = String(data.id);
-    this.element.innerHTML = `
-      <h3 class="product__name">${data.name}</h3>
-      <img class="product__image" src="${data.imageUrl}" alt="${data.name}">
-      <table class="product__properties">
-        <tr class="product__property">
-          <td class="product__property-key">Количество</td>
-          <td class="product__property-value product__qty">${data.qty}</td>
-        </tr>
-        <tr class="product__property">
-          <td class="product__property-key">Год выхода</td>
-          <td class="product__property-value product__year">${data.year}</td>
-        </tr>
-        <tr class="product__property">
-          <td class="product__property-key">Производитель</td>
-          <td class="product__property-value product__manufacturer">${data.manufacturer}</td>
-        </tr>
-        <tr class="product__property">
-          <td class="product__property-key">Цвет</td>
-          <td class="product__property-value product__color">${data.color}</td>
-        </tr>
-        <tr class="product__property">
-          <td class="product__property-key">Камер (шт.)</td>
-          <td class="product__property-value product__camera">${data.camera}</td>
-        </tr>
-        <tr class="product__property">
-          <td class="product__property-key">Популярный</td>
-          <td class="product__property-value product__qty">${data.popular ? 'Да' : 'Нет'}</td>
-        </tr>
-      </table>
-    `;
+    this.element.innerHTML = getProductHTML(data);
 
     // Manage favourites
     this.element.addEventListener('click', () => {

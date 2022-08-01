@@ -1,5 +1,6 @@
 import { IProductList, IFilter, IProductData } from 'types';
 import { Product } from 'components/product/product';
+import { productListHTML, emptyProductListHTML } from './product-list-html';
 
 export class ProductList implements IProductList {
   element: HTMLElement;
@@ -7,10 +8,7 @@ export class ProductList implements IProductList {
   constructor() {
     this.element = document.createElement('section');
     this.element.className = 'catalog__products';
-    this.element.innerHTML = `
-      <h2>Список товаров</h2>
-      <div class="product-list"></div>
-    `;
+    this.element.innerHTML = productListHTML;
   }
 
   render(root: HTMLElement, store: IProductData[], filter?: IFilter): void {
@@ -34,7 +32,7 @@ export class ProductList implements IProductList {
     if (allProducts.children.length) {
       container.append(allProducts);
     } else {
-      container.insertAdjacentHTML('beforeend', '<h3 class="product-list__no-product">Извините, совпадений не обнаружено</h3>');
+      container.insertAdjacentHTML('beforeend', emptyProductListHTML);
     }
 
     root.replaceWith(this.element);
