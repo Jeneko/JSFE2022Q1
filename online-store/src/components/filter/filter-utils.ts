@@ -39,10 +39,10 @@ export class FilterState {
     });
   }
 
-  updateFilterState(input: EventTarget): void {
-    const inputName = (input as HTMLInputElement).name;
-    const inputValue = (input as HTMLInputElement).value;
-    const inputChecked = (input as HTMLInputElement).checked;
+  updateFilterState(input: HTMLInputElement): void {
+    const inputName = input.name;
+    const inputValue = input.value;
+    const inputChecked = input.checked;
 
     // Manufacturer
     if (inputName === 'manufacturer[]') {

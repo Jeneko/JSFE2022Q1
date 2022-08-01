@@ -62,7 +62,7 @@ export class Filter extends FilterState implements IFilter {
     // On filter fields update
     const filterForm = this.element.querySelector('.filter__form') as HTMLFormElement;
     filterForm.addEventListener('input', (e) => {
-      this.updateFilterState(e.target as EventTarget);
+      this.updateFilterState(e.target as HTMLInputElement);
       this.saveFilterState();
       this.element.dispatchEvent(new Event('filterUpdate', { bubbles: true }));
     });
@@ -84,8 +84,9 @@ export class Filter extends FilterState implements IFilter {
     // On clear input name
     (filterForm.querySelector('.filter__clear-name') as HTMLElement).addEventListener('click', (e) => {
       e.preventDefault();
-      (this.element.querySelector('input[name="name"]') as HTMLInputElement).value = '';
-      this.updateFilterState(this.element.querySelector('input[name="name"]') as EventTarget);
+      const inputName = this.element.querySelector('input[name="name"]') as HTMLInputElement;
+      inputName.value = '';
+      this.updateFilterState(inputName);
       this.saveFilterState();
       this.element.dispatchEvent(new Event('filterUpdate', { bubbles: true }));
     });
