@@ -1,10 +1,7 @@
 import { IFilter, IProductData } from 'types';
 import { RangeSlider } from 'components/range-slider/range-slider';
 import { FilterState, sortMapper, fireFilterUpdateEvent } from './filter-utils';
-import { filterByData } from './filter-by-data';
-import { filterByRange } from './filter-by-range';
-import { filterByName } from './filter-by-name';
-import { filterSorting } from './filter-sorting';
+import { filterHTML } from './filter-html';
 
 export class Filter extends FilterState implements IFilter {
   element: HTMLElement;
@@ -14,25 +11,7 @@ export class Filter extends FilterState implements IFilter {
     super();
     this.element = document.createElement('section');
     this.element.className = 'filter';
-    this.element.innerHTML = `
-      <h2>Фильтрация и&nbsp;сортировка</h2>
-      <form class="filter__form" name="product-filter-form">
-        <section class="filter-by-data"></section>
-        <section class="filter-by-range"></section>
-        <section class="filter-by-name"></section>
-        <section class="filter-sorting"></section>
-        <div class="filter__buttons">
-          <button type="reset" class="btn-default filter__reset">Сброс фильтров</button>
-          <button type="button" class="btn-primary filter__clear">Сброс настроек</button>
-        </div>
-      </form>
-    `;
-
-    // Fill Filter Sections with HTML
-    (this.element.querySelector('.filter-by-data') as HTMLElement).innerHTML = filterByData;
-    (this.element.querySelector('.filter-by-range') as HTMLElement).innerHTML = filterByRange;
-    (this.element.querySelector('.filter-by-name') as HTMLElement).innerHTML = filterByName;
-    (this.element.querySelector('.filter-sorting') as HTMLElement).innerHTML = filterSorting;
+    this.element.innerHTML = filterHTML;
 
     this.loadFilterState();
     this.applyFilterState(this.element.querySelector('.filter__form') as HTMLElement);

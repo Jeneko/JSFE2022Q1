@@ -1,9 +1,25 @@
 import type { API as INoUiApi } from 'nouislider/dist/nouislider';
 
 export type SortMapper = Record<Sort, (a: IProductData, b: IProductData) => number>;
-export type Manufacturer = 'Apple' | 'Samsung' | 'Xiaomi';
-export type Color = 'красный' | 'белый' | 'черный' | 'желтый';
-export type Camera = 1 | 2 | 3;
+
+export enum Manufacturer {
+  apple = 'Apple',
+  samsung = 'Samsung',
+  xiaomi = 'Xiaomi',
+}
+
+export enum Color {
+  red = 'красный',
+  white = 'белый',
+  black = 'черный',
+  yellow = 'желтый',
+}
+
+export enum Camera {
+  one = 1,
+  two,
+  three,
+}
 
 export enum Sort {
   nameAsc  = 'name-asc',
