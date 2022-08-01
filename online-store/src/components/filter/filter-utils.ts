@@ -22,7 +22,7 @@ export class FilterState {
   }
 
   saveFilterState(): void {
-    const json = JSON.stringify(this.state, (key, value) =>
+    const json = JSON.stringify(this.state, (_key, value) =>
       value = (value instanceof Set) ? [...value] : value);
     localStorage.setItem('filterState', json);
   }
