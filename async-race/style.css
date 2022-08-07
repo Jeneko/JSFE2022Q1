@@ -1,0 +1,295 @@
+.btn-pages {
+  padding: 0.5rem 1rem;
+}
+
+.car {
+  width: 30px;
+}
+
+.track .car {
+  position: absolute;
+  transition-property: all;
+  transition-timing-function: ease;
+  left: 0;
+}
+
+.car.racing {
+  left: calc(100% - 30px);
+}
+
+.car svg {
+  display: block;
+}
+
+.cars-list-item {
+  margin-bottom: 1rem;
+}
+
+.track-container {
+  display: flex;
+  position: relative;
+  border-bottom: 3px dotted #585858;
+}
+
+.track {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.finish-flag {
+  position: absolute;
+  z-index: -1;
+  right: 30px;
+  width: 30px;
+  height: 30px;
+}
+.finish-flag svg {
+  width: 100%;
+}
+
+.car-name {
+  margin-left: 0.5rem;
+  margin-top: 1px;
+}
+
+.car-edit {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.car-control {
+  padding: 0.25rem;
+}
+
+.btn-car-start {
+  color: green;
+  background: none;
+  border: 1px solid green;
+  padding: 0.25rem 0.5rem;
+  font-weight: bold;
+}
+
+.btn-car-start:disabled,
+.btn-car-stop:disabled {
+  opacity: 0.3;
+}
+
+.btn-car-stop {
+  color: red;
+  background: none;
+  border: 1px solid red;
+  padding: 0.25rem 0.5rem;
+  font-weight: bold;
+}
+
+.cars-list {
+  padding: 0;
+  margin: 2rem 0;
+  list-style: none;
+}
+
+.create-car-form {
+  display: flex;
+  gap: 0.25rem;
+  width: 320px;
+  margin-bottom: 0.25rem;
+}
+
+.create-car-form button {
+  flex: 1;
+}
+
+.update-car-form {
+  display: flex;
+  gap: 0.25rem;
+  width: 320px;
+  margin-bottom: 0.25rem;
+}
+
+.update-car-form button {
+  flex: 1;
+}
+
+.race-controls {
+  display: flex;
+  gap: 0.25rem;
+  width: 320px;
+  margin: 1rem 0;
+}
+.race-controls .btn-race-all {
+  flex: 1;
+}
+
+.btn-pagination {
+  padding: 0.5rem 1rem;
+  background: none;
+  color: white;
+  border-radius: 3px;
+  border: 1px solid white;
+}
+.btn-pagination:hover {
+  background-color: slategrey;
+  border-color: slategrey;
+}
+.btn-pagination:disabled {
+  color: white;
+  opacity: 0.3;
+}
+
+.pagination {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.winner {
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  font-size: 64px;
+  font-weight: 700;
+  text-align: center;
+  background-color: rgba(0,0,0, 0.3);
+}
+
+.winner .car {
+  width: 100px;
+}
+
+.winner-info {
+  padding: 1rem 2rem;
+  border-radius: 6px;
+  text-shadow: 0px 3px 2px #0000004a;
+}
+
+.winner-time {
+  padding: 1rem;
+}
+
+.btn-remove-winner {
+  font-size: 32px;
+  padding: 1rem 2rem;
+}
+
+@media (max-width: 600px) {
+  .winner {
+    font-size: 32px;
+  }
+}
+
+.winners-table {
+  padding: 2rem 0;
+  max-width: 640px;
+}
+
+.winners-table th {
+  font-size: 14px;
+  background-color: #317cf3;
+  white-space: nowrap;
+}
+
+.winners-table th,
+.winners-table td {
+  padding: 0.25rem 1rem;
+}
+
+.column-name {
+  width: 100%;
+}
+
+.sort-by-wins,
+.sort-by-time {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+}
+
+.sort-by-wins:hover,
+.sort-by-time:hover {
+  background-color: #4486ff;
+  transform: translateY(2px);
+}
+
+.order-mark::after {
+  position: absolute;
+  display: block;
+  top: 5px;
+  right: 7px;
+  font-size: 12px;
+}
+
+.order-desc .order-mark::after {
+  content: "▼";
+}
+
+.order-asc .order-mark::after {
+  content: "▲";
+}
+
+@media (max-width: 500px) {
+  .order-mark::after {
+    font-size: 11px;
+  }
+  .winners-table th {
+    font-size: 12px;
+    padding: 0.25rem 0.5rem;
+  }
+  .winners-table td {
+    font-size: 14px;
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+body {
+  color: white;
+  background-color: black;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+button {
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 0.25rem 1rem;
+  border: none;
+  background-color: #f0f0f0;
+}
+
+button:disabled {
+  color: black;
+}
+
+input {
+  border: none;
+  border-radius: 3px;
+}
+
+input[type="text"] {
+  padding: 0 0.5rem;
+}
+
+.current-page-number {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+:disabled,
+.ui-disabled-by-race {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
