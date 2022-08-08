@@ -1,0 +1,64 @@
+.winners-table {
+  padding: 2rem 0;
+  max-width: 640px;
+}
+
+.winners-table th {
+  font-size: 14px;
+  background-color: #317cf3;
+  white-space: nowrap;
+}
+
+.winners-table th,
+.winners-table td {
+  padding: 0.25rem 1rem;
+}
+
+.column-name {
+  width: 100%;
+}
+
+.sort-by-wins,
+.sort-by-time {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+}
+
+.sort-by-wins:hover,
+.sort-by-time:hover {
+  background-color: #4486ff;
+  transform: translateY(2px);
+}
+
+.order-mark::after {
+  position: absolute;
+  display: block;
+  top: 5px;
+  right: 7px;
+  font-size: 12px;
+}
+
+.order-desc .order-mark::after {
+  content: "▼";
+}
+
+.order-asc .order-mark::after {
+  content: "▲";
+}
+
+@media (max-width: 500px) {
+  .order-mark::after {
+    font-size: 11px;
+  }
+  .winners-table th {
+    font-size: 12px;
+    padding: 0.25rem 0.5rem;
+  }
+  .winners-table td {
+    font-size: 14px;
+    padding: 0.25rem 0.5rem;
+  }
+}

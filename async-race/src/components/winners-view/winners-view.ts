@@ -1,5 +1,6 @@
 import * as state from 'utils/state';
 import { getWinnersCars } from 'API/api';
+import getWinnersTable from 'components/winners-table/winners-table';
 
 export default async function getWinnersView(): Promise<HTMLElement> {
   const curState = state.getState();
@@ -13,6 +14,8 @@ export default async function getWinnersView(): Promise<HTMLElement> {
     <h2>Winners <span class="winners-total-count">(${winnersCars.totalCount})</span></h2>
     <div class="current-page-number winners-current-page-number">Page: #${curState.winnersPagination}</div>
   `;
+
+  elem.append(getWinnersTable(winnersCars.winnersCarsList));
 
   return elem;
 }
