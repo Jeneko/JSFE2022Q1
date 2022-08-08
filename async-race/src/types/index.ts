@@ -12,6 +12,8 @@ export type State = {
 
 export type PageMenuMapper = Record<PageName, string>;
 
+export type GeneratedCar = Omit<Car, 'id'>;
+
 export enum Endpoints {
   garage = 'garage',
   winners = 'winners',
