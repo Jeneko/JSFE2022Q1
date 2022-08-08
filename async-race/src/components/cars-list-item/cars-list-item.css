@@ -1,0 +1,65 @@
+.cars-list-item {
+  margin-bottom: 1rem;
+}
+
+.track-container {
+  display: flex;
+  position: relative;
+  border-bottom: 3px dotted #585858;
+}
+
+.track {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.finish-flag {
+  position: absolute;
+  z-index: -1;
+  right: 30px;
+  width: 30px;
+  height: 30px;
+}
+.finish-flag svg {
+  width: 100%;
+}
+
+.car-name {
+  margin-left: 0.5rem;
+  margin-top: 1px;
+}
+
+.car-edit {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.car-control {
+  padding: 0.25rem;
+}
+
+.btn-car-start {
+  color: green;
+  background: none;
+  border: 1px solid green;
+  padding: 0.25rem 0.5rem;
+  font-weight: bold;
+}
+
+.btn-car-start:disabled,
+.btn-car-stop:disabled {
+  opacity: 0.3;
+}
+
+.btn-car-stop {
+  color: red;
+  background: none;
+  border: 1px solid red;
+  padding: 0.25rem 0.5rem;
+  font-weight: bold;
+}

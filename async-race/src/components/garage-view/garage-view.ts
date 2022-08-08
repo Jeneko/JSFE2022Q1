@@ -1,5 +1,6 @@
 import * as state from 'utils/state';
 import { getCars } from 'API/api';
+import getCarsList from 'components/cars-list/cars-list';
 
 export default async function getGarageView(): Promise<HTMLElement> {
   const curState = state.getState();
@@ -13,6 +14,8 @@ export default async function getGarageView(): Promise<HTMLElement> {
     <h2>Garage <span class="garage-total-count">(${cars.totalCount})</span></h2>
     <div class="current-page-number garage-current-page-number">Page: #${curState.garagePagination}</div>
   `;
+
+  elem.append(getCarsList(cars.carsList));
 
   return elem;
 }
