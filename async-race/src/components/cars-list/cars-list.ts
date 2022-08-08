@@ -1,5 +1,5 @@
 import { Car } from 'types/index';
-import { getCar } from 'API/api';
+import { deleteCar, getCar } from 'API/api';
 import getCarListItem from 'components/cars-list-item/cars-list-item';
 import './cars-list.css';
 
@@ -8,6 +8,12 @@ function handleEvents(elem: HTMLElement): void {
     e.preventDefault();
     const target = e.target as HTMLElement;
     const carId = Number(target.dataset.id);
+
+    // Click on Remove Btn
+    if (target.classList.contains('btn-remove-car')) {
+      await deleteCar(carId);
+      elem.dispatchEvent(new Event('updateCarsList', { bubbles: true }));
+    }
 
     // Click on Select Btn
     if (target.classList.contains('btn-select-car')) {

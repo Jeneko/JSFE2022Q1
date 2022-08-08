@@ -8,6 +8,10 @@ async function updateWinnersView(): Promise<void> {
   const curState = state.getState();
   const winnersCars = await getWinnersCars();
 
+  // Update Total Count
+  const totalCountSpan = document.querySelector('.winners-total-count') as HTMLElement;
+  totalCountSpan.innerText = `(${winnersCars.totalCount})`;
+
   // Update Current Page Number
   const curPageNumber = document.querySelector('.winners-current-page-number') as HTMLElement;
   curPageNumber.innerText = `Page: #${curState.winnersPagination}`;
