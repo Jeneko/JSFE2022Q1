@@ -22,6 +22,9 @@ async function updateWinnersView(): Promise<void> {
 }
 
 function handleEvents(): void {
+  // Update Cars
+  document.addEventListener('updateCarsList', updateWinnersView);
+
   // Update Pagination
   document.addEventListener('winnersUpdatePagination', updateWinnersView);
 }

@@ -1,0 +1,10 @@
+.update-car-form {
+  display: flex;
+  gap: 0.25rem;
+  width: 320px;
+  margin-bottom: 0.25rem;
+}
+
+.update-car-form button {
+  flex: 1;
+}

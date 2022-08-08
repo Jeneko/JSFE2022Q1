@@ -3,6 +3,7 @@ import { PageName } from 'types/index';
 import { getCars } from 'API/api';
 import getCarsList from 'components/cars-list/cars-list';
 import getCreateCarForm from 'components/create-car-form/create-car-form';
+import getUpdateCarForm from 'components/update-car-form/update-car-form';
 import getPagination from 'components/pagination/pagination';
 
 async function updateGarageView(): Promise<void> {
@@ -26,7 +27,18 @@ async function updateGarageView(): Promise<void> {
   paginationElem.replaceWith(getPagination(cars.totalCount, PageName.garage));
 }
 
+function fillUpdateCarForm(e: Event): void {
+  const car = (e as CustomEvent).detail;
+  const updateCarForm = getUpdateCarForm(car);
+  const updateCarFormElem = document.querySelector('.update-car-form') as HTMLElement;
+
+  updateCarFormElem.replaceWith(updateCarForm);
+}
+
 function handleEvents(): void {
+  // Fill Update Car Form
+  document.addEventListener('fillUpdateCarForm', fillUpdateCarForm);
+
   // Update Cars List
   document.addEventListener('updateCarsList', updateGarageView);
 
@@ -48,6 +60,7 @@ export default async function getGarageView(): Promise<HTMLElement> {
   `;
 
   elem.append(getCreateCarForm());
+  elem.append(getUpdateCarForm());
   elem.append(getCarsList(cars.carsList));
   elem.append(getPagination(cars.totalCount, PageName.garage));
 
