@@ -108,9 +108,7 @@ export async function driveCars(carsIds: number[], engineResponses: EngineRespon
       .then((result) => {
         cancelAnimationFrame(animationIds.get(carId) as number);
         if (result.status === ResponseStatus.ok && isFirst() && announceWinner) {
-          // TODO: process winner
-          state.setWinnerId(carId);
-          console.log('WE HAVE THE WINNER!', carId, raceTime);
+          processTheWinner(carId, raceTime);
         }
       })
       .catch(() => {});
@@ -119,4 +117,14 @@ export async function driveCars(carsIds: number[], engineResponses: EngineRespon
 
 function isFirst(): boolean {
   return Boolean(!state.getWinnerId());
+}
+
+function processTheWinner(carId: number, time: string): void {
+  state.setWinnerId(carId);
+  const winner = document.querySelector(`.car[data-id="${carId}"]`) as HTMLElement;
+
+  winner.dispatchEvent(new CustomEvent('newWinner', {
+    bubbles: true,
+    detail: { ...winner.dataset, time },
+  }));
 }
