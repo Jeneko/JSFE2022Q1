@@ -1,0 +1,38 @@
+body {
+  color: white;
+  background-color: black;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+button {
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 0.25rem 1rem;
+  border: none;
+  background-color: #f0f0f0;
+}
+
+button:disabled {
+  color: black;
+}
+
+input {
+  border: none;
+  border-radius: 3px;
+}
+
+input[type="text"] {
+  padding: 0 0.5rem;
+}
+
+.current-page-number {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+:disabled,
+.ui-disabled-by-race {
+  opacity: 0.3;
+  pointer-events: none;
+}
