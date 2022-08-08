@@ -1,6 +1,56 @@
-import { Car } from 'types/index';
+import { Car, AnimationIds, RaceType } from 'types/index';
 import generateCar from 'components/car/car';
+import {
+  startEngines, driveCars, stopEnginesAndReturnCars, disableUIWhileRace,
+} from 'utils/race-functions';
 import './cars-list-item.css';
+
+async function startCar(carId: number, abortController: AbortController, animationIds: AnimationIds): Promise<void> {
+  const btnCarStop = document.querySelector(`.btn-car-stop[data-id="${carId}"]`) as HTMLButtonElement;
+  const btnCarStart = document.querySelector(`.btn-car-start[data-id="${carId}"]`) as HTMLButtonElement;
+
+  disableUIWhileRace(true, RaceType.single);
+
+  btnCarStart.disabled = true;
+  const engineResponse = await startEngines([carId]);
+  btnCarStop.disabled = false;
+
+  driveCars([carId], engineResponse, abortController, animationIds, false);
+}
+
+async function stopAndReturnCar(carId: number, abortController: AbortController, animationIds: AnimationIds): Promise<void> {
+  const btnCarStop = document.querySelector(`.btn-car-stop[data-id="${carId}"]`) as HTMLButtonElement;
+  const btnCarStart = document.querySelector(`.btn-car-start[data-id="${carId}"]`) as HTMLButtonElement;
+
+  abortController.abort();
+
+  btnCarStop.disabled = true;
+  await stopEnginesAndReturnCars([carId], animationIds);
+  btnCarStart.disabled = false;
+
+  disableUIWhileRace(false, RaceType.single);
+}
+
+function handleEvents(elem: HTMLElement): void {
+  let abortController: AbortController;
+  const animationIds: AnimationIds = new Map<number, number>();
+
+  elem.onclick = async (e: Event) => {
+    const target = e.target as HTMLButtonElement;
+    const carId = Number(target.dataset.id);
+
+    // Click on Start Car
+    if (target.classList.contains('btn-car-start')) {
+      abortController = new AbortController();
+      startCar(carId, abortController, animationIds);
+    }
+
+    // Click on Stop Car
+    if (target.classList.contains('btn-car-stop')) {
+      stopAndReturnCar(carId, abortController, animationIds);
+    }
+  };
+}
 
 export default function carsListItem(carInfo: Car): HTMLLIElement {
   const elem = document.createElement('li');
@@ -27,6 +77,8 @@ export default function carsListItem(carInfo: Car): HTMLLIElement {
       </div>
     </div>
   `;
+
+  handleEvents(elem);
 
   return elem;
 }

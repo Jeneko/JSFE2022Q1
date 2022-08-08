@@ -12,7 +12,14 @@ export type State = {
 
 export type PageMenuMapper = Record<PageName, string>;
 
+export type AnimationIds = Map<number, number>;
+
 export type GeneratedCar = Omit<Car, 'id'>;
+
+export enum RaceType {
+  single = 'single',
+  all = 'all',
+}
 
 export enum Endpoints {
   garage = 'garage',

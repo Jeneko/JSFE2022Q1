@@ -34,3 +34,15 @@ export function updateState(key: string, value: string | number): void {
   const state = getState();
   saveState({ ...state, [key]: value });
 }
+
+export function setWinnerId(carId: number): void {
+  localStorage.setItem('winnerId', String(carId));
+}
+
+export function getWinnerId(): number {
+  return Number(localStorage.getItem('winnerId'));
+}
+
+export function clearWinnerId(): void {
+  localStorage.removeItem('winnerId');
+}

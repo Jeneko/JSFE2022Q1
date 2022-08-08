@@ -1,10 +1,47 @@
+import * as state from 'utils/state';
 import { createCar } from 'API/api';
-import { Car, GeneratedCar } from 'types/index';
+import {
+  Car, GeneratedCar, AnimationIds, RaceType,
+} from 'types/index';
+import {
+  startEngines, driveCars, stopEnginesAndReturnCars, disableUIWhileRace,
+} from 'utils/race-functions';
 import './race-controls.css';
 
 const GENERATE_CARS_QTY = 100;
 
+async function startAllCars(carsIds: number[], abortController: AbortController, animationIds: AnimationIds): Promise<void> {
+  const raceBtn = document.querySelector('.btn-race-all') as HTMLButtonElement;
+  const resetBtn = document.querySelector('.btn-reset-all') as HTMLButtonElement;
+
+  disableUIWhileRace(true, RaceType.all);
+
+  raceBtn.disabled = true;
+  const engineResponses = await startEngines(carsIds);
+  resetBtn.disabled = false;
+
+  state.clearWinnerId(); // Clear up the last winner if any
+
+  await driveCars(carsIds, engineResponses, abortController, animationIds, true);
+}
+
+async function stopAndReturnCars(carsIds :number[], abortController: AbortController, animationIds: AnimationIds): Promise<void> {
+  const raceBtn = document.querySelector('.btn-race-all') as HTMLButtonElement;
+  const resetBtn = document.querySelector('.btn-reset-all') as HTMLButtonElement;
+
+  abortController.abort();
+
+  resetBtn.disabled = true;
+  await stopEnginesAndReturnCars(carsIds, animationIds);
+  raceBtn.disabled = false;
+
+  disableUIWhileRace(false, RaceType.all);
+}
+
 function handleEvents(elem: HTMLElement): void {
+  let abortController: AbortController;
+  const animationIds: AnimationIds = new Map<number, number>();
+
   elem.onclick = async (e) => {
     e.preventDefault();
     const target = e.target as HTMLButtonElement;
@@ -12,6 +49,19 @@ function handleEvents(elem: HTMLElement): void {
     // Click on Generate Cars
     if (target.classList.contains('btn-generate-cars')) {
       await createCars(elem);
+    }
+
+    // Click on Race
+    if (target.classList.contains('btn-race-all')) {
+      abortController = new AbortController();
+      const carsIds = getCarsIdsFromCurrentPage();
+      startAllCars(carsIds, abortController, animationIds);
+    }
+
+    // Click on Reset
+    if (target.classList.contains('btn-reset-all')) {
+      const carsIds = getCarsIdsFromCurrentPage();
+      stopAndReturnCars(carsIds, abortController, animationIds);
     }
   };
 }
@@ -29,6 +79,14 @@ export default function getRaceControls(): HTMLElement {
   handleEvents(elem);
 
   return elem;
+}
+
+function getCarsIdsFromCurrentPage(): number[] {
+  const carsIds: number[] = [];
+  const curCars = document.querySelectorAll<HTMLElement>('.cars-list-item');
+  curCars.forEach((el) => carsIds.push(Number(el.dataset.id)));
+
+  return carsIds;
 }
 
 async function createCars(elem: HTMLElement): Promise<void> {
