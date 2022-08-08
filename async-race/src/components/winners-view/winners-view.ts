@@ -1,6 +1,30 @@
 import * as state from 'utils/state';
+import { PageName } from 'types/index';
 import { getWinnersCars } from 'API/api';
 import getWinnersTable from 'components/winners-table/winners-table';
+import getPagination from 'components/pagination/pagination';
+
+async function updateWinnersView(): Promise<void> {
+  const curState = state.getState();
+  const winnersCars = await getWinnersCars();
+
+  // Update Current Page Number
+  const curPageNumber = document.querySelector('.winners-current-page-number') as HTMLElement;
+  curPageNumber.innerText = `Page: #${curState.winnersPagination}`;
+
+  // Update Car List
+  const carsListElem = document.querySelector('.winners-table') as HTMLElement;
+  carsListElem.replaceWith(getWinnersTable(winnersCars.winnersCarsList));
+
+  // Update Pagination
+  const paginationElem = document.querySelector('.winners-pagination') as HTMLElement;
+  paginationElem.replaceWith(getPagination(winnersCars.totalCount, PageName.winners));
+}
+
+function handleEvents(): void {
+  // Update Pagination
+  document.addEventListener('winnersUpdatePagination', updateWinnersView);
+}
 
 export default async function getWinnersView(): Promise<HTMLElement> {
   const curState = state.getState();
@@ -16,6 +40,9 @@ export default async function getWinnersView(): Promise<HTMLElement> {
   `;
 
   elem.append(getWinnersTable(winnersCars.winnersCarsList));
+  elem.append(getPagination(winnersCars.totalCount, PageName.winners));
+
+  handleEvents();
 
   return elem;
 }

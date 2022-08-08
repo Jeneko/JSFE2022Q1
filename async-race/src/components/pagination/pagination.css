@@ -1,0 +1,20 @@
+.btn-pagination {
+  padding: 0.5rem 1rem;
+  background: none;
+  color: white;
+  border-radius: 3px;
+  border: 1px solid white;
+}
+.btn-pagination:hover {
+  background-color: slategrey;
+  border-color: slategrey;
+}
+.btn-pagination:disabled {
+  color: white;
+  opacity: 0.3;
+}
+
+.pagination {
+  display: flex;
+  gap: 0.5rem;
+}
