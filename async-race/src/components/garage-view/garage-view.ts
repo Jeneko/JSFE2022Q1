@@ -4,6 +4,7 @@ import { getCars } from 'API/api';
 import getCarsList from 'components/cars-list/cars-list';
 import getCreateCarForm from 'components/create-car-form/create-car-form';
 import getUpdateCarForm from 'components/update-car-form/update-car-form';
+import getRaceControls from 'components/race-controls/race-controls';
 import getPagination from 'components/pagination/pagination';
 
 async function updateGarageView(): Promise<void> {
@@ -61,6 +62,7 @@ export default async function getGarageView(): Promise<HTMLElement> {
 
   elem.append(getCreateCarForm());
   elem.append(getUpdateCarForm());
+  elem.append(getRaceControls());
   elem.append(getCarsList(cars.carsList));
   elem.append(getPagination(cars.totalCount, PageName.garage));
 
