@@ -10,6 +10,8 @@ export type State = {
   winnersOrder: Order;
 };
 
+export type PageMenuMapper = Record<PageName, string>;
+
 export enum Endpoints {
   garage = 'garage',
   winners = 'winners',
