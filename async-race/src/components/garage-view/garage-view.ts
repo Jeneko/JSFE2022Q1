@@ -6,6 +6,7 @@ import getCreateCarForm from 'components/create-car-form/create-car-form';
 import getUpdateCarForm from 'components/update-car-form/update-car-form';
 import getRaceControls from 'components/race-controls/race-controls';
 import getPagination from 'components/pagination/pagination';
+import getWinnerMessage from 'components/winner-message/winner-message';
 
 async function updateGarageView(): Promise<void> {
   const curState = state.getState();
@@ -36,6 +37,12 @@ function fillUpdateCarForm(e: Event): void {
   updateCarFormElem.replaceWith(updateCarForm);
 }
 
+function showWinnersInfo(e: Event): void {
+  const winner = (e as CustomEvent).detail;
+  const garageView = document.querySelector('.page-view-garage') as HTMLElement;
+  garageView.prepend(getWinnerMessage(winner.id, winner.name, winner.color, winner.time));
+}
+
 function handleEvents(): void {
   // Fill Update Car Form
   document.addEventListener('fillUpdateCarForm', fillUpdateCarForm);
@@ -45,6 +52,9 @@ function handleEvents(): void {
 
   // Update Pagination
   document.addEventListener('garageUpdatePagination', updateGarageView);
+
+  // New winner
+  document.addEventListener('newWinner', showWinnersInfo);
 }
 
 export default async function getGarageView(): Promise<HTMLElement> {
