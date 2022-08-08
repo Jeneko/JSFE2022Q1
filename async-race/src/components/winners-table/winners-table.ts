@@ -3,6 +3,7 @@ import {
   Order, Sort, Winner, Car,
 } from 'types/index';
 import { getWinnersCars } from 'API/api';
+import generateCar from 'components/car/car';
 import './winners-table.css';
 
 async function sortWinnersTable(elem: HTMLElement, sort: Sort): Promise<void> {
@@ -61,7 +62,7 @@ export default function getWinnersTable(winnersCarsList: (Winner & Car)[]): HTML
     tableBody += `
     <tr>
       <td>${number}</td>
-      <td>Car</td>
+      <td>${generateCar(winnerCar.color, winnerCar.id, winnerCar.name)}</td>
       <td>${winnerCar.name}</td>
       <td>${winnerCar.wins}</td>
       <td>${winnerCar.time}</td>

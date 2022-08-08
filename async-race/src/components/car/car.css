@@ -1,0 +1,18 @@
+.car {
+  width: 30px;
+}
+
+.track .car {
+  position: absolute;
+  transition-property: all;
+  transition-timing-function: ease;
+  left: 0;
+}
+
+.car.racing {
+  left: calc(100% - 30px);
+}
+
+.car svg {
+  display: block;
+}
